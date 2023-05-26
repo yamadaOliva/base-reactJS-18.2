@@ -1,11 +1,10 @@
+import "react-toastify/dist/ReactToastify.css";
+import { AppRoutes } from "./routes/AppRoutes";
+import { Routes } from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p> Hello World! </p>
-      </header>
-    </div>
+  return ( 
+      <div>ádsad</div>
   );
 }
 
