@@ -1,23 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "font-awesome/css/font-awesome.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from './components/Login/Login';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { ToastContainer } from "react-toastify";
+import Login from "./components/Login/Login";
+import Admin from "./components/Admin/Admin";
+import User from "./components/User/User";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} >
+          <Route path="/user" element={<User />} />
+          <Route path="/admin" element={<Admin />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+    />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
