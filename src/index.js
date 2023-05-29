@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "./components/Login/Login";
 import Admin from "./components/Admin/Admin";
 import User from "./components/User/User";
+import Register from "./components/Register/Register";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ root.render(
           <Route path="/admin" element={<Admin />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <ToastContainer
       position="top-right"
