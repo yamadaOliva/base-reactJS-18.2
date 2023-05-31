@@ -7,7 +7,7 @@ export default function Register(props) {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [username, setUsername] = useState("");
-    const [role, setRole] = useState("");
+    const [role, setRole] = useState(1);
     const [name, setName] = useState("");
     const role_name={
         1 : "User",
@@ -66,12 +66,22 @@ export default function Register(props) {
         return true;
 
     }
+    ///////////////////////
+    const setRoleUser = (e) => {
+        setRole(e.target.value);
+        setName(role_name[e.target.value]);
+    }
     const handleRegister = async () =>{
-        setName(role_name[role]);
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        setName("");
+        let Name = role_name[role];
+        console.log(typeof(Name));
+
+        console.log(email)
+        console.log(password);
+        console.log(confirmPassword);
+        console.log(username);
+        console.log(role);
+        console.log(name);
+        
     
     }
    
@@ -119,25 +129,16 @@ export default function Register(props) {
                                 onChange={(e)=>setUsername(e.target.value)}
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group row">
                             <label for="examplePhone">role</label>
-                            <input type="text" className={dataInput.role?"form-control":"form-control is-invalid"} 
-                            id="examplePhone" placeholder="Phone"
-                                value={role}
-                                onChange={(e)=>setRole(e.target.value)}
-                            />
-                        </div>
-                        <div className="col-12 col-sm-6 form-group mt-3">
-                            <label for="examplePhone">role</label>
-                            <select className="from-select">
+                            <select className="from-select col-2 mt-1 "
+                                onChange={(e)=>setRoleUser(e)}
+                            >
                                 <option value="1" defaultValue={1}>User</option>
                                 <option value="2">Maid</option>
                             </select>
                         </div>
-                        <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                            <label className="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
+
                         
                         <button className="btn btn-primary"
                             onClick={()=>handleRegister()}

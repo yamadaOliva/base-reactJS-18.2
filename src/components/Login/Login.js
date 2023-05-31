@@ -48,6 +48,10 @@ export default function Login(props) {
       }
     }
   };
+  
+  const handleSignUp = () => {
+    navigate("/register");
+  };
   return (
     <>
       <div className="login-containers mt-5">
@@ -82,11 +86,13 @@ export default function Login(props) {
               onClick={()=>handleSubmit()}
               >Submit</button>
               <span className="text-center">
-                <Link to="/forgot">Register</Link>
+                <Link to="/register">Register</Link>
               </span>
               <hr />
               <div className="text-center">
-                <button className="btn btn-success">Sign up</button>
+                <button className="btn btn-success"
+                onClick={()=>handleSignUp()}
+                >Sign up</button>
               </div>
             </div>
           </div>
