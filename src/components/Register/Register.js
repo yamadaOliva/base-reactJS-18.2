@@ -10,7 +10,7 @@ export default function Register(props) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const [role, setRole] = useState(1);
-  const [name, setName] = useState("");
+  const [name, setName] = useState("User");
   const role_name = {
     1: "User",
     2: "Maid",

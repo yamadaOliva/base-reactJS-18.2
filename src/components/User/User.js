@@ -1,3 +1,8 @@
+import MaidList from "../MaidList/MaidList";
 export default function User() {
-  return <>User</>;
+  return(
+    <>
+      <MaidList />
+    </>
+  )
 }
