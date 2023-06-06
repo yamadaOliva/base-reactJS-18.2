@@ -12,8 +12,12 @@ const FindMaidByLanguageService = (language) =>{
     return axios.get(`/api/v1/maid/findbyLanguage?language=${language}`);
 }
 
+const FindMaidByIdService = (id) =>{
+    return axios.get(`/api/v1/maid/findbyid?id=${id}`);
+}
 export{
     MaidListService,
     FindMaidByNameService,
-    FindMaidByLanguageService
+    FindMaidByLanguageService,
+    FindMaidByIdService
 }
