@@ -95,10 +95,14 @@ const MaidDetail = (props) => {
                     <label>language</label>
                   </div>
                   <div className="col-8">
-                    <label>{"English" + " Chinese"}</label>
+                    {
+                      (dataRaw.Languages || []).map((item) => {
+                        return <label>{item.language_name}</label>
+                      }
+                      )
+                    }
                   </div> 
                 </div>
-
 
               </div>
             </div>

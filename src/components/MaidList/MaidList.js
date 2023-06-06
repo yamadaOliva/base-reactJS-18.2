@@ -40,7 +40,6 @@ export default function MaidList() {
   const handleImageClick = (e, maid) => {
     handleModal();
     setCurrentMaid(maid);
-    console.log(maid);
   };
   return (
     <>
@@ -61,8 +60,8 @@ export default function MaidList() {
         </button>
         <h1>Maid List</h1>
         <div className="row">
-          <div className="col-lg-3 bg-success">
-            <div className="sidebar">
+          <div className="col-lg-3">
+            <div className="sidebar position-fixed">
               <label>Filter</label>
               <br />
               <input type="radio" name="filter" value="Experience" />
@@ -76,7 +75,7 @@ export default function MaidList() {
               <br />
             </div>
           </div>
-          <div className="col-lg-9 bg-danger d-flex row">
+          <div className="col-lg-9 d-flex row">
             <label>List</label>
             {maidList.map((maid) => {
               return (
