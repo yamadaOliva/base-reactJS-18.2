@@ -1,6 +1,160 @@
-.modal-custom{
-    min-width: 800px;
-    min-height: 400px;
-    
+body {
+    overflow: hidden;
 }
-  
+
+.modal-custom {
+    width: 100%;
+    height: 100%;
+
+    .modal-dialog {
+        max-width: 75% !important;
+
+        .container-detailMaid {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+
+            .infor-container {
+                display: flex;
+                width: 60%;
+                height: 100vh;
+                background-color: #F5FAF7;
+                position: relative;
+
+                .btn-report {
+                    display: flex;
+                    justify-content: center;
+                    background-color: red;
+                    position: absolute;
+                    top: 10px;
+                    left: 30px;
+                    border-radius: 1.35rem;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                    width: 60px;
+                    height: fit-content;
+                    color: #F5FAF7;
+                    font-weight: bold;
+                }
+
+                .table-detail {
+                    width: 85%;
+
+                    form {
+                        margin-left: 70px;
+                        height: 100%;
+
+                        .title-content {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 5%;
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                        }
+
+                        .form-row {
+                            margin-left: 15px;
+                            width: 87%;
+
+                            .form-group {
+                                display: flex;
+                                margin-bottom: 17px;
+
+
+                                .form-control {
+                                    border-radius: 1.375rem !important;
+                                    height: fit-content;
+                                }
+
+                                label {
+                                    width: 30%;
+                                    font-weight: bold;
+                                    display: flex;
+                                    align-items: center;
+                                }
+                            }
+
+                            .btn-submit {
+                                display: flex;
+                                justify-content: space-evenly;
+                            }
+                        }
+                    }
+
+
+                }
+
+                .infor-addtion {
+                    height: 100vh;
+                    width: 40%;
+                    display: grid;
+                    grid-template-rows: 0.5fr 1fr 1fr 1fr;
+
+                    .btn-salary {
+                        padding: 20px;
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+
+                    .btn-avt {
+
+                        // css for image fit with size of div
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            padding-right: 20px;
+                        }
+                    }
+
+                    .btn-evaluation {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: center;
+
+                        .btn-point {
+                            position: relative;
+
+                            .edit-size-icon {
+                                position: absolute;
+                                font-size: 100px;
+                                color: #00FACD;
+                                z-index: 1;
+                                left: -50px;
+                            }
+
+                            .point {
+                                position: absolute;
+                                z-index: 2;
+                                top: 26px;
+                                left: -18px;
+                                font-size: 30px;
+                            }
+                        }
+                    }
+
+                    .btn-cancle-rate {
+                        padding-right: 20px;
+
+                        .cancle-rate-title {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                        }
+
+                        .cancle-rate-render {
+                            .form-control {
+                                border-radius: 1.375rem !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+}
