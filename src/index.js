@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import Admin from "./components/Admin/Admin";
 import User from "./components/User/User";
 import Register from "./components/Register/Register";
+import DetailMaid from "./components/DetailMaid/DetailMaid";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -20,19 +21,20 @@ root.render(
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/test" element={<DetailMaid />} />
       </Routes>
       <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-    />
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </BrowserRouter>
   </React.StrictMode>
 );
