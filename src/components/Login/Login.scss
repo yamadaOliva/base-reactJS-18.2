@@ -1,20 +1,33 @@
 .red {
     border: 1px solid red;
 }
+
 .green {
     border: 1px solid green;
 }
 
-.login-containers{
-    
-    .content-right{
+.login-containers {
+
+    .content-right {
         border-radius: 10px;
         border: 1px solid #e5e5e5;
-       
+
+        .text-center {
+            .text-regester {
+                color: red;
+                text-decoration: none;
+
+                .text-primary {
+                    font-weight: 600;
+                    text-decoration: underline;
+                    color: red !important;
+                }
+            }
+        }
     }
 
-    .content-left{
-        .text-logo{
+    .content-left {
+        .text-logo {
             font-size: 30px;
             font-weight: 700;
             color: #1877f2;
