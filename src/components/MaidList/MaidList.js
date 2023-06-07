@@ -116,11 +116,11 @@ export default function MaidList() {
           </div>
         </div>
       </div>
-      <MaidDetail
+      {/* <MaidDetail
         show={isShowModal}
         handleClose={handleCloseModal}
         maid={currentMaid}
-      />
+      /> */}
     </>
   );
 }
