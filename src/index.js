@@ -11,6 +11,7 @@ import User from "./components/User/User";
 import Register from "./components/Register/Register";
 import Homepage from "./components/User/Homepage/Homepage";
 import DetailMaid from "./components/DetailMaid/DetailMaid";
+import LandingPage from "./components/Landing/Landing"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -21,6 +22,7 @@ root.render(
           <Route path="/user" element={<User />}></Route>
           <Route path="/admin" element={<Admin />} />
           <Route path="/user/home" element={<Homepage />} />
+          <Route path="/" element={<LandingPage />}/>
         </Route>
 
         <Route path="/login" element={<Login />} />
