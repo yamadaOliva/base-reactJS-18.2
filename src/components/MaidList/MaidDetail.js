@@ -85,10 +85,10 @@ const MaidDetail = (props) => {
                 </div>
                 <div className="infor-addtion">
                   <div className="btn-salary">
-                    <h2>$20</h2>
+                    <h2>{dataRaw.price_per_hour+"$"}</h2>
                   </div>
                   <div className="btn-avt">
-                    <img src="https://th.bing.com/th/id/OIP.ZTaJeuzR79d8RrLA3bgLxQHaGq?pid=ImgDet&rs=1" />
+                    <img src={dataRaw.avatar_url}/>
                   </div>
                   <div className="btn-evaluation">
                     <div className="btn-point">

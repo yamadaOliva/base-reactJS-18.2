@@ -1,6 +1,7 @@
 import {
   MaidListService,
   FindMaidByNameService,
+  FindMaidByLanguageService
 } from "../../service/maidService";
 import { useEffect, useState } from "react";
 import "./MaidList.scss";
@@ -14,6 +15,7 @@ export default function MaidList() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(30);
   const [totalPage, setTotalPage] = useState(1);
+  const [language_name, setLanguage_name] = useState("");
   const getMaidList = async () => {
     const res = await MaidListService(limit, page);
     setMaidList(res.DT.maidList);
@@ -40,6 +42,10 @@ export default function MaidList() {
   const handleImageClick = (e, maid) => {
     handleModal();
     setCurrentMaid(maid);
+  };
+  const handleLanguage = async() => {
+    const res = await FindMaidByLanguageService(language_name);
+    setMaidList(res.DT);
   };
   return (
     <>
@@ -73,6 +79,21 @@ export default function MaidList() {
               <input type="radio" name="filter" value="rating" />
               Rating
               <br />
+              <label>Languages</label>
+              <select className="from-select border border-primary" onChange={(e)=>setLanguage_name(e.target.value)}>
+                <option value="English">English</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Spanish">Spanish</option>
+              </select>
+              <br />
+              <button className="btn btn-success"
+              onClick={handleLanguage}
+              >Filter</button>
             </div>
           </div>
           <div className="col-lg-9 d-flex row">
