@@ -9,18 +9,23 @@ import Login from "./components/Login/Login";
 import Admin from "./components/Admin/Admin";
 import User from "./components/User/User";
 import Register from "./components/Register/Register";
+import Homepage from "./components/User/Homepage/Homepage";
 import DetailMaid from "./components/DetailMaid/DetailMaid";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} >
-          <Route path="/user" element={<User />} />
+        <Route path="/" element={<App />}>
+          <Route path="/user" element={<User />}></Route>
           <Route path="/admin" element={<Admin />} />
+          <Route path="/user/home" element={<Homepage />} />
         </Route>
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
         <Route path="/test" element={<DetailMaid />} />
       </Routes>
       <ToastContainer
