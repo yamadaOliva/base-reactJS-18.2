@@ -2,7 +2,8 @@ import "./Login.scss";
 import { LoginService } from "../../service/authservice";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 export default function Login(props) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -48,7 +49,7 @@ export default function Login(props) {
       }
     }
   };
-  
+
   const handleSignUp = () => {
     navigate("/register");
   };
@@ -67,33 +68,36 @@ export default function Login(props) {
               <input
                 type="email"
                 className={
-                  dataInPut.email? "form-control" : "form-control is-invalid"
+                  dataInPut.email ? "form-control" : "form-control is-invalid"
                 }
-                placeholder="Email"
+                placeholder="ユーザー名または電子メール"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="パスワード"
                 className={
-                  dataInPut.password? "form-control" : "form-control is-invalid"
+                  dataInPut.password ? "form-control" : "form-control is-invalid"
                 }
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button className="btn btn-primary"
-              onClick={()=>handleSubmit()}
-              >Submit</button>
+                onClick={() => handleSubmit()}
+              >ログイン</button>
               <span className="text-center">
-                <Link to="/register">Register</Link>
+                <Link to="/register" className="text-regester">
+                  または
+                  <span className="text-primary">サインアップ</span>
+                </Link>
               </span>
               <hr />
-              <div className="text-center">
+              {/* <div className="text-center">
                 <button className="btn btn-success"
-                onClick={()=>handleSignUp()}
+                  onClick={() => handleSignUp()}
                 >Sign up</button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
