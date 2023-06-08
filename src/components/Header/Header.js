@@ -32,14 +32,12 @@ export default function Header() {
         </Typography>
         {isLogin ? (
           <>
-            <ProfileMenu
-              name = {sessionStorage.getItem("username")} 
-            />
+            <ProfileMenu name={sessionStorage.getItem("username")} />
           </>
         ) : (
           <div className="ml-auto pr-4">
             <NavLink to="/login" className="nav-link">
-              Login
+              ログイン
             </NavLink>
           </div>
         )}

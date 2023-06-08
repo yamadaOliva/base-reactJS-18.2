@@ -97,7 +97,6 @@ export default function MaidList() {
             </div>
           </div>
           <div className="col-lg-9 d-flex row">
-            <label>List</label>
             {maidList.map((maid) => {
               return (
                 <div className="card col-lg-4">
