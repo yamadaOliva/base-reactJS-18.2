@@ -6,23 +6,6 @@ import { FiCircle } from 'react-icons/fi';
 
 
 export default function DetailMaid(props) {
-    const [dateTest, setDateTest] = useState([
-        {
-            email: "123@gmail.com",
-            name: "Nguyen Van A",
-            phone: "0123456789",
-            address: "123/123",
-            city: "HCM",
-            country: "Viet Nam",
-            note: "abc",
-            experience: "1 year",
-            skill: "cleaning",
-            certificate: "abc",
-            language: "English"
-        }
-    ]);
-
-    console.log(dateTest);
     return (
         <>
             <Header />
@@ -36,16 +19,16 @@ export default function DetailMaid(props) {
                             <div className="form-row">
                                 <div className="form-group ">
                                     <label for="inputEmail4">名</label>
-                                    <input type="email" className="form-control" id="inputEmail4" value={dateTest.email} />
+                                    <input type="email" className="form-control" id="inputEmail4" />
                                 </div>
                                 <div className="form-group ">
                                     <label for="inputPassword4">苗字</label>
-                                    <input type="password" className="form-control" id="inputPassword4" value={dateTest.name} />
+                                    <input type="password" className="form-control" id="inputPassword4" />
                                 </div>
 
                                 <div className="form-group ">
                                     <label for="inputAddress">電話番号</label>
-                                    <input type="text" className="form-control" id="inputAddress" value={dateTest.phone} />
+                                    <input type="text" className="form-control" id="inputAddress" />
                                 </div>
                                 <div className="form-group ">
                                     <label >住所</label>

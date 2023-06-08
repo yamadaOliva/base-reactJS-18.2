@@ -3,6 +3,7 @@ import { LoginService } from "../../service/authservice";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
+import Header from "../Header/Header";
 
 export default function Login(props) {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ export default function Login(props) {
   };
   return (
     <>
+      <Header />
       <div className="login-containers mt-5">
         <div className="container">
           <div className="row">
