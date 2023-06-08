@@ -5,21 +5,12 @@ import "./style.css"
 function Landing() {
     return (
         <div>
-            <div className="navbar">
-                <div className="logo">
-                    <img src={logo} alt=""/>
-                </div>
-                <div className="right">
-                    <label htmlFor="">ログイン： </label>
-                    <a className="userBtn">ユーザー</a>
-                    <a className="maidBtn">メイド</a>
-                </div>
-            </div>
-            <div style={{display: 'flex'}}>
+            
+            <div className="container">
                 <div className="content">
                     <div className="banner">
-                        <div style={{width: '50%', height: '100%'}}></div>
-                        <div style={{paddingTop: 10, textAlign: 'center', width: '50%'}}>
+                      
+                        <div style={{paddingTop: 10, textAlign: 'center', width: '100%'}}>
                             <div className="message">
                             <span>
                                 新しいメンバーですか？<br/>
@@ -57,9 +48,7 @@ function Landing() {
                         <button className="next">&gt;</button>
                     </div>
                 </div>
-                <div className="advertisement">
-
-                </div>
+                
             </div>
         </div>
     )

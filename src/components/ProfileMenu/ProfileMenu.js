@@ -7,7 +7,9 @@ import {
   MenuList,
   MenuItem,
 } from "@material-tailwind/react";
-
+import {
+  NavLink
+} from "react-router-dom";
 import {
   UserCircleIcon,
   EnvelopeIcon,
@@ -28,17 +30,21 @@ const profileMenuItems = [
     icon: PowerIcon,
   },
 ];
-function ProfileMenu() {
+function ProfileMenu(props) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
+    <div className="ml-auto flex flex-row">
+      <div className="mr-2 justify-center items-center">
+        Hello {props.name}
+      </div>
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
         <Button
           variant="text"
           color="blue"
-          className="flex items-center gap-1 py-0.5 pr-2 pl-0.5 ml-auto rounded-full"
+          className="flex items-center gap-1 py-0.5 pr-2 pl-0.5 rounded-full"
         >
           <Bar className="w-7 h-7"/>
         </Button>
@@ -73,6 +79,7 @@ function ProfileMenu() {
         })}
       </MenuList>
     </Menu>
+    </div>
   );
 }
 

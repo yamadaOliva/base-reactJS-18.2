@@ -13,7 +13,7 @@ export default function MaidList() {
   const [isShowModal, setIsShowModal] = useState(false);
   const [currentMaid, setCurrentMaid] = useState({}); //[{}
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(30);
+  const [limit, setLimit] = useState(6);
   const [totalPage, setTotalPage] = useState(1);
   const [language_name, setLanguage_name] = useState("");
   const getMaidList = async () => {
