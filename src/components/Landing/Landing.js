@@ -1,7 +1,7 @@
 import logo from "./logo.png"
 import banner from "./banner.png"
 import "./style.css"
-
+import { NavLink } from "react-router-dom"
 function Landing() {
     return (
         <div>
@@ -19,10 +19,10 @@ function Landing() {
                             </div>
                             <div className="selection">
                                 <div style={{width: '50%', textAlign: "right", paddingRight: 40}}>
-                                    <a href="">メイドを見つける</a>
+                                    <NavLink to="/user">メイドを見つける</NavLink>
                                 </div>
                                 <div style={{width: '50%', textAlign: "left", paddingLeft: 40}}>
-                                    <a href="">私はメイドです。</a>
+                                    <NavLink to="/">私はメイドです。</NavLink>
                                 </div>
                             </div>
                         </div>
