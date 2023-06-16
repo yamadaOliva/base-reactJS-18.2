@@ -1,7 +1,8 @@
 import {
   MaidListService,
   FindMaidByNameService,
-  FindMaidByLanguageService
+  FindMaidByLanguageService,
+  filterMaidList,
 } from "../../service/maidService";
 import { useEffect, useState } from "react";
 import "./MaidList.scss";
@@ -13,9 +14,51 @@ export default function MaidList() {
   const [isShowModal, setIsShowModal] = useState(false);
   const [currentMaid, setCurrentMaid] = useState({}); //[{}
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(6);
+  const limit = 6;
   const [totalPage, setTotalPage] = useState(1);
   const [language_name, setLanguage_name] = useState("");
+  const [experienceValue, setExperienceValue] = useState({
+    min: 0,
+    max: 0,
+  });
+  const [priceValue, setPriceValue] = useState({
+    min: 0,
+    max: 0,
+  });
+  const [ratingValue, setRatingValue] = useState({
+    min: 0,
+    max: 0,
+  });
+
+  const defaulIsFilter = {
+    experience: false,
+    price: false,
+    rating: false,
+    language: false,
+  };
+  const defaultFilterField = {
+    experience: {
+      on: false,
+      min: 0,
+      max: 0,
+    },
+    price: {
+      on: false,
+      min: 0,
+      max: 0,
+    },
+    rating: {
+      on: false,
+      min: 0,
+      max: 0,
+    },
+    language: {
+      on: false,
+      language: "",
+    },
+  };
+  const [filterField, setFilterField] = useState(defaultFilterField);
+  const [isFilter, setIsFilter] = useState(defaulIsFilter); //[{}
   const getMaidList = async () => {
     const res = await MaidListService(limit, page);
     setMaidList(res.DT.maidList);
@@ -27,6 +70,31 @@ export default function MaidList() {
   useEffect(() => {
     getMaidList();
   }, [page]);
+
+  useEffect(() => {
+    setFilterField({
+      experience: {
+        on: isFilter.experience,
+        min: experienceValue.min,
+        max: experienceValue.max,
+      },
+      price: {
+        on: isFilter.price,
+        min: priceValue.min,
+        max: priceValue.max,
+      },
+      rating: {
+        on: isFilter.rating,
+        min: ratingValue.min,
+        max: ratingValue.max,
+      },
+      language: {
+        on: isFilter.language,
+        language: language_name,
+      },
+    });
+  }, [isFilter, experienceValue, priceValue, ratingValue, language_name]);
+
   const findMaidByName = async (name) => {
     const res = await FindMaidByNameService(name);
     setMaidList(res.DT);
@@ -43,10 +111,17 @@ export default function MaidList() {
     handleModal();
     setCurrentMaid(maid);
   };
-  const handleLanguage = async() => {
-    const res = await FindMaidByLanguageService(language_name);
+  const handleFilterService = async () => {
+    console.log(filterField);
+    const res = await filterMaidList(filterField);
     setMaidList(res.DT);
   };
+  const handleFilter = (e) => {
+    const { value, checked } = e.target;
+    const newIsFilter = { ...isFilter, [value]: checked };
+    setIsFilter(newIsFilter);
+  };
+
   return (
     <>
       <div className="container">
@@ -70,30 +145,130 @@ export default function MaidList() {
             <div className="sidebar position-fixed">
               <label>Filter</label>
               <br />
-              <input type="radio" name="filter" value="Experience" />
+              <input
+                type="checkbox"
+                value="experience"
+                onChange={handleFilter}
+              />
               Experience
+              {isFilter.experience ? (
+                <>
+                  <br />
+                  <input
+                    className=""
+                    type="text"
+                    placeholder="min"
+                    value={experienceValue.min}
+                    onChange={(e) =>
+                      setExperienceValue({
+                        ...experienceValue,
+                        min: e.target.value,
+                      })
+                    }
+                  />{" "}
+                  ~
+                  <input
+                    type="text"
+                    placeholder="max"
+                    value={experienceValue.max}
+                    onChange={(e) =>
+                      setExperienceValue({
+                        ...experienceValue,
+                        max: e.target.value,
+                      })
+                    }
+                  />
+                </>
+              ) : null}
               <br />
-              <input type="radio" name="filter" value="price" />
+              <input type="checkbox" value="price" onChange={handleFilter} />
               Price
+              {isFilter.price ? (
+                <>
+                  <br />
+                  <input
+                    className=""
+                    type="text"
+                    placeholder="min"
+                    value={priceValue.min}
+                    onChange={(e) =>
+                      setPriceValue({
+                        ...priceValue,
+                        min: e.target.value,
+                      })
+                    }
+                  />{" "}
+                  ~
+                  <input
+                    type="text"
+                    placeholder="max"
+                    value={priceValue.max}
+                    onChange={(e) =>
+                      setPriceValue({
+                        ...priceValue,
+                        max: e.target.value,
+                      })
+                    }
+                  />
+                </>
+              ) : null}
               <br />
-              <input type="radio" name="filter" value="rating" />
+              <input type="checkbox" value="rating" onChange={handleFilter} />
               Rating
+              {isFilter.rating ? (
+                <>
+                  <br />
+                  <input
+                    className=""
+                    type="text"
+                    placeholder="min"
+                    value={ratingValue.min}
+                    onChange={(e) =>
+                      setRatingValue({
+                        ...ratingValue,
+                        min: e.target.value,
+                      })
+                    }
+                  />{" "}
+                  ~
+                  <input
+                    type="text"
+                    placeholder="max"
+                    value={ratingValue.max}
+                    onChange={(e) =>
+                      setRatingValue({
+                        ...ratingValue,
+                        max: e.target.value,
+                      })
+                    }
+                  />
+                </>
+              ) : null}
               <br />
+              <input type="checkbox" value="language" onChange={handleFilter} />
               <label>Languages</label>
-              <select className="from-select border border-primary" onChange={(e)=>setLanguage_name(e.target.value)}>
-                <option value="English">English</option>
-                <option value="Vietnamese">Vietnamese</option>
-                <option value="Chinese">Chinese</option>
-                <option value="Japanese">Japanese</option>
-                <option value="Korean">Korean</option>
-                <option value="French">French</option>
-                <option value="German">German</option>
-                <option value="Spanish">Spanish</option>
-              </select>
+              {isFilter.language ? (
+                <>
+                  <br />
+                  <select
+                    className="from-select border border-primary"
+                    onChange={(e) => setLanguage_name(e.target.value)}
+                  >
+                    <option value="English">English</option>
+                    <option value="Vietnamese">Vietnamese</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Korean">Korean</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Spanish">Spanish</option>
+                  </select>
+                </>
+              ) : null}
               <br />
-              <button className="btn btn-success"
-              onClick={handleLanguage}
-              >Filter</button>
+              <button className="btn btn-success" onClick={handleFilterService}>
+                Filter
+              </button>
             </div>
           </div>
           <div className="col-lg-9 d-flex row">

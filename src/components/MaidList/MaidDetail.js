@@ -93,7 +93,7 @@ const MaidDetail = (props) => {
                   <div className="btn-evaluation">
                     <div className="btn-point">
                       <FiCircle className="edit-size-icon" />
-                      <div className="point">4.5</div>
+                      <div className="point">{dataRaw.rating}</div>
                     </div>
                     <div className="evaluation-title">評価</div>
                   </div>
