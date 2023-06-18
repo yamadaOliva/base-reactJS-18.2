@@ -4,7 +4,10 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import { Navbar, Typography } from "@material-tailwind/react";
+import { setUser } from "../../redux/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 export default function Login(props) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,8 +46,13 @@ export default function Login(props) {
       try {
         const res = await LoginService(user);
         // save to session storage
-        sessionStorage.setItem("email", res.DT.email);
-        sessionStorage.setItem("username", res.DT.username);
+        const payload = {
+          email:res.DT.email,
+          username:res.DT.username,
+          token:res.DT.accessToken,
+          role:res.DT.role
+        }
+        dispatch(setUser(payload));
         navigate("/user/home");
       } catch (error) {
         console.log(error);

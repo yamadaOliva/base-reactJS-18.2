@@ -11,39 +11,42 @@ import User from "./components/User/User";
 import Register from "./components/Register/Register";
 import Homepage from "./components/User/Homepage/Homepage";
 import DetailMaid from "./components/DetailMaid/DetailMaid";
-import LandingPage from "./components/Landing/Landing"
+import LandingPage from "./components/Landing/Landing";
+import { Provider } from "react-redux";
+import {store} from "./redux/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/user" element={<User />}></Route>
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/user/home" element={<Homepage />} />
-          <Route path="/" element={<LandingPage />}/>
-        </Route>
+  <Provider store={store}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/user" element={<User />}></Route>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/user/home" element={<Homepage />} />
+            <Route path="/" element={<LandingPage />} />
+          </Route>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={<h1>Not Found</h1>} />
-        <Route path="/test" element={<DetailMaid />} />
-      </Routes>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-    </BrowserRouter>
-  </React.StrictMode>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<h1>Not Found</h1>} />
+          <Route path="/test" element={<DetailMaid />} />
+        </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
