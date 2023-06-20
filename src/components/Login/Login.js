@@ -2,9 +2,9 @@ import { LoginService } from "../../service/authservice";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
-import { Navbar, Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import { setUser } from "../../redux/slices/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Login(props) {
   const dispatch = useDispatch();
@@ -60,9 +60,6 @@ export default function Login(props) {
     }
   };
 
-  const handleSignUp = () => {
-    navigate("/register");
-  };
   return (
     <>
       <div className="login-containers h-full">
@@ -177,14 +174,14 @@ export default function Login(props) {
                 </div>
 
                 <div className="w-full flex flex-row">
-                  <div className="w-10/12 ml-auto -mt-4">
+                  <div className="w-10/12 ml-auto -mt-6">
                     <div className="flex justify-center w-full">
                       <span className="text-center text-red-600 font-light">
                         または
                         <Link to="/register" className="text-red-600 font-bold">
                           <span>サインアップ</span>
                         </Link>
-                        ！
+                        &#xFF01;
                       </span>
                     </div>
                   </div>

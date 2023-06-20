@@ -8,9 +8,6 @@ import {
   MenuItem,
 } from "@material-tailwind/react";
 import {
-  NavLink
-} from "react-router-dom";
-import {
   UserCircleIcon,
   EnvelopeIcon,
   Bars3Icon as Bar,

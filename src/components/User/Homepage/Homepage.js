@@ -1,6 +1,5 @@
 import { Button } from "@material-tailwind/react";
 import { MagnifyingGlassIcon as SearchIcon } from "@heroicons/react/24/outline";
-import { useSwiper } from "swiper/react";
 import Carousel from "../../Carousel/Carousel";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
