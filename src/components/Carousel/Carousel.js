@@ -1,5 +1,4 @@
 import { useSwiper } from "swiper/react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   ChevronLeftIcon as LeftIcon,

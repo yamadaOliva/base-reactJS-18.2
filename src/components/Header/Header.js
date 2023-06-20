@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import { useSelector } from "react-redux";
 export default function Header() {
-  const username = useSelector(state=>state.user.username)
+  const username = useSelector((state) => state.user.username);
   const [isNavOpen, setIsNavOpen] = React.useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
   const [isLogin, setIsLogin] = React.useState(false);
@@ -45,6 +45,4 @@ export default function Header() {
       </div>
     </Navbar>
   );
-} 
-
-
+}
