@@ -1,0 +1,102 @@
+.ModalCreateReview {
+    display: flex;
+    justify-content: center;
+
+    .FormCreateReview-Container {
+        width: 70%;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px;
+        // background-color: bisque;
+
+        .FormCreateReview-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .FormCreateReview-infor {
+            display: flex;
+            flex-direction: column;
+            height: 30%;
+            width: 100%;
+            justify-content: space-around;
+
+            .FormCreateReview-infor-name {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                font-weight: bold;
+                font-size: 18px;
+            }
+
+            .FormCreateReview-rating-start {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+
+                .empty-icons {
+                    display: flex !important;
+                }
+
+                .filled-icons {
+                    display: -webkit-inline-box !important;
+                }
+            }
+        }
+
+        .FormCreateReview-content {
+            height: 30%;
+            width: 60%;
+
+            .Content-title {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .Content-textarea {
+                width: 100%;
+                height: 60%;
+                resize: none;
+                border: 1px solid #000;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 1.35rem;
+            }
+        }
+
+        .FormCreateReview-button {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+
+            .btn {
+                // width: 40%;
+                height: 40px;
+                border-radius: 1.35rem;
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                box-shadow: 3px 3px #000000;
+            }
+
+            .btn-primary {
+                font-weight: bold;
+                color: #000 !important;
+                background-color: #00FFD2 !important;
+            }
+
+            .btn-danger {
+                background-color: red !important;
+            }
+        }
+    }
+}

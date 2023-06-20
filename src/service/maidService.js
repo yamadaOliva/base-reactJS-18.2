@@ -1,23 +1,33 @@
 import axios from "../setup/axios";
 
-const MaidListService = (limit,page) =>{
-    return axios.get(`/api/v1/maid/list?page=${page}&limit=${limit}`);
-}
+const MaidListService = (limit, page) => {
+  return axios.get(`/api/v1/maid/list?page=${page}&limit=${limit}`);
+};
 
-const FindMaidByNameService = (name) =>{
-    return axios.get(`/api/v1/maid/findbyname?name=${name}`);
-}
+const FindMaidByNameService = (name) => {
+  return axios.get(`/api/v1/maid/findbyname?name=${name}`);
+};
 
-const FindMaidByLanguageService = (language) =>{
-    return axios.get(`/api/v1/maid/findbyLanguage?language=${language}`);
-}
+const FindMaidByLanguageService = (language) => {
+  return axios.get(`/api/v1/maid/findbyLanguage?language=${language}`);
+};
 
-const FindMaidByIdService = (id) =>{
-    return axios.get(`/api/v1/maid/findbyid?id=${id}`);
-}
-export{
-    MaidListService,
-    FindMaidByNameService,
-    FindMaidByLanguageService,
-    FindMaidByIdService
-}
+const FindMaidByIdService = (id) => {
+  return axios.get(`/api/v1/maid/findbyid?id=${id}`);
+};
+// param
+const filterMaidList = (filterField) => {
+  console.log("axios ==>", filterField);
+  return axios.get(`/api/v1/maid/filter`, {
+    params: {
+      filterField : filterField,
+    },
+  });
+};
+export {
+  MaidListService,
+  FindMaidByNameService,
+  FindMaidByLanguageService,
+  FindMaidByIdService,
+  filterMaidList,
+};

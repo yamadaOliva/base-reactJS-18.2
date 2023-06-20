@@ -1,0 +1,39 @@
+.ModalShowreview {
+    display: flex;
+    justify-content: center;
+
+    .showreview-container {
+        width: 60%;
+        height: 60%;
+        // background-color: bisque;
+        display: flex;
+        justify-content: center;
+        // align-items: center;
+        flex-direction: column;
+
+
+        .showreview-title {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .showreview-infor {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 20px;
+            width: 80%;
+        }
+
+        .showreview-content {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            height: 415px;
+            overflow: auto;
+        }
+    }
+}

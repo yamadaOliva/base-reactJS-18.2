@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { RegisterService } from "../../service/authservice";
+import { Navbar, Typography } from "@material-tailwind/react";
 export default function Register(props) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -104,7 +105,16 @@ export default function Register(props) {
       <div className="container">
         <div className="row">
           <div className="content-left col-7 py-5">
-            <div className="text-logo">LOGO</div>
+            <div className="text-logo">
+              <Typography
+                id="logo"
+                as="a"
+                href="/"
+                className="mr-4 ml-10 cursor-pointer font-medium no-underline text-8xl"
+              >
+                Iiosin
+              </Typography>
+            </div>
             <div>
               <h1>Welcome back!</h1>
             </div>

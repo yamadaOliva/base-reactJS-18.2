@@ -3,7 +3,33 @@ import Modal from "react-bootstrap/Modal";
 import { useState, useEffect } from "react";
 import "./MaidDetail.scss";
 import { FiCircle } from 'react-icons/fi';
+import FormCreateReview from "../ReviewComponent/CreateReview/FormCreateReview";
+import ShowReview from "../ReviewComponent/ShowReview/ShowReview";
 const MaidDetail = (props) => {
+
+
+  const [isCreateReview, setIsCreateReview] = useState(false);
+
+  const handleCreateReview = (event) => {
+    event.preventDefault();
+    setIsCreateReview(true);
+  }
+
+  const handleCloseCreateReview = () => {
+    setIsCreateReview(false);
+  }
+
+  const [isShowReview, setIsShowReview] = useState(false);
+
+  const handleShowReview = (event) => {
+    event.preventDefault();
+    setIsShowReview(true);
+  }
+
+  const handleCloseShowReview = () => {
+    setIsShowReview(false);
+  }
+
   const [dataRaw, setDataRaw] = useState({});
   useEffect(() => {
     setDataRaw(props.maid);
@@ -76,24 +102,33 @@ const MaidDetail = (props) => {
                         }
                       </div>
                       <div className="btn-submit ">
-                        <button type="submit" className="btn btn-primary">レビューを書く</button>
-                        <button type="submit" className="btn btn-primary">レビューの一覧表示 </button>
+                        <button
+                          // type="submit"
+                          className="btn btn-primary"
+
+                          onClick={(event) => handleCreateReview(event)}
+                        >レビューを書く</button>
+                        <button
+                          // type="submit"
+                          className="btn btn-primary"
+                          onClick={(event) => handleShowReview(event)}
+                        >レビューの一覧表示 </button>
                       </div>
                     </div>
-
                   </form>
+
                 </div>
                 <div className="infor-addtion">
                   <div className="btn-salary">
-                    <h2>{dataRaw.price_per_hour+"$"}</h2>
+                    <h2>{dataRaw.price_per_hour + "$"}</h2>
                   </div>
                   <div className="btn-avt">
-                    <img src={dataRaw.avatar_url}/>
+                    <img src={dataRaw.avatar_url} />
                   </div>
                   <div className="btn-evaluation">
                     <div className="btn-point">
                       <FiCircle className="edit-size-icon" />
-                      <div className="point">4.5</div>
+                      <div className="point">{dataRaw.rating}</div>
                     </div>
                     <div className="evaluation-title">評価</div>
                   </div>
@@ -117,6 +152,14 @@ const MaidDetail = (props) => {
           </Modal.Footer>
         </Modal>
       </div>
+      <FormCreateReview
+        show={isCreateReview}
+        handleClose={handleCloseCreateReview}
+      />
+      <ShowReview
+        show={isShowReview}
+        handleClose={handleCloseShowReview}
+      />
     </>
   );
 };

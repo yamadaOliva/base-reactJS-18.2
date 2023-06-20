@@ -1,17 +1,23 @@
 import React from "react";
 import "./Header.css";
 import { Navbar, Typography } from "@material-tailwind/react";
-
+import { NavLink } from "react-router-dom";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
+import { useSelector } from "react-redux";
 export default function Header() {
+  const username = useSelector(state=>state.user.username)
   const [isNavOpen, setIsNavOpen] = React.useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
-
+  const [isLogin, setIsLogin] = React.useState(false);
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setIsNavOpen(false)
     );
+    //get item from session storage
+    if (username) {
+      setIsLogin(true);
+    }
   }, []);
 
   return (
@@ -25,9 +31,20 @@ export default function Header() {
         >
           Iiosin
         </Typography>
-        
-        <ProfileMenu />
+        {isLogin ? (
+          <>
+            <ProfileMenu name={username} />
+          </>
+        ) : (
+          <div className="ml-auto pr-4">
+            <NavLink to="/login" className="nav-link">
+              ログイン
+            </NavLink>
+          </div>
+        )}
       </div>
     </Navbar>
   );
-}
+} 
+
+

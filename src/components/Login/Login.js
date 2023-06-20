@@ -3,9 +3,16 @@ import { LoginService } from "../../service/authservice";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
+// <<<<<<< HEAD
 import Header from "../Header/Header";
 
+// =======
+import { Navbar, Typography } from "@material-tailwind/react";
+import { setUser } from "../../redux/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+// >>>>>>> 1864f34223a42447a7e1b1ecebde77f3726cd16c
 export default function Login(props) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,8 +50,15 @@ export default function Login(props) {
       };
       try {
         const res = await LoginService(user);
-        console.log(res);
-        navigate("/");
+        // save to session storage
+        const payload = {
+          email: res.DT.email,
+          username: res.DT.username,
+          token: res.DT.accessToken,
+          role: res.DT.role
+        }
+        dispatch(setUser(payload));
+        navigate("/user/home");
       } catch (error) {
         console.log(error);
       }
@@ -61,7 +75,16 @@ export default function Login(props) {
         <div className="container">
           <div className="row">
             <div className="content-left col-7 py-5">
-              <div className="text-logo">LOGO</div>
+              <div className="text-logo">
+                <Typography
+                  id="logo"
+                  as="a"
+                  href="/"
+                  className="mr-4 ml-10 cursor-pointer font-medium no-underline text-8xl"
+                >
+                  Iiosin
+                </Typography>
+              </div>
               <div>
                 <h1>Welcome back!</h1>
               </div>
@@ -80,14 +103,19 @@ export default function Login(props) {
                 type="password"
                 placeholder="パスワード"
                 className={
-                  dataInPut.password ? "form-control" : "form-control is-invalid"
+                  dataInPut.password
+                    ? "form-control"
+                    : "form-control is-invalid"
                 }
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button className="btn btn-primary"
+              <button
+                className="btn btn-primary"
                 onClick={() => handleSubmit()}
-              >ログイン</button>
+              >
+                ログイン
+              </button>
               <span className="text-center">
                 <Link to="/register" className="text-regester">
                   または

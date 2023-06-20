@@ -7,49 +7,8 @@ import {
 } from "@heroicons/react/24/outline";
 // Import Swiper styles
 import "swiper/css";
+import {useEffect, useState} from "react";
 
-const data = [
-  {
-    id: 1,
-    name: "Maid 1",
-    imageUrl: "https://picsum.photos/200",
-  },
-  {
-    id: 2,
-    name: "Maid 2",
-    imageUrl: "https://picsum.photos/200",
-  },
-  {
-    id: 3,
-    name: "Maid 3",
-    imageUrl: "https://picsum.photos/200",
-  },
-  {
-    id: 4,
-    name: "Maid 4",
-    imageUrl: "https://picsum.photos/200",
-  },
-  {
-    id: 5,
-    name: "Maid 5",
-    imageUrl: "https://picsum.photos/200",
-  },
-  {
-    id: 6,
-    name: "Maid 6",
-    imageUrl: "https://picsum.photos/200",
-  },
-  {
-    id: 7,
-    name: "Maid 7",
-    imageUrl: "https://picsum.photos/200",
-  },
-  {
-    id: 8,
-    name: "Maid 8",
-    imageUrl: "https://picsum.photos/200",
-  },
-];
 function SlideNextButton() {
   const swiper = useSwiper();
 
@@ -75,7 +34,11 @@ function SlidePrevButton() {
   );
 }
 
-const MySwiper = () => {
+const MySwiper = (props) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    setData(props.maidList);
+  }, [props.maidList]);
   return (
     <Swiper
       className="w-10/12 mt-10 mx-auto bg-gray-100 rounded-xl shadow-xl z-0"
@@ -88,9 +51,10 @@ const MySwiper = () => {
         <SwiperSlide className="h-80">
           <div key={item.id} className="flex flex-row justify-center z-0">
             <img
-              src={item.imageUrl}
-              alt={item.name}
+              src={item.avatar_url}
+              alt={item.last_name}
               className="w-full"
+              
             />
           </div>
         </SwiperSlide>
