@@ -1,0 +1,84 @@
+.container {
+    all: unset;
+    background-color: #eef3ef;
+    width: 65%;
+    display: block;
+    margin: 0 auto;
+}
+.back-link{
+    margin-left: 50px;
+    margin-top: 15px;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    position: absolute;
+    display: inline-block;
+}
+.back-caption {
+    margin-left: 106px;
+    width: 100px;
+    text-decoration: underline;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #2f2f2f;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.back-image {
+    scale: 75%;
+}
+.back-link:hover .back-caption {
+    opacity: 1;
+}
+h2{
+    padding-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+.upload {
+    margin-top: 30px;
+    width: 30%;
+    text-align: center;
+
+}
+.inputs{
+    width: 70%;
+}
+.input-group{
+    align-items: center;
+    width: 75%;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: space-between;
+}
+.input-group input {
+    all: unset;
+    background-color: white;
+    font-size: 18px;
+    border-radius: 25px !important;
+    height: 35px;
+    width: 350px;
+    border: 1px solid black;
+    padding-left: 13px;
+}
+label {
+    width: 100px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.submit{
+    background-color: #3366d6;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 2px 25px 4px 25px;
+    margin: 30px auto 10px;
+    display: block;
+}
