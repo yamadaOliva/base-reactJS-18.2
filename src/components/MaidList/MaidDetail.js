@@ -7,9 +7,9 @@ import FormCreateReview from "../ReviewComponent/CreateReview/FormCreateReview";
 import ShowReview from "../ReviewComponent/ShowReview/ShowReview";
 const MaidDetail = (props) => {
 
-
+  const [id, setId] = useState(0);
   const [isCreateReview, setIsCreateReview] = useState(false);
-
+  const [isReview, setIsReview] = useState(false);
   const handleCreateReview = (event) => {
     event.preventDefault();
     setIsCreateReview(true);
@@ -32,6 +32,7 @@ const MaidDetail = (props) => {
 
   const [dataRaw, setDataRaw] = useState({});
   useEffect(() => {
+    setId(props.maid.id);
     setDataRaw(props.maid);
     console.log("=>>", props.maid);
   }, [props.maid]);
@@ -155,10 +156,17 @@ const MaidDetail = (props) => {
       <FormCreateReview
         show={isCreateReview}
         handleClose={handleCloseCreateReview}
+        maidId={id}
+        setIsReview={setIsReview}
+        isReview={isReview}
       />
       <ShowReview
         show={isShowReview}
         handleClose={handleCloseShowReview}
+        maidId={id}
+        maidName={dataRaw.first_name + " " + dataRaw.last_name}
+        setIsReview={setIsReview}
+        isReview={isReview}
       />
     </>
   );

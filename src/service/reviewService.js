@@ -1,10 +1,13 @@
 import axios from "../setup/axios";
 
 const ReviewListService = (id) => {
-  return axios.get(`/api/v1/maid/review?id=${id}`);
+  return axios.get(`/api/v1/review/show?id=${id}`);
 };
-
+const ReviewCreateService = (data) => {
+  return axios.post(`/api/v1/review/create`, data);
+};
 export { 
-    ReviewListService 
+    ReviewListService,
+    ReviewCreateService 
 };
 

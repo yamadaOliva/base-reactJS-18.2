@@ -114,6 +114,11 @@ export default function MaidList() {
   };
   const handleFilterService = async () => {
     console.log(filterField);
+    if(!filterField.experience.on && !filterField.price.on && !filterField.rating.on && !filterField.language.on){
+      const res = await MaidListService(limit, page);
+      setMaidList(res.DT.maidList); 
+      return;
+    }
     const res = await filterMaidList(filterField);
     setMaidList(res.DT);
   };

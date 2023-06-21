@@ -5,6 +5,7 @@ const initialState = {
     username:"",
     role:"",
     token:"",
+    id : 0
   }
 
 export const userSlice = createSlice({
@@ -16,6 +17,7 @@ export const userSlice = createSlice({
             state.username = action.payload.username;
             state.role = action.payload.role;
             state.token = action.payload.token;
+            state.id = action.payload.id;
         }
     }
 })
