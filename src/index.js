@@ -12,6 +12,7 @@ import Register from "./components/Register/Register";
 import Homepage from "./components/User/Homepage/Homepage";
 import DetailMaid from "./components/DetailMaid/DetailMaid";
 import LandingPage from "./components/Landing/Landing";
+import UserProfile from "./components/User/Profile/Profile"
 import { Provider } from "react-redux";
 import {store} from "./redux/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -25,6 +26,7 @@ root.render(
             <Route path="/admin" element={<Admin />} />
             <Route path="/user/home" element={<Homepage />} />
             <Route path="/" element={<LandingPage />} />
+            <Route path="/user/profile" element={<UserProfile />} />
           </Route>
 
           <Route path="/login" element={<Login />} />
