@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Delius+Unicase:wght@700&display=swap");
 
-#logo{
-    font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #374258;
+#logo {
+  font-family: "Delius Unicase";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  color: black;
 }
-
