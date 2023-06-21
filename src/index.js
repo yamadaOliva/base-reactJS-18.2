@@ -13,7 +13,8 @@ import Homepage from "./components/User/Homepage/Homepage";
 import DetailMaid from "./components/DetailMaid/DetailMaid";
 import LandingPage from "./components/Landing/Landing";
 import { Provider } from "react-redux";
-import {store} from "./redux/store";
+import { store } from "./redux/store";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
@@ -31,6 +32,7 @@ root.render(
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<h1>Not Found</h1>} />
           <Route path="/test" element={<DetailMaid />} />
+
         </Routes>
         <ToastContainer
           position="top-right"

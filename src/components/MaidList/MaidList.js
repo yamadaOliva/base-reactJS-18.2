@@ -9,6 +9,7 @@ import "./MaidList.scss";
 import { MaidDetail } from "../MaidList/MaidDetail";
 import ReactPaginate from "react-paginate";
 export default function MaidList() {
+
   const [maidList, setMaidList] = useState([]);
   const [nameSearch, setNameSearch] = useState("");
   const [isShowModal, setIsShowModal] = useState(false);

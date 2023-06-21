@@ -1,74 +1,91 @@
-.body{
+.body {
     overflow: auto;
 }
+
 .navbar {
     display: flex;
     background-color: #acc1c1;
 }
-.userBtn, .maidBtn {
+
+.userBtn,
+.maidBtn {
     background-color: unset;
     border: 0;
 }
+
 .logo {
     width: 100%;
     height: 100%;
 }
+
 .right {
     height: 100%;
     width: 50%;
     text-align: right;
     padding-right: 90px;
 }
-.right label{
+
+.right label {
     font-weight: 1000;
     font-size: 22px
 }
+
 .right a {
     font-size: 18px;
     margin-left: 30px;
     font-weight: bold;
     color: black;
 }
+
 .content {
     width: 100%;
     height: auto;
 }
-.banner{
+
+.banner {
     width: 100%;
     height: 664px;
-    background-image: url("./banner.png");
+    background-image: url("https://media.babyverden.no/wp-content/uploads/2011/03/07101834/multiethnic-young-mother-holding-cute-little-baby-picture-id1219122398.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
 }
+
 .banner img {
     width: 100%;
 }
-.slide-bar{
+
+.slide-bar {
     padding-top: 40px;
     display: flex;
     width: 100%;
     height: 350px;
 }
-.element{
+
+.element {
     width: 25%;
     height: 100%;
     margin-left: 20px;
     margin-right: 20px;
 }
+
 .element img {
     height: 90%;
     width: 100%;
 }
-.element div{
+
+.element div {
     text-align: center;
     margin-top: 7px;
 }
-.element div span{
+
+.element div span {
     font-size: 20px;
     font-weight: bold;
 }
-.previous, .next {
+
+.previous,
+.next {
     padding-bottom: 20px;
     width: 50px;
     height: 100%;
@@ -77,26 +94,32 @@
     font-size: 50px;
     font-weight: bold;
 }
-.previous{
+
+.previous {
     margin-left: 10px;
 }
+
 .next {
     margin-right: 10px;
 }
+
 .advertisement {
     background-color: #d7d7d7;
     width: 30%;
 }
-.message{
+
+.message {
     width: 100%;
     text-align: center;
     font-size: 30px;
     font-weight: bold;
 }
+
 .selection {
     padding-top: 10px;
     display: flex;
 }
+
 .selection div a {
     font-size: 18px;
     font-weight: bold;
