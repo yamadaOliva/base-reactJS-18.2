@@ -4,6 +4,7 @@ import { Navbar, Typography } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import { useSelector } from "react-redux";
+
 export default function Header() {
   const username = useSelector((state) => state.user.username);
   const [isNavOpen, setIsNavOpen] = React.useState(false);

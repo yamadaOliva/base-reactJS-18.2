@@ -37,6 +37,11 @@ export default function Login(props) {
     }
     return true;
   };
+  const refeshDataInput = () => {
+    setDataInput(defaultData);
+    setEmail("");
+    setPassword("");
+  };
   const handleSubmit = async () => {
     if (isValidate()) {
       const user = {
@@ -45,7 +50,13 @@ export default function Login(props) {
       };
       try {
         const res = await LoginService(user);
-        // save to session storage
+        console.log(res);
+        console.log(+res.EC == -1)
+        if(+res.EC == -1){
+          toast.error(res.EM);
+          refeshDataInput();
+          return;
+        }
         const payload = {
           email: res.DT.email,
           username: res.DT.username,
