@@ -5,7 +5,7 @@ function Profile(){
     return (
         <div>
 
-            <a className={'back-link'} href="">
+            <a className={'back-link'} href="#a">
                 <img className={'back-image'} src={window.location.origin + "/images/icons8-back.png"} alt=""/>
                 <span className={'back-caption'}>戻る</span>
             </a>
@@ -47,7 +47,7 @@ function Profile(){
                         </Upload>
                     </div>
                 </div>
-                <button className={'submit'}　type={'submit'}>変更内容を保存</button>
+                <button className={'submit'} type={'submit'}>変更内容を保存</button>
                 <div style={{height: 20}}></div>
             </div>
         </div>
@@ -56,7 +56,7 @@ function Profile(){
 function Input({ label,...inputProps}){
     return (
         <div className={'input-group'}>
-            <label>{label}</label>
+            <label className='profile-label'>{label}</label>
             <input type={'text'} {...inputProps}/>
         </div>
     )

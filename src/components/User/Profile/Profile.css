@@ -68,7 +68,7 @@ h2{
     border: 1px solid black;
     padding-left: 13px;
 }
-label {
+.profile-label {
     width: 100px;
     font-weight: bold;
     font-size: 20px;
