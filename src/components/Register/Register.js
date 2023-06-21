@@ -353,7 +353,7 @@ export default function Register(props) {
             handleLogin();
           }}
         >
-          <span className="text-[20px] underline text-red-600">
+          <span className="text-[20px] underline text-red-600 cursor-pointer">
             アカウントをお持ちですか？
           </span>
         </div>

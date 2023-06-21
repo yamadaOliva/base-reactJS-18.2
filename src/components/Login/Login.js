@@ -2,21 +2,10 @@ import { LoginService } from "../../service/authservice";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
-<<<<<<< HEAD
-// <<<<<<< HEAD
-import Header from "../Header/Header";
-
-// =======
-import { Navbar, Typography } from "@material-tailwind/react";
-import { setUser } from "../../redux/slices/userSlice";
-import { useDispatch, useSelector } from "react-redux";
-// >>>>>>> 1864f34223a42447a7e1b1ecebde77f3726cd16c
-=======
 import { Typography } from "@material-tailwind/react";
 import { setUser } from "../../redux/slices/userSlice";
 import { useDispatch } from "react-redux";
 
->>>>>>> 4d33346e85c83f52a7c57fa0f2d4d81276162180
 export default function Login(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -61,13 +50,8 @@ export default function Login(props) {
           email: res.DT.email,
           username: res.DT.username,
           token: res.DT.accessToken,
-<<<<<<< HEAD
-          role: res.DT.role
-        }
-=======
           role: res.DT.role,
         };
->>>>>>> 4d33346e85c83f52a7c57fa0f2d4d81276162180
         dispatch(setUser(payload));
         navigate("/user/home");
       } catch (error) {
@@ -78,20 +62,11 @@ export default function Login(props) {
 
   return (
     <>
-<<<<<<< HEAD
-      <Header />
-      <div className="login-containers mt-5">
-        <div className="container">
-          <div className="row">
-            <div className="content-left col-7 py-5">
-              <div className="text-logo">
-=======
       <div className="login-containers h-full">
         <div className="flex flex-row h-full">
           <div className="left-side w-1/2 h-full border-r-[0.5px] border-black">
             <div className="flex flex-col justify-center items-center h-full">
               <div className="text-logo text-center">
->>>>>>> 4d33346e85c83f52a7c57fa0f2d4d81276162180
                 <Typography
                   id="logo"
                   as="a"
