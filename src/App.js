@@ -10,11 +10,11 @@ function App() {
           <Header />
           <div>
             <div className="container-fluid">
-              <UploadWidget/>
+              {/* <UploadWidget/> */}
             </div>
           </div>
       </div>
-      <div className="mt-[70px]">   
+      <div className="h-full pt-[70px]">   
         <Outlet />
       </div>
     </>

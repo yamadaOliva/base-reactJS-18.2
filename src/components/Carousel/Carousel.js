@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 // Import Swiper styles
 import "swiper/css";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 function SlideNextButton() {
   const swiper = useSwiper();
@@ -40,26 +40,42 @@ const MySwiper = (props) => {
   }, [props.maidList]);
   return (
     <Swiper
-      className="w-10/12 mt-10 mx-auto bg-gray-100 rounded-xl shadow-xl z-0"
+      className={`${props.classes} bg-white rounded-xl shadow-xl z-0`}
       spaceBetween={20}
       slidesPerView={4}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
     >
       {data.map((item) => (
-        <SwiperSlide className="h-80">
-          <div key={item.id} className="flex flex-row justify-center z-0">
+        <SwiperSlide>
+          <div
+            key={item.id}
+            className={`flex flex-col justify-center z-0 ${
+              props?.carouselName ? "h-[95%]" : "h-full"
+            }`}
+          >
             <img
               src={item.avatar_url}
               alt={item.last_name}
-              className="w-full"
-              
+              className="w-full h-[85%]"
             />
+            {item?.name || "tuan" ? (
+              <div className="text-center">
+                <span className="text-2xl font-bold">{item.name ||"tuan"}</span>
+              </div>
+            ) : null}
           </div>
         </SwiperSlide>
       ))}
       <SlidePrevButton />
       <SlideNextButton />
+      props?.carouselName ? (
+      <div className="absolute bottom-0 left-0 w-full z-10">
+        <div className="flex flex-col items-center text-3xl font-bold mb-2">
+        {props.carouselName}
+        </div>
+      </div>
+      ) : null
     </Swiper>
   );
 };

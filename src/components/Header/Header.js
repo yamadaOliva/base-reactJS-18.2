@@ -21,26 +21,32 @@ export default function Header() {
   }, []);
 
   return (
-    <nav className="h-[70px] fixed w-full bg-[#ACC1C2] flex flex-row items-center">
-        <Typography
-          id="logo"
-          as="a"
-          href="/"
-          className="mr-4 ml-10 cursor-pointer font-delius no-underline"
-        >
-          Iiosin
-        </Typography>
-        {isLogin ? (
-          <>
-            <ProfileMenu name={username} />
-          </>
-        ) : (
-          <div className="pr-4 ml-auto">
-            <NavLink to="/login" className="nav-link">
-              ログイン
-            </NavLink>
-          </div>
-        )}
+    <nav className="h-[70px] fixed w-full bg-[#ACC1C2] flex flex-row items-center z-20">
+      <Typography
+        id="logo"
+        as="a"
+        href="/"
+        className="mr-4 ml-10 cursor-pointer font-delius no-underline"
+      >
+        Iiosin
+      </Typography>
+      {isLogin ? (
+        <>
+          <ProfileMenu name={username} />
+        </>
+      ) : (
+        <div className="pr-4 ml-auto flex flex-row gap-4 items-center">
+          <span className="text-2xl font-bold">
+            ログイン:
+          </span>
+          <NavLink to="/login" className="nav-link underline font-bold">
+            ユーザー
+          </NavLink>
+          <NavLink to="/login" className="nav-link underline font-bold">
+            メイド
+          </NavLink>
+        </div>
+      )}
     </nav>
   );
 }
