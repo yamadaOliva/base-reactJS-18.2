@@ -62,7 +62,7 @@ export default function Login(props) {
 
   return (
     <>
-      <div className="login-containers h-full">
+      <div className="login-container h-full">
         <div className="flex flex-row h-full">
           <div className="left-side w-1/2 h-full border-r-[0.5px] border-black">
             <div className="flex flex-col justify-center items-center h-full">
