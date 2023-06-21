@@ -108,7 +108,7 @@ export default function Login(props) {
               <div className="flex flex-col w-full gap-10">
                 <div className="w-10/12 ml-auto">
                   <div className="flex flex-col gap-4">
-                    <span className="text-3xl font-bold">IIOSINへようこそ&#128075;、</span>
+                    <span className="text-3xl font-bold font-delius">IIOSINへようこそ&#128075;、</span>
 
                     <span className="text-3xl font-bold">
                       まず、ログインしてください
@@ -145,7 +145,6 @@ export default function Login(props) {
                         border: "1px solid #000000",
                         height: "50px",
                         borderRadius: "10px",
-                        opacity: "0.5",
                       }}
                     />
                   </div>
@@ -180,7 +179,7 @@ export default function Login(props) {
                         border: "1px solid #000000",
                         height: "50px",
                         borderRadius: "10px",
-                        opacity: "0.5",
+                        color: "#000000",
                       }}
                     />
                   </div>

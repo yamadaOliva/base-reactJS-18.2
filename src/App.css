@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Delius+Unicase:wght@700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,4 +21,14 @@ body {
   margin: 0;
   padding: 0;
   overflow: auto;
+}
+
+
+.font-delius {
+  font-family: "Delius Unicase";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  color: black;
 }

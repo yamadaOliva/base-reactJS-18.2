@@ -21,13 +21,12 @@ export default function Header() {
   }, []);
 
   return (
-    <Navbar className="mx-auto w-full p-2">
-      <div className="relative mx-auto flex flex-row items-center text-blue-900">
+    <nav className="h-[70px] fixed w-full bg-[#ACC1C2] flex flex-row items-center">
         <Typography
           id="logo"
           as="a"
           href="/"
-          className="mr-4 ml-10 cursor-pointer font-medium no-underline text-4xl"
+          className="mr-4 ml-10 cursor-pointer font-delius no-underline"
         >
           Iiosin
         </Typography>
@@ -36,13 +35,12 @@ export default function Header() {
             <ProfileMenu name={username} />
           </>
         ) : (
-          <div className="ml-auto pr-4">
+          <div className="pr-4 ml-auto">
             <NavLink to="/login" className="nav-link">
               ログイン
             </NavLink>
           </div>
         )}
-      </div>
-    </Navbar>
+    </nav>
   );
 }
