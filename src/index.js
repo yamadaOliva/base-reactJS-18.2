@@ -13,6 +13,7 @@ import Homepage from "./components/User/Homepage/Homepage";
 import DetailMaid from "./components/DetailMaid/DetailMaid";
 import LandingPage from "./components/Landing/Landing";
 import UserProfile from "./components/User/Profile/Profile"
+import RequestM from "./components/Request/RequestM";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
@@ -35,6 +36,8 @@ root.render(
           <Route path="*" element={<h1>Not Found</h1>} />
           <Route path="/test" element={<DetailMaid />} />
 
+          <Route path="/request" element={<RequestM />} />
+  
         </Routes>
         <ToastContainer
           position="top-right"

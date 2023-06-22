@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 const instance = axios.create({
     baseURL: 'http://localhost:8000'
 });
-instance.defaults.withCredentials = true;
+instance.defaults.withCredentials =true;
 // instance.interceptors.request.use(function (config) {
 //     return config;
 // }, function (error) {
