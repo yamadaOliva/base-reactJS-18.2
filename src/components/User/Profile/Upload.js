@@ -1,27 +1,30 @@
 import { useEffect, useRef } from 'react'
 
-export default function Upload({ ...uploadStyle }) {
+export default function Upload(props) {
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
 
     useEffect(() => {
+        console.log(props.backgroundImage)
         cloudinaryRef.current = window.cloudinary;
+        console.log("cloud:",cloudinaryRef.current)
         widgetRef.current = cloudinaryRef.current.createUploadWidget({
-            cloudName: 'dn1pbep3e',
-            uploadPreset: 'bhdixbmd'
+            cloudName: 'subarasuy',
+            uploadPreset: 'o4umo4il'
         }, function (error, result) {
-            console.log(result)
+            console.log(result.info)
+            //props.setAvatarUrl(result.info.url)
         })
-
+        console.log(cloudinaryRef.current)
     }, [])
 
-    console.log(uploadStyle.children)
+    
 
     return (
         <button
-            style={uploadStyle.children}
             onClick={() => {widgetRef.current.open()}}
         >
+            <img src={props.backgroundImage}></img>
         </button>
     )
 }

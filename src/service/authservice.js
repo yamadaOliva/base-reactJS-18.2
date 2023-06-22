@@ -7,7 +7,12 @@ const LoginService = (user) =>{
 const RegisterService = (user) =>{
     return axios.post("/api/v1/register",user);
 }
+
+const LogoutService = () =>{
+    return axios.post("/api/v1/logout");
+}
 export{
     LoginService,
-    RegisterService
+    RegisterService,
+    LogoutService
 }
