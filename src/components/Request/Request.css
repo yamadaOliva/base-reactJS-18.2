@@ -1,0 +1,143 @@
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-inner {
+    position: relative;
+    padding: 32px;
+    width: 65%;
+    
+    background-color: #fff;
+    border-radius: 0.7rem;
+    border-width: thin;
+    border-color: black;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.title-cancel{
+    display: flex;
+    
+    align-items: center;
+    height: 5%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+form {
+    margin: auto;
+    height: 100%;
+}
+
+.form-row {
+    margin-left: 15px;
+    width: 100%;
+}
+
+.form-control {
+    border-color: black;
+    border-width: medium;
+    border-radius: 1.375rem !important;
+    height: fit-content;
+}
+.form-control-date {
+    border-color: black;
+    border-width: medium;
+    border-radius: 1.375rem !important;
+    width: 1.75cm;
+    height: fit-content;
+}
+.cancel-form-control{
+    
+    opacity: 0.5;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-color: gray;
+    border-width: medium;
+    border-radius: 1.325rem !important;
+    height: 3.5cm;
+    width: 100%;
+    justify-content: first flex-start;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+
+}
+main{
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+}
+
+
+.close {
+    position: absolute;
+    top: 0px;
+    right: 16px;
+    font-size: 45px;
+    font-weight: 600;
+    display: inline-block;
+    transform: rotate(45deg);
+  }
+  .cancel-btn{
+    background-color: red;
+    border-radius: 0.8rem ;
+    width: 3.3cm;
+    height: 1.2cm;
+    font-weight: bold;
+    position: absolute;
+    color: #fff;
+    bottom: -0.4cm;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
+  }
+  .cancel-btn2{
+    background-color: red;
+    border-radius: 0.8rem ;
+    width: 3.3cm;
+    height: 1.2cm;
+    font-weight: bold;
+    position: absolute;
+    color: #fff;
+    bottom: -0.4cm;
+    left: 57%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
+  }
+  .request-btn{
+    background-color: rgb(0, 255, 217);
+    border-radius: 0.8rem ;
+    width: 4cm;
+    height: 1.2cm;
+    font-weight: bold;
+    position: absolute;
+    color: black;
+    bottom: -0.4cm;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
+  }
