@@ -5,7 +5,12 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { UserProfileService } from "../../../service/userProfileService";
+import {
+  UserProfileService,
+  getProfileService,
+  updateProfileService,
+} from "../../../service/userProfileService";
+import { get } from "lodash";
 function Profile() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -19,11 +24,30 @@ function Profile() {
   const [avatarUrl, setAvatarUrl] = useState(
     window.location.origin + "/images/upload-image.png"
   );
+  const [isExist, setIsExist] = useState(false);
   const goBack = () => {
     navigate(-1);
   };
+  const getUserProfile = async () => {
+    const res = await getProfileService(user.id);
+    console.log(res);
+    if (+res.EC == 200) {
+      setFirstName(res.DT.first_name);
+      setLastName(res.DT.last_name);
+      setPhoneNumber(res.DT.phone_number);
+      setAddress(res.DT.address);
+      setCity(res.DT.city);
+      setCountry(res.DT.country);
+      setNote(res.DT.description);
+      setAvatarUrl(res.DT.avatar_url);
+      setIsExist(true);
+    }
+    return res;
+  };
+
   useEffect(() => {
     // get token from cookie
+    getUserProfile();
     if (!user.username) {
       toast.error("ログインしてください");
       navigate("/login");
@@ -43,9 +67,28 @@ function Profile() {
       description: note,
       avatar_url: avatarUrl,
     };
+    console.log(data);
+    if(isExist){
+      const res = await updateProfileService(data);
+      if(+res.EC == 200){
+        toast.success("更新成功");
+      }else{
+        toast.error("更新失敗");
+      }
+      console.log(res);
+      return;
+    }
+    
     const res = await UserProfileService(data);
+    if(+res.EC == 200){
+      toast.success("更新成功");
+    }else{
+      toast.error("更新失敗");
+    }
     console.log(res);
   };
+
+  
   return (
     <div>
       <a className={"back-link"} href="#a">

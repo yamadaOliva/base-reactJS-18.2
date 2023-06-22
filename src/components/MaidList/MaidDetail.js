@@ -159,6 +159,7 @@ const MaidDetail = (props) => {
         maidId={id}
         setIsReview={setIsReview}
         isReview={isReview}
+        maidName={dataRaw.first_name + " " + dataRaw.last_name}
       />
       <ShowReview
         show={isShowReview}

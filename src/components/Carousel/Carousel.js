@@ -59,9 +59,9 @@ const MySwiper = (props) => {
               alt={item.last_name}
               className="w-full h-[85%]"
             />
-            {item?.name || "tuan" ? (
+            {item?.name ? (
               <div className="text-center">
-                <span className="text-2xl font-bold">{item.name ||"tuan"}</span>
+                <span className="text-2xl font-bold">{item.name}</span>
               </div>
             ) : null}
           </div>

@@ -78,7 +78,7 @@ const FormCreateReview = (props) => {
                   </div>
                   <div className="FormCreateReview-infor-name-content">
                     {" "}
-                    Phùng Ngọc Vinh{" "}
+                    {props.maidName}{" "}
                   </div>
                 </div>
                 <div className="FormCreateReview-rating-start">

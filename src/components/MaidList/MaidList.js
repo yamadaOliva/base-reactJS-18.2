@@ -467,10 +467,11 @@ export default function MaidList() {
                     key={id}
                   >
                     <div
-                      className="card-content w-full h-[370px] bg-cover"
+                      className="card-content w-full h-[370px] bg-cover hover:cursor-pointer"
                       style={{
                         backgroundImage: `url(${maid.avatar_url})`,
                       }}
+                      onClick={(e) => handleImageClick(e, maid)}
                     ></div>
                     <div className="card-footer text-md-center">
                       <h6>{maid.first_name + " " + maid.last_name}</h6>
