@@ -1,8 +1,12 @@
 import React from "react"
 import "./Request.css"
-
+import { useState, useEffect } from "react";
 export default function Request(props){
-  
+  const daysOfMonths = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+  const [month, setMonth] = useState(1);
+  const [day, setDay] = useState(1);
+  useEffect(() => {
+  }, [month, day]);
   return (props.trigger) ? (
     <div>
     
@@ -45,7 +49,9 @@ export default function Request(props){
                 <select className="form-control-date">
                   <option className="form-control-date">2023</option>
                 </select>年
-                <select className="form-control-date">
+                <select className="form-control-date"
+                  onChange={(e) => setMonth(e.target.value)}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -59,38 +65,13 @@ export default function Request(props){
                   <option>11</option>
                   <option>12</option>
                 </select>月
-                <select className="form-control-date">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-                <option>31</option>
+                <select className="form-control-date"
+                  onChange={(e) => setDay(e.target.value)}
+                >
+                  {month == 2 ? daysOfMonths.slice(0,28).map((day) => <option>{day}</option>) : null}
+                  {month == 4 || month == 6 || month == 9 || month == 11 ? daysOfMonths.slice(0,30).map((day) => <option>{day}</option>) : null}
+                  {month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ? daysOfMonths.map((day) => <option>{day}</option>) : null}
+                
                 </select>日
               </div>
               <input className="form-control-date"
@@ -120,7 +101,9 @@ export default function Request(props){
                </div>
                <div className="btn-submit ">
                   <button type="submit" className='request-btn'>リクエストを送信</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button type="reset" className='cancel-btn2'>キャンセル</button>
+                  <button type="reset" className='cancel-btn2'
+                  onClick={() => props.setTrigger(false)}
+                  >キャンセル</button>
                </div>
             </div>
           </div>

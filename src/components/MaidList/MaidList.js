@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import "./MaidList.scss";
 import { MaidDetail } from "../MaidList/MaidDetail";
 import ReactPaginate from "react-paginate";
+import Request from "../Request/Request"
 export default function MaidList() {
   const [maidList, setMaidList] = useState([]);
   const [nameSearch, setNameSearch] = useState("");
@@ -17,6 +18,7 @@ export default function MaidList() {
   const limit = 6;
   const [totalPage, setTotalPage] = useState(1);
   const [language_name, setLanguage_name] = useState("");
+  const [isRequest, setIsRequest] = useState(false);
   const [experienceValue, setExperienceValue] = useState({
     min: 0,
     max: 0,
@@ -475,7 +477,9 @@ export default function MaidList() {
                     ></div>
                     <div className="card-footer text-md-center">
                       <h6>{maid.first_name + " " + maid.last_name}</h6>
-                      <button className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl">
+                      <button className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl"
+                      onClick={(e) => setIsRequest(true)}
+                      >
                         レクエストを作成
                       </button>
                     </div>
@@ -511,6 +515,10 @@ export default function MaidList() {
         show={isShowModal}
         handleClose={handleCloseModal}
         maid={currentMaid}
+      />
+      <Request
+        trigger={isRequest}
+        setTrigger={setIsRequest}
       />
     </>
   );
