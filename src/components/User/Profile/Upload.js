@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
+import {useEffect, useLayoutEffect, useRef, useState} from 'react'
 
 export default function Upload({ ...uploadStyle }) {
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
+    const [ avatar, setAvatar ] = useState();
 
     useEffect(() => {
         cloudinaryRef.current = window.cloudinary;
@@ -10,12 +11,23 @@ export default function Upload({ ...uploadStyle }) {
             cloudName: 'dn1pbep3e',
             uploadPreset: 'bhdixbmd'
         }, function (error, result) {
-            console.log(result)
+            if (!error && result && result.event === "success") {
+                console.log("Done! Here is the image info: ", result.info)
+                setAvatar(result.info.url)
+            }
         })
 
     }, [])
 
-    console.log(uploadStyle.children)
+    console.log(uploadStyle)
+    useEffect(() => {
+        return () => {
+            uploadStyle.children = {
+                ...uploadStyle.children,
+                backgroundImage: 'url("'+avatar+'")'
+            }
+        }
+    }, [avatar])
 
     return (
         <button
