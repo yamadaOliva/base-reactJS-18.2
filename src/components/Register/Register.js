@@ -27,7 +27,15 @@ export default function Register(props) {
     name: true,
   };
   const [dataInput, setDataInput] = useState(defaultDataInput);
-
+  const refeshDataInput = () => {
+    setDataInput(defaultDataInput);
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setUsername("");
+    setRole(0);
+    setName("");
+  };
   const validateInput = () => {
     if (!email) {
       toast.error("Email is required");
@@ -88,7 +96,8 @@ export default function Register(props) {
     console.log(res);
     switch (res.EC) {
       case 400:
-        toast.error(res.EM.message);
+        toast.error(res.EM);
+        refeshDataInput();
         break;
       case 200:
         toast.success("Register success");
