@@ -4,11 +4,13 @@ import {
   FindMaidByLanguageService,
   filterMaidList,
 } from "../../service/maidService";
+import Request from "../Request/Request";
 import { useEffect, useState } from "react";
 import "./MaidList.scss";
 import { MaidDetail } from "../MaidList/MaidDetail";
 import ReactPaginate from "react-paginate";
 export default function MaidList() {
+  const[buttonRequest, setButtonRequest] = useState(false);
   const [maidList, setMaidList] = useState([]);
   const [nameSearch, setNameSearch] = useState("");
   const [isShowModal, setIsShowModal] = useState(false);
@@ -475,10 +477,13 @@ export default function MaidList() {
                     ></div>
                     <div className="card-footer text-md-center">
                       <h6>{maid.first_name + " " + maid.last_name}</h6>
-                      <button className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl">
+                      <button className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl" onClick={() => setButtonRequest(true)}>
                         レクエストを作成
                       </button>
                     </div>
+                    <Request trigger={buttonRequest} setTrigger={setButtonRequest}>
+        
+          </Request>
                   </div>
                 );
               })}
