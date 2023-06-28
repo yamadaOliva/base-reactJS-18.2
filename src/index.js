@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Login from "./components/Login/Login";
 import Admin from "./components/Admin/Admin";
+import AdminLogin from "./components/Admin/Login/Login";
 import User from "./components/User/User";
 import Register from "./components/Register/Register";
 import Homepage from "./components/User/Homepage/Homepage";
@@ -26,6 +27,7 @@ root.render(
           <Route path="/" element={<App />}>
             <Route path="/user" element={<User />}></Route>
             <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/user/home" element={<Homepage />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="/user/profile" element={<UserProfile />} />
