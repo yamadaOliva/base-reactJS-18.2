@@ -1,12 +1,22 @@
 import React from "react"
 import "./Request.css"
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 export default function Request(props){
   const daysOfMonths = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
   const [month, setMonth] = useState(1);
   const [day, setDay] = useState(1);
+  const [hourKara, setHourKara] = useState(0);
+  const [hourMade, setHourMade] = useState(0);
+  const [note, setNote] = useState("");
+  const user = useSelector((state) => state.user);
   useEffect(() => {
-  }, [month, day]);
+    // convert to date object
+    const dateKARA = new Date(2021, month - 1, day, hourKara.split(":")[0], hourKara.split(":")[1]);
+    const dateMADE = new Date(2021, month - 1, day, hourMade.split(":")[0], hourMade.split(":")[1]);
+    console.log(dateKARA);
+  }, [month, day, hourKara, hourMade]);
   return (props.trigger) ? (
     <div>
     
@@ -27,7 +37,7 @@ export default function Request(props){
                 >クライアント名： 
                 </label>
                 <input className="form-control"
-                 type="text" name="name" />
+                 type="text" name="name" value={user.username} disabled />
               </div>
               {}
               <div className="pb-4">
@@ -75,9 +85,13 @@ export default function Request(props){
                 </select>日
               </div>
               <input className="form-control-date"
-                 type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"/> から
+                 type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
+                  onChange={(e) => setHourKara(e.target.value)}
+                 /> から
               <input className="form-control-date"
-                 type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"/> まで
+                 type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
+                  onChange={(e) => setHourMade(e.target.value)}
+                 /> まで
 
                  <div className="infor-addtion">
                  <div className="btn-salary">
@@ -95,7 +109,9 @@ export default function Request(props){
                    >ノート：
                    </label>
                    <input className="form-control"
-                    type="text" name="address" />
+                    type="text" name="address" 
+                    onChange={(e) => setNote(e.target.value)}
+                    />
                   </div>
                  </div>
                </div>

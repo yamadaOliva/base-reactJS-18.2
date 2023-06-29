@@ -63,6 +63,7 @@ export default function Login(props) {
           token: res.DT.accessToken,
           role: res.DT.role,
           id: res.DT.id,
+          address: res.DT.address,
         };
         dispatch(setUser(payload));
         navigate("/user/home");

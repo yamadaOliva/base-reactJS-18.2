@@ -24,10 +24,15 @@ const filterMaidList = (filterField) => {
     },
   });
 };
+
+const requestMaid = (request) =>{
+  return axios.post(`/api/v1/maid/request/create`, request);
+}
 export {
   MaidListService,
   FindMaidByNameService,
   FindMaidByLanguageService,
   FindMaidByIdService,
   filterMaidList,
+  requestMaid
 };
