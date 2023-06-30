@@ -14,6 +14,8 @@ import DetailMaid from "./components/DetailMaid/DetailMaid";
 import LandingPage from "./components/Landing/Landing";
 import UserProfile from "./components/User/Profile/Profile"
 import RequestM from "./components/Request/RequestM";
+import MaidHomePage from "./components/MaidHomePage/MaidHomePage";
+import RequestList from "./components/Request/RequestList"
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
@@ -29,6 +31,7 @@ root.render(
             <Route path="/user/home" element={<Homepage />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="/user/profile" element={<UserProfile />} />
+            
           </Route>
 
           <Route path="/login" element={<Login />} />
@@ -37,6 +40,8 @@ root.render(
           <Route path="/test" element={<DetailMaid />} />
 
           <Route path="/request" element={<RequestM />} />
+          <Route path="/requestlist" element={<RequestList />} />
+          <Route path="/maid/home" element={<MaidHomePage/>}/>
   
         </Routes>
         <ToastContainer

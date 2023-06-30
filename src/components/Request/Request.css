@@ -14,6 +14,7 @@
 .popup-inner {
     position: relative;
     padding: 32px;
+    top:20px;
     width: 65%;
     
     background-color: #fff;
@@ -22,7 +23,7 @@
     border-color: black;
 }
 
-.title{
+.title-rq{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +41,7 @@
 }
 
 
-form {
+.formm {
     margin: auto;
     height: 100%;
 }
@@ -60,7 +61,7 @@ form {
     border-color: black;
     border-width: medium;
     border-radius: 1.375rem !important;
-    width: 1.75cm;
+    width: 1.9cm;
     height: fit-content;
 }
 .cancel-form-control{
@@ -75,35 +76,18 @@ form {
     width: 100%;
     justify-content: first flex-start;
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Fira Sans', sans-serif;
-
-}
-main{
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-
-}
 
 
-.close {
+.close-popup-bnt {
+    cursor: pointer;
     position: absolute;
-    top: 0px;
+    top: 20px;
     right: 16px;
-    font-size: 45px;
-    font-weight: 600;
-    display: inline-block;
-    transform: rotate(45deg);
+    font-size: 25px;
+    background-color: rgb(224,224,224);
   }
   .cancel-btn{
-    background-color: red;
+    background-color: rgb(255,0,0);
     border-radius: 0.8rem ;
     width: 3.3cm;
     height: 1.2cm;
@@ -116,9 +100,9 @@ main{
     box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
   }
   .cancel-btn2{
-    background-color: red;
+    background-color: rgb(255,0,0);
     border-radius: 0.8rem ;
-    width: 3.3cm;
+    width: fit-content;
     height: 1.2cm;
     font-weight: bold;
     position: absolute;
@@ -129,9 +113,9 @@ main{
     box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
   }
   .request-btn{
-    background-color: rgb(0, 255, 217);
+    background-color: rgb(0,255,209);
     border-radius: 0.8rem ;
-    width: 4cm;
+    width: fit-content;
     height: 1.2cm;
     font-weight: bold;
     position: absolute;

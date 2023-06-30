@@ -1,5 +1,6 @@
 import React from "react"
 import "./Request.css"
+import {GrFormClose} from 'react-icons/gr'
 
 export default function Request(props){
   
@@ -8,12 +9,11 @@ export default function Request(props){
     
       <div className="popup">
         <div className="popup-inner">
-        <button class="close" onClick={() => props.setTrigger(false)}
-        >+</button>
-        <form className="bg-white flex rounded-lg w-1/2">
+        <GrFormClose class="close-popup-bnt" onClick={() => props.setTrigger(false)}/>
+        <div className="formm bg-white flex rounded-lg w-1/2">
         
           <div className="flex-1 text-gray-700 p-15">
-            <h1 className="title">新しいリクエスト</h1>
+            <div className="title-rq">新しいリクエスト</div>
             <div className="form-row">
               {}
               <div className="pb-4">
@@ -124,7 +124,7 @@ export default function Request(props){
                </div>
             </div>
           </div>
-        </form>
+        </div>
         </div>
       </div>
     </div>
