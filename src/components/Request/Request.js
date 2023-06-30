@@ -3,19 +3,42 @@ import "./Request.css"
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import {requestMaid} from "../../service/maidService"
 export default function Request(props){
   const daysOfMonths = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
   const [month, setMonth] = useState(1);
   const [day, setDay] = useState(1);
-  const [hourKara, setHourKara] = useState(0);
-  const [hourMade, setHourMade] = useState(0);
+  const [hourKara, setHourKara] = useState("00:00");
+  const [hourMade, setHourMade] = useState("00:00");
   const [note, setNote] = useState("");
   const user = useSelector((state) => state.user);
+  const requestHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const request = {
+        maidId: props.maidId,
+        userId: user.id,
+        dateKara: new Date(`2023-${month}-${day} ${hourKara}`),
+        dateMade: new Date(`2023-${month}-${day} ${hourMade}`),
+        note: note,
+      };
+      console.log(request);
+      const response = await requestMaid(request);
+      console.log(response);
+      toast.success("リクエストを送信しました。");
+      props.setTrigger(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("リクエストを送信できませんでした。");
+    }
+
+  }
   useEffect(() => {
     // convert to date object
-    const dateKARA = new Date(2021, month - 1, day, hourKara.split(":")[0], hourKara.split(":")[1]);
-    const dateMADE = new Date(2021, month - 1, day, hourMade.split(":")[0], hourMade.split(":")[1]);
+   const dateKARA = new Date(`2023-${month}-${day} ${hourKara}`);
+    const dateMADE = new Date(`2023-${month}-${day} ${hourMade}`);
     console.log(dateKARA);
+    console.log(dateMADE);
   }, [month, day, hourKara, hourMade]);
   return (props.trigger) ? (
     <div>
@@ -116,7 +139,9 @@ export default function Request(props){
                  </div>
                </div>
                <div className="btn-submit ">
-                  <button type="submit" className='request-btn'>リクエストを送信</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button type="submit" className='request-btn'
+                  onClick={requestHandler}
+                  >リクエストを送信</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <button type="reset" className='cancel-btn2'
                   onClick={() => props.setTrigger(false)}
                   >キャンセル</button>
