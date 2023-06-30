@@ -15,16 +15,35 @@ export default function Request(props){
   const requestHandler = async (e) => {
     e.preventDefault();
     try {
+      let hour1 = hourKara.split(":")[0];
+      let minute1 = hourKara.split(":")[1];
+      let hour2 = hourMade.split(":")[0];
+      let minute2 = hourMade.split(":")[1];
+      
       const request = {
-        maidId: props.maidId,
-        userId: user.id,
-        dateKara: new Date(`2023-${month}-${day} ${hourKara}`),
-        dateMade: new Date(`2023-${month}-${day} ${hourMade}`),
+        maid_id: props.maidId,
+        user_id: user.id,
+        start_date: {
+          year: 2023,
+          month: month,
+          day: day,
+          hour: hour1,
+          minute: minute1,
+        },
+        end_date:{
+          year: 2023,
+          month: month,
+          day: day,
+          hour: hour2,
+          minute: minute2,
+        },
         note: note,
+        price : props.price,
+        status : "pending"
       };
       console.log(request);
       const response = await requestMaid(request);
-      console.log(response);
+      console.log("rés=>>",response);
       toast.success("リクエストを送信しました。");
       props.setTrigger(false);
     } catch (error) {
@@ -35,10 +54,10 @@ export default function Request(props){
   }
   useEffect(() => {
     // convert to date object
-   const dateKARA = new Date(`2023-${month}-${day} ${hourKara}`);
-    const dateMADE = new Date(`2023-${month}-${day} ${hourMade}`);
-    console.log(dateKARA);
-    console.log(dateMADE);
+   const start_date = new Date(`2023-${month}-${day} ${hourKara}`);
+    const end_date = new Date(`2023-${month}-${day} ${hourMade}`);
+    console.log(start_date);
+    console.log(end_date);
   }, [month, day, hourKara, hourMade]);
   return (props.trigger) ? (
     <div>

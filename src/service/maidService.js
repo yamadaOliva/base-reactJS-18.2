@@ -26,6 +26,7 @@ const filterMaidList = (filterField) => {
 };
 
 const requestMaid = (request) =>{
+  console.log("axios ==>", request);
   return axios.post(`/api/v1/maid/request/create`, request);
 }
 export {
