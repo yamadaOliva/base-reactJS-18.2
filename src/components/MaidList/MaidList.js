@@ -8,7 +8,19 @@ import { useEffect, useState } from "react";
 import "./MaidList.scss";
 import { MaidDetail } from "../MaidList/MaidDetail";
 import ReactPaginate from "react-paginate";
+import RequestModal from "../Request/Request";
 export default function MaidList() {
+
+  const [request, setRequest] = useState(false);
+
+  const handleCloseRequest = () => {
+    setRequest(false);
+  };
+  const handleShowRequest = (event) => {
+    event.preventDefault();
+    setRequest(true);
+  };
+
   const [maidList, setMaidList] = useState([]);
   const [nameSearch, setNameSearch] = useState("");
   const [isShowModal, setIsShowModal] = useState(false);
@@ -113,9 +125,9 @@ export default function MaidList() {
   };
   const handleFilterService = async () => {
     console.log(filterField);
-    if(!filterField.experience.on && !filterField.price.on && !filterField.rating.on && !filterField.language.on){
+    if (!filterField.experience.on && !filterField.price.on && !filterField.rating.on && !filterField.language.on) {
       const res = await MaidListService(limit, page);
-      setMaidList(res.DT.maidList); 
+      setMaidList(res.DT.maidList);
       return;
     }
     const res = await filterMaidList(filterField);
@@ -475,7 +487,10 @@ export default function MaidList() {
                     ></div>
                     <div className="card-footer text-md-center">
                       <h6>{maid.first_name + " " + maid.last_name}</h6>
-                      <button className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl">
+                      <button
+                        className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl"
+                        onClick={(e) => handleShowRequest(e)}
+                      >
                         レクエストを作成
                       </button>
                     </div>
@@ -512,6 +527,9 @@ export default function MaidList() {
         handleClose={handleCloseModal}
         maid={currentMaid}
       />
+      <RequestModal
+      />
+
     </>
   );
 }

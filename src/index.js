@@ -16,6 +16,9 @@ import UserProfile from "./components/User/Profile/Profile"
 import RequestM from "./components/Request/RequestM";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import LoginAd from "./components/Admin/Login/LoginAd";
+import UserManage from "./components/Admin/UserManage/UserManage";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,7 +40,11 @@ root.render(
           <Route path="/test" element={<DetailMaid />} />
 
           <Route path="/request" element={<RequestM />} />
-  
+
+          <Route index path="/loginAd" element={<LoginAd />} />
+          <Route path="/usermanage" element={<UserManage />} />
+
+
         </Routes>
         <ToastContainer
           position="top-right"

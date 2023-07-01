@@ -1,0 +1,68 @@
+.loginAd-container {
+    display: flex;
+    flex-direction: column;
+
+    .loginAd-header {
+        width: 100%;
+        margin-bottom: 60px;
+    }
+
+    .loginAd-form {
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        // background-color: aqua;
+        .loginAd-avt {
+            img {
+                width: 300px;
+                height: 300px;
+                // margin-bottom: 20px;
+            }
+        }
+
+        .loginAd-input {
+            display: flex;
+            flex-direction: column;
+            width: 25%;
+            gap: 25px;
+            margin-bottom: 25px;
+
+            .loginAd-input-col {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                input {
+                    width: 85%;
+                    height: 45px;
+                    border: 1px solid #000;
+                    border-radius: 0.315rem;
+                    padding-left: 10px;
+                }
+            }
+        }
+
+        .loginAd-btn {
+            display: flex;
+            justify-content: center;
+            width: 30%;
+            height: 40px;
+
+            button {
+                background-color: #A4F1E4 !important;
+                color: #000 !important;
+                font-weight: 600;
+                font-size: 20px;
+                width: 40%;
+
+                &:hover {
+                    background-color: #39e3c7 !important;
+                    color: #000 !important;
+                }
+            }
+        }
+    }
+}
