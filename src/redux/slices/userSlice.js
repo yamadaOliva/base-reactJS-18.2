@@ -5,7 +5,8 @@ const initialState = {
     username:"",
     role:"",
     token:"",
-    id : 0
+    id : 0,
+    address: "",
   }
 
 export const userSlice = createSlice({
@@ -18,6 +19,7 @@ export const userSlice = createSlice({
             state.role = action.payload.role;
             state.token = action.payload.token;
             state.id = action.payload.id;
+            state.address = action.payload.address;
         },
         setUserDefault: (state) =>{
             state.email = "";

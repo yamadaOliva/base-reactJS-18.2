@@ -1,9 +1,69 @@
 import React from "react"
 import "./Request.css"
+<<<<<<< HEAD
 import {GrFormClose} from 'react-icons/gr'
 
+=======
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import {requestMaid} from "../../service/maidService"
+>>>>>>> 21c9092e385bb611b506ad134b3fb2740425419f
 export default function Request(props){
-  
+  const daysOfMonths = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+  const [month, setMonth] = useState(1);
+  const [day, setDay] = useState(1);
+  const [hourKara, setHourKara] = useState("00:00");
+  const [hourMade, setHourMade] = useState("00:00");
+  const [note, setNote] = useState("");
+  const user = useSelector((state) => state.user);
+  const requestHandler = async (e) => {
+    e.preventDefault();
+    try {
+      let hour1 = hourKara.split(":")[0];
+      let minute1 = hourKara.split(":")[1];
+      let hour2 = hourMade.split(":")[0];
+      let minute2 = hourMade.split(":")[1];
+      
+      const request = {
+        maid_id: props.maidId,
+        user_id: user.id,
+        start_date: {
+          year: 2023,
+          month: month,
+          day: day,
+          hour: hour1,
+          minute: minute1,
+        },
+        end_date:{
+          year: 2023,
+          month: month,
+          day: day,
+          hour: hour2,
+          minute: minute2,
+        },
+        note: note,
+        price : props.price,
+        status : "pending"
+      };
+      console.log(request);
+      const response = await requestMaid(request);
+      console.log("rés=>>",response);
+      toast.success("リクエストを送信しました。");
+      props.setTrigger(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("リクエストを送信できませんでした。");
+    }
+
+  }
+  useEffect(() => {
+    // convert to date object
+   const start_date = new Date(`2023-${month}-${day} ${hourKara}`);
+    const end_date = new Date(`2023-${month}-${day} ${hourMade}`);
+    console.log(start_date);
+    console.log(end_date);
+  }, [month, day, hourKara, hourMade]);
   return (props.trigger) ? (
     <div>
     
@@ -23,7 +83,7 @@ export default function Request(props){
                 >クライアント名： 
                 </label>
                 <input className="form-control"
-                 type="text" name="name" />
+                 type="text" name="name" value={user.username} disabled />
               </div>
               {}
               <div className="pb-4">
@@ -45,7 +105,9 @@ export default function Request(props){
                 <select className="form-control-date">
                   <option className="form-control-date">2023</option>
                 </select>年
-                <select className="form-control-date">
+                <select className="form-control-date"
+                  onChange={(e) => setMonth(e.target.value)}
+                >
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -59,44 +121,23 @@ export default function Request(props){
                   <option>11</option>
                   <option>12</option>
                 </select>月
-                <select className="form-control-date">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-                <option>31</option>
+                <select className="form-control-date"
+                  onChange={(e) => setDay(e.target.value)}
+                >
+                  {month == 2 ? daysOfMonths.slice(0,28).map((day) => <option>{day}</option>) : null}
+                  {month == 4 || month == 6 || month == 9 || month == 11 ? daysOfMonths.slice(0,30).map((day) => <option>{day}</option>) : null}
+                  {month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ? daysOfMonths.map((day) => <option>{day}</option>) : null}
+                
                 </select>日
               </div>
               <input className="form-control-date"
-                 type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"/> から
+                 type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
+                  onChange={(e) => setHourKara(e.target.value)}
+                 /> から
               <input className="form-control-date"
-                 type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"/> まで
+                 type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
+                  onChange={(e) => setHourMade(e.target.value)}
+                 /> まで
 
                  <div className="infor-addtion">
                  <div className="btn-salary">
@@ -114,13 +155,19 @@ export default function Request(props){
                    >ノート：
                    </label>
                    <input className="form-control"
-                    type="text" name="address" />
+                    type="text" name="address" 
+                    onChange={(e) => setNote(e.target.value)}
+                    />
                   </div>
                  </div>
                </div>
                <div className="btn-submit ">
-                  <button type="submit" className='request-btn'>リクエストを送信</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <button type="reset" className='cancel-btn2'>キャンセル</button>
+                  <button type="submit" className='request-btn'
+                  onClick={requestHandler}
+                  >リクエストを送信</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button type="reset" className='cancel-btn2'
+                  onClick={() => props.setTrigger(false)}
+                  >キャンセル</button>
                </div>
             </div>
           </div>

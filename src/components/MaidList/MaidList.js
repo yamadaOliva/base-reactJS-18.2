@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import "./MaidList.scss";
 import { MaidDetail } from "../MaidList/MaidDetail";
 import ReactPaginate from "react-paginate";
+import Request from "../Request/Request";
 export default function MaidList() {
   const[buttonRequest, setButtonRequest] = useState(false);
   const [maidList, setMaidList] = useState([]);
@@ -19,6 +20,7 @@ export default function MaidList() {
   const limit = 6;
   const [totalPage, setTotalPage] = useState(1);
   const [language_name, setLanguage_name] = useState("");
+  const [isRequest, setIsRequest] = useState(false);
   const [experienceValue, setExperienceValue] = useState({
     min: 0,
     max: 0,
@@ -72,7 +74,9 @@ export default function MaidList() {
   useEffect(() => {
     getMaidList();
   }, [page]);
-
+  useEffect(() => {
+    console.log(currentMaid);
+  }, [currentMaid]);
   useEffect(() => {
     setFilterField({
       experience: {
@@ -101,7 +105,10 @@ export default function MaidList() {
     const res = await FindMaidByNameService(name);
     setMaidList(res.DT);
   };
-
+  const handleRequest = (maid) => {
+    setIsRequest(true);
+    setCurrentMaid(maid);
+  };
   const handleModal = () => {
     setIsShowModal(true);
   };
@@ -115,9 +122,14 @@ export default function MaidList() {
   };
   const handleFilterService = async () => {
     console.log(filterField);
-    if(!filterField.experience.on && !filterField.price.on && !filterField.rating.on && !filterField.language.on){
+    if (
+      !filterField.experience.on &&
+      !filterField.price.on &&
+      !filterField.rating.on &&
+      !filterField.language.on
+    ) {
       const res = await MaidListService(limit, page);
-      setMaidList(res.DT.maidList); 
+      setMaidList(res.DT.maidList);
       return;
     }
     const res = await filterMaidList(filterField);
@@ -477,7 +489,14 @@ export default function MaidList() {
                     ></div>
                     <div className="card-footer text-md-center">
                       <h6>{maid.first_name + " " + maid.last_name}</h6>
+<<<<<<< HEAD
                       <button className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl" onClick={() => setButtonRequest(true)}>
+=======
+                      <button
+                        className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl"
+                        onClick={() => handleRequest(maid)}
+                      >
+>>>>>>> 21c9092e385bb611b506ad134b3fb2740425419f
                         レクエストを作成
                       </button>
                     </div>
@@ -516,6 +535,12 @@ export default function MaidList() {
         show={isShowModal}
         handleClose={handleCloseModal}
         maid={currentMaid}
+      />
+      <Request
+        trigger={isRequest}
+        maidId={currentMaid.UserId}
+        setTrigger={setIsRequest}
+        price={currentMaid.price_per_hour}
       />
     </>
   );
