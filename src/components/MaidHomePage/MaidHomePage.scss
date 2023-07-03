@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css?family=Manjari:400,700&display=swap');
+
+
+
+
+
+.maidhome{
+  display: grid;
+  grid-template-columns: 35% 65%;
+  
+  position: relative;
+  left:-0.5cm;
+  font-family: Manjari, sans-serif;
+  font-size: 20px;
+}
+.left-bib{
+  grid-column: inherit;
+  display: grid;
+  grid-template-rows: 100px 100px 40px 100px 40px 100px 100px;
+}
+
+.calendar-box{
+  grid-column: inherit;
+  position: absolute;
+  right: 4cm;
+}
+.calendar {
+  position: relative;
+  bottom: 40px;
+  width: 800px;
+  height: 600px;
+  margin: 100px auto 0;
+  box-shadow: 1px 2px 3px 4px rgba(118, 112, 112, 0.1);
+  border-radius: 30px;
+  background-color: rgb(40,45,53);
+  
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  border-radius: 30px 30px 0 0;
+  color: #fff;
+}
+.footer {
+  border-bottom: 2px solid white;
+  width: 80%;
+    height: 1px;
+    margin: 0px auto;
+  border-color: gray;
+  
+}
+
+.nav {
+  &--left{
+  padding-left:60px ;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  outline: 0;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  }
+  &--right{
+    padding-right: 60px ;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    outline: 0;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+
+}
+
+.datetime {
+  margin: 0 auto;
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.week-container,
+.day-container {
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.week-cell{
+  padding: 20px;
+  color:#fff;
+  margin: auto;
+}
+.day-cell {
+  color: #fff;
+  flex: 0 0 calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  margin-block: 20px;
+  width: 1cm;
+
+}
+
+.day-cell {
+  &--faded {
+    opacity: 0.4;
+  }
+
+  &--today {
+    
+    border-radius: 99px;
+    background-color: orange;
+    color: #fff;
+    
+  }
+}
+
+.head{
+  grid-row: inherit;
+}
+
+.below-icon-title{
+  grid-row: inherit;
+  text-align: center;
+  font-size: 30px;
+  position: relative;
+  top: 10px;
+  left: 5%;
+ }
+
+.evaluate-icon{
+  grid-row: inherit;
+}
+
+
+.request-icon{
+  grid-row: inherit;
+}
+.complate-rq-icon{
+  grid-row: inherit;
+}
+
+.edit-size-icon {
+  position: relative;
+  font-size: 110px;
+  color: #00FACD;
+  left: 44.5%;
+}
+.icon-inner{
+  position: absolute;
+  padding-top: 0.9cm;
+  padding-left: 15.5%;
+  
+}
+.icon-inner-box{
+  width: 110px;
+  text-align: center;
+}
+.icon-content{
+  font-size: 30px;
+  font-weight: bold;
+}
+
