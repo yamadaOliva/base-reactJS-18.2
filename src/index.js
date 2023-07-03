@@ -18,6 +18,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import LoginAd from "./components/Admin/Login/LoginAd";
 import UserManage from "./components/Admin/UserManage/UserManage";
+import MaidManage from "./components/Admin/MainManage/MaidManage";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -43,6 +44,7 @@ root.render(
 
           <Route index path="/loginAd" element={<LoginAd />} />
           <Route path="/usermanage" element={<UserManage />} />
+          <Route path="/maidmanage" element={<MaidManage />} />
 
 
         </Routes>

@@ -72,14 +72,6 @@ const UserManage = () => {
         setIsHideBlock(false);
     }
 
-
-    //useEffect  ListUser
-
-
-
-
-
-
     const [totalUser, setTotalUser] = useState(listUser.length);
     const [totalBlock, setTotalBlock] = useState(listUser.filter(user => user.active === false).length);
 
@@ -141,7 +133,6 @@ const UserManage = () => {
                                     listUser.map((user, index) => {
                                         return (
                                             <InforUser
-                                                index={index}
                                                 id={user.id}
                                                 name={user.name}
                                                 numberphone={user.numberphone}
@@ -157,7 +148,6 @@ const UserManage = () => {
                                     listUser.filter(user => user.active === true).map((user, index) => {
                                         return (
                                             <InforUser
-                                                index={index}
                                                 id={user.id}
                                                 name={user.name}
                                                 numberphone={user.numberphone}
