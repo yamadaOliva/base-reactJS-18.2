@@ -21,6 +21,7 @@ import { store } from "./redux/store";
 import UserManage from "./components/Admin/UserManage/UserManage";
 import MaidManage from "./components/Admin/MainManage/MaidManage";
 import MaidInforManage from "./components/Admin/MaidInforManage/MaidInforManage";
+import UserInforManage from "./components/Admin/UserInforManage/UserInforManage";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -50,6 +51,7 @@ root.render(
           <Route path="/usermanage" element={<UserManage />} />
           <Route path="/updateinformaid" element={<MaidInforManage />} />
           <Route path="/maidmanage" element={<MaidManage />} />
+          <Route path="/updateinforuser" element={<UserInforManage />} />
 
 
           {/* ======= */}

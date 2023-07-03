@@ -65,6 +65,10 @@
                     .btn-submit {
                         display: flex;
                         justify-content: space-evenly;
+
+                        .btn-primary {
+                            font-weight: bold !important;
+                        }
                     }
                 }
             }
@@ -72,7 +76,7 @@
 
         }
 
-        .infor-addtion {
+        .infor-addtion-admin {
             height: 100vh;
             width: 40%;
             display: grid;
@@ -141,6 +145,68 @@
                     align-items: center;
                     font-size: 23px;
                     font-style: italic;
+                }
+            }
+
+            .btn-block {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .block-title {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 23px;
+                    font-style: italic;
+                }
+            }
+
+            .btn-evaluation-review {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+
+                .btn-evaluation {
+                    display: flex;
+                    flex-direction: column;
+                    // gap: 5px;
+                    justify-content: center;
+                    align-items: center;
+
+                    .btn-evaluation-number {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 30px;
+                        background-color: #00FACD;
+                        border-radius: 50%;
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+
+                .btn-review {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #BBFB03;
+                    border-radius: 5px;
+                    font-size: 15px;
+                    width: 80px;
+                    height: 90px;
+
+                    .btn-review-title {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        font-weight: 600;
+                        color: white;
+                    }
                 }
             }
         }
