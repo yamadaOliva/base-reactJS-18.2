@@ -18,7 +18,6 @@ import MaidHomePage from "./components/MaidHomePage/MaidHomePage";
 import RequestList from "./components/Request/RequestList"
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import LoginAd from "./components/Admin/Login/LoginAd";
 import UserManage from "./components/Admin/UserManage/UserManage";
 import MaidManage from "./components/Admin/MainManage/MaidManage";
 
@@ -35,7 +34,7 @@ root.render(
             <Route path="/user/home" element={<Homepage />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="/user/profile" element={<UserProfile />} />
-            
+
           </Route>
 
           <Route path="/login" element={<Login />} />
@@ -44,18 +43,18 @@ root.render(
           <Route path="/test" element={<DetailMaid />} />
 
           <Route path="/request" element={<RequestM />} />
-<<<<<<< HEAD
+          {/* <<<<<<< HEAD */}
 
-          <Route index path="/loginAd" element={<LoginAd />} />
+
           <Route path="/usermanage" element={<UserManage />} />
           <Route path="/maidmanage" element={<MaidManage />} />
 
 
-=======
+          {/* ======= */}
           <Route path="/requestlist" element={<RequestList />} />
-          <Route path="/maid/home" element={<MaidHomePage/>}/>
-  
->>>>>>> 45b4828279006f41b32afb4e32b1e5b5bfcdde0a
+          <Route path="/maid/home" element={<MaidHomePage />} />
+
+          {/* >>>>>>> 45b4828279006f41b32afb4e32b1e5b5bfcdde0a */}
         </Routes>
         <ToastContainer
           position="top-right"
