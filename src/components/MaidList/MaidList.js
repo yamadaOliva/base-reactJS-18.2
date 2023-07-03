@@ -9,8 +9,23 @@ import { useEffect, useState } from "react";
 import "./MaidList.scss";
 import { MaidDetail } from "../MaidList/MaidDetail";
 import ReactPaginate from "react-paginate";
+import RequestModal from "../Request/Request";
 export default function MaidList() {
-  const[buttonRequest, setButtonRequest] = useState(false);
+  // <<<<<<< HEAD
+
+  const [request, setRequest] = useState(false);
+
+  const handleCloseRequest = () => {
+    setRequest(false);
+  };
+  const handleShowRequest = (event) => {
+    event.preventDefault();
+    setRequest(true);
+  };
+
+  // =======
+  const [buttonRequest, setButtonRequest] = useState(false);
+  // >>>>>>> 45b4828279006f41b32afb4e32b1e5b5bfcdde0a
   const [maidList, setMaidList] = useState([]);
   const [nameSearch, setNameSearch] = useState("");
   const [isShowModal, setIsShowModal] = useState(false);
@@ -121,12 +136,7 @@ export default function MaidList() {
   };
   const handleFilterService = async () => {
     console.log(filterField);
-    if (
-      !filterField.experience.on &&
-      !filterField.price.on &&
-      !filterField.rating.on &&
-      !filterField.language.on
-    ) {
+    if (!filterField.experience.on && !filterField.price.on && !filterField.rating.on && !filterField.language.on) {
       const res = await MaidListService(limit, page);
       setMaidList(res.DT.maidList);
       return;
@@ -490,14 +500,14 @@ export default function MaidList() {
                       <h6>{maid.first_name + " " + maid.last_name}</h6>
                       <button
                         className="text-[20px] bg-[#3367D6] text-white font-bold p-2 m-3 rounded-2xl"
-                        onClick={() => handleRequest(maid)}
+                        onClick={(e) => handleShowRequest(e)}
                       >
                         レクエストを作成
                       </button>
                     </div>
                     <Request trigger={buttonRequest} setTrigger={setButtonRequest}>
-        
-          </Request>
+
+                    </Request>
                   </div>
                 );
               })}
@@ -531,12 +541,9 @@ export default function MaidList() {
         handleClose={handleCloseModal}
         maid={currentMaid}
       />
-      <Request
-        trigger={isRequest}
-        maidId={currentMaid.UserId}
-        setTrigger={setIsRequest}
-        price={currentMaid.price_per_hour}
+      <RequestModal
       />
+
     </>
   );
 }

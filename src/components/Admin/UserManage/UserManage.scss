@@ -1,0 +1,129 @@
+#root {
+    // overflow: hidden;
+
+    .container-usermanage {
+        display: flex;
+        flex-direction: column;
+
+        .content-page {
+            margin-top: 70px;
+            display: flex;
+
+            .content-page__left {
+                // background-color: aqua;
+                width: 20%;
+                height: 100vh;
+                padding-top: 20px;
+
+                .search-user-table {
+                    background-color: #D9D9D9;
+                    width: 100%;
+                    height: 45%;
+
+                    .search-user-table__title {
+                        padding-top: 20px;
+                        padding-bottom: 20px;
+                        font-size: 25px;
+                        font-weight: 550;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .search-user-table__search {
+                        display: flex;
+                        background-color: white;
+                        height: 50px;
+                        border-radius: 1.315rem;
+                        margin-left: 20px;
+                        margin-right: 20px;
+                        margin-bottom: 20px;
+                        position: relative;
+
+                        input {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 1.315rem;
+                            padding-left: 40px;
+                        }
+
+                        .icon-search {
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+                            background-color: transparent;
+                        }
+                    }
+
+                    .search-user-table__infor {
+                        display: flex;
+                        flex-direction: column;
+
+                        .search-user-table__infor__detail {
+                            display: flex;
+                            padding-left: 30px;
+                            font-size: 20px;
+                            // justify-content: center;
+                        }
+                    }
+
+                    .search-user-table__btn {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        justify-content: center;
+                        margin-top: 10px;
+                        margin-bottom: 20px;
+
+                        .search-user-table__btn__sort {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: #00E7F6;
+                            height: 30px;
+                            // width: focus;
+                            margin-left: 50px;
+                            margin-right: 50px;
+                            border-radius: 1.135rem;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: #00C6D6;
+                            }
+                        }
+
+                        .search-user-table__btn__block {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: #F6CE00;
+                            height: 30px;
+                            margin-left: 50px;
+                            margin-right: 50px;
+                            border-radius: 1.135rem;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: #D6B600;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .content-page__right {
+                background-color: #F5FAF7;
+                width: 70%;
+                height: 100vh;
+                padding: 15px 20px;
+
+                .user__manage__contain {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+        }
+    }
+}
