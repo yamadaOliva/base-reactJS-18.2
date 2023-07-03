@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Manjari:400,700&display=swap');
+
+.rq-list {
+    display: grid;
+    grid-template-rows:100px 25px 160px 25px 160px 25px 160px;
+    position: relative;
+    left: 9%;
+}
+
+.title-list {
+    grid-row: inherit;
+    font-size: 1.5rem;
+    font-weight: bold;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.title-inner {
+    user-select: none;
+    position: relative;
+    left:-4cm;
+    top:-10px;
+}
+
+.carousel-rq {
+    display: flex;
+    position: relative;
+    grid-auto-flow: column;
+    grid-row: inherit;
+    overflow: hidden;
+    overflow-y: auto;
+    
+    height: 110px;
+    border-radius: 20px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    background-color:#CCFFF5 ;
+    
+}
+
+.inner-carousel{
+    
+    width: 90%;
+    display: flex;
+    margin: 10px 40px;
+    overflow: hidden;
+}
+
+.item {
+    user-select: none;
+    position: relative;
+    display: flex;
+    background-color: #fff;
+    height: 90px;
+    min-width: 20%;
+    border-radius: 15px;
+    margin: 0 20px;
+    transition: all 100ms linear;
+}
+
+.cost{
+    position: absolute;
+    font-size: 20px;
+    top: 60px;
+    left: 30px;
+}
+.icon-eye{
+    position: absolute;
+    font-size: 20px;
+    top: 60px;
+    right: 30px;
+    cursor: pointer;
+}
+.name{
+    font-size: 25px;
+    position: absolute;
+    top: 6px;
+    left: 30px;
+} 
+.date{
+    font-size: 20px;
+    position: absolute;
+    top: 35px;
+    left: 30px;
+}
+
+.icon-pn{
+    font-size: 50px;
+    width: 30px ;
+    cursor: pointer;
+}
+

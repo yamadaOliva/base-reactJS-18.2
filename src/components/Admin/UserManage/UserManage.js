@@ -128,7 +128,6 @@ const UserManage = () => {
                     <div className="user__manage__contain">
                         {
                             isHideBlock === false ?
-
                                 listUser.map((user, index) => {
                                     return (
                                         <InforUser
@@ -157,8 +156,7 @@ const UserManage = () => {
                                             setTotalBlock={setTotalBlock}
                                         />
                                     )
-                                }
-                                )
+                                })
                         }
                     </div>
                 </div>
