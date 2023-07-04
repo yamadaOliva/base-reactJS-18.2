@@ -21,6 +21,7 @@ import { store } from "./redux/store";
 import UserManage from "./components/Admin/UserManage/UserManage";
 import MaidManage from "./components/Admin/MainManage/MaidManage";
 import MaidInforManage from "./components/Admin/MaidInforManage/MaidInforManage";
+import UserRequestList from "./components/Request/RequestUser"
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -35,6 +36,7 @@ root.render(
             <Route path="/user/home" element={<Homepage />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="/user/profile" element={<UserProfile />} />
+            <Route path="/user/request-list" element={<UserRequestList />} />
 
           </Route>
 
