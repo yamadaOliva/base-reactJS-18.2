@@ -2,33 +2,47 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState, useEffect } from "react";
 import "./MaidDetail.scss";
-import { FiCircle } from 'react-icons/fi';
+import { FiCircle } from "react-icons/fi";
 import FormCreateReview from "../ReviewComponent/CreateReview/FormCreateReview";
 import ShowReview from "../ReviewComponent/ShowReview/ShowReview";
+import { CheckReviewService } from "../../service/reviewService";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 const MaidDetail = (props) => {
-
+  const user = useSelector((state) => state.user);
   const [id, setId] = useState(0);
   const [isCreateReview, setIsCreateReview] = useState(false);
   const [isReview, setIsReview] = useState(false);
-  const handleCreateReview = (event) => {
+  const handleCreateReview = async (event) => {
     event.preventDefault();
+    try {
+      console.log("user", user.id);
+      const response = await CheckReviewService(props.maid.UserId, user.id);
+      console.log("response", response);
+      if (+response.EC == 400) {
+        toast.error("レビューはすでに存在しています。");
+        return;
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
     setIsCreateReview(true);
-  }
+  };
 
   const handleCloseCreateReview = () => {
     setIsCreateReview(false);
-  }
+  };
 
   const [isShowReview, setIsShowReview] = useState(false);
 
   const handleShowReview = (event) => {
     event.preventDefault();
     setIsShowReview(true);
-  }
+  };
 
   const handleCloseShowReview = () => {
     setIsShowReview(false);
-  }
+  };
 
   const [dataRaw, setDataRaw] = useState({});
   useEffect(() => {
@@ -39,13 +53,16 @@ const MaidDetail = (props) => {
   return (
     <>
       <div className="">
-        <Modal show={props.show} onHide={props.handleClose} className="modal-custom">
+        <Modal
+          show={props.show}
+          onHide={props.handleClose}
+          className="modal-custom"
+        >
           <Modal.Header closeButton>
             <Modal.Title>MaidProfile</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="container-detailMaid">
-
               <div className="infor-container">
                 <div className="btn-report">報告</div>
                 <div className="table-detail">
@@ -54,70 +71,127 @@ const MaidDetail = (props) => {
                     <div className="form-row">
                       <div className="form-group ">
                         <label for="inputEmail4">名</label>
-                        <input type="text" className="form-control" id="inputEmail4" disabled value={dataRaw.last_name}></input>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="inputEmail4"
+                          disabled
+                          value={dataRaw.last_name}
+                        ></input>
                       </div>
                       <div className="form-group ">
                         <label for="inputPassword4">苗字</label>
-                        <input className="form-control" disabled value={dataRaw.first_name}></input>
+                        <input
+                          className="form-control"
+                          disabled
+                          value={dataRaw.first_name}
+                        ></input>
                       </div>
 
                       <div className="form-group ">
                         <label for="inputAddress">電話番号</label>
-                        <input type="text" className="form-control" id="inputAddress" disabled value={dataRaw.phone_number} />
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="inputAddress"
+                          disabled
+                          value={dataRaw.phone_number}
+                        />
                       </div>
                       <div className="form-group ">
-                        <label >住所</label>
-                        <input type="text" className="form-control" disabled value={dataRaw.address} />
+                        <label>住所</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          disabled
+                          value={dataRaw.address}
+                        />
                       </div>
                       <div className="form-group ">
-                        <label >都市</label>
-                        <input type="text" className="form-control" disabled value={dataRaw.city} />
+                        <label>都市</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          disabled
+                          value={dataRaw.city}
+                        />
                       </div>
                       <div className="form-group ">
-                        <label >国</label>
-                        <input type="text" className="form-control" disabled value={dataRaw.country} />
+                        <label>国</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          disabled
+                          value={dataRaw.country}
+                        />
                       </div>
                       <div className="form-group ">
-                        <label >ノート</label>
-                        <input type="text" className="form-control" disabled value={dataRaw.description} />
+                        <label>ノート</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          disabled
+                          value={dataRaw.description}
+                        />
                       </div>
                       <div className="form-group ">
-                        <label >経験</label>
-                        <input type="text" className="form-control" disabled value={dataRaw.experience} />
+                        <label>経験</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          disabled
+                          value={dataRaw.experience}
+                        />
                       </div>
                       <div className="form-group ">
-                        <label >スキル</label>
-                        <input type="text" className="form-control" disabled value={dataRaw.skills} />
+                        <label>スキル</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          disabled
+                          value={dataRaw.skills}
+                        />
                       </div>
                       <div className="form-group ">
-                        <label >証明書</label>
-                        <input type="text" className="form-control" disabled value={dataRaw.ceftification} />
+                        <label>証明書</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          disabled
+                          value={dataRaw.ceftification}
+                        />
                       </div>
                       <div className="form-group ">
-                        <label >言語</label>
-                        {
-                          (dataRaw.Languages || []).map((item) => {
-                            return <input type="text" className="form-control" disabled value={item.language_name} />
-                          }
-                          )
-                        }
+                        <label>言語</label>
+                        {(dataRaw.Languages || []).map((item) => {
+                          return (
+                            <input
+                              type="text"
+                              className="form-control"
+                              disabled
+                              value={item.language_name}
+                            />
+                          );
+                        })}
                       </div>
                       <div className="btn-submit ">
                         <button
                           // type="submit"
                           className="btn btn-primary"
-
                           onClick={(event) => handleCreateReview(event)}
-                        >レビューを書く</button>
+                        >
+                          レビューを書く
+                        </button>
                         <button
                           // type="submit"
                           className="btn btn-primary"
                           onClick={(event) => handleShowReview(event)}
-                        >レビューの一覧表示 </button>
+                        >
+                          レビューの一覧表示{" "}
+                        </button>
                       </div>
                     </div>
                   </form>
-
                 </div>
                 <div className="infor-addtion">
                   <div className="btn-salary">
@@ -136,7 +210,8 @@ const MaidDetail = (props) => {
 
                   <div className="btn-cancle-rate">
                     <div className="cancle-rate-title">
-                      リクエスト <br />キャンセル率
+                      リクエスト <br />
+                      キャンセル率
                     </div>
                     <div className="cancle-rate-render">
                       <input type="text" className="form-control" />
