@@ -2,6 +2,7 @@ import './MaidInforMange.scss'
 import { FiCircle } from 'react-icons/fi';
 import Switch from "react-switch";
 import { useState } from 'react';
+import { FaEye } from 'react-icons/fa'
 
 const MaidInforManage = () => {
 
@@ -62,17 +63,23 @@ const MaidInforManage = () => {
                                 </div>
                                 <div className="form-group ">
                                     <label >言語</label>
-                                    <input type="text" className="form-control" />
+                                    <select className="form-control">
+                                        <option defaultValue>日本語</option>
+                                        <option>英語</option>
+                                        <option>中国語</option>
+                                        <option>韓国語</option>
+                                    </select>
+                                    {/* <input type="text" className="form-control" /> */}
                                 </div>
                                 <div className="btn-submit ">
-                                    <button type="submit" className="btn btn-primary">レビューを書く</button>
-                                    <button type="submit" className="btn btn-primary">レビューの一覧表示 </button>
+                                    <button type="submit" className="btn btn-primary">更新内容を保存</button>
+                                    {/* <button type="submit" className="btn btn-primary">レビューの一覧表示 </button> */}
                                 </div>
                             </div>
 
                         </form>
                     </div>
-                    <div className="infor-addtion">
+                    <div className="infor-addtion-admin">
                         <div className="btn-avt">
                             <img src="https://th.bing.com/th/id/OIP.ZTaJeuzR79d8RrLA3bgLxQHaGq?pid=ImgDet&rs=1" />
                         </div>
@@ -103,13 +110,30 @@ const MaidInforManage = () => {
                                     offHandleColor='#F06E6E'
                                     onHandleColor='#71F06E'
                                     onColor='#888888'
+                                    height={40}
+                                    width={80}
+                                    handleDiameter={35}
                                 />
                             </div>
                             <div className="block-title">
                                 禁止
                             </div>
                         </div>
-                        <div className="btn-evaluation-review"></div>
+                        <div className="btn-evaluation-review">
+                            <div className='btn-evaluation'>
+                                <div className='btn-evaluation-number'>4.0</div>
+                                <div className='btn-evaluation-title'>総合評価</div>
+                            </div>
+                            <div className='btn-review'>
+                                <div className='btn-review-title'>
+                                    <span>レビュー</span>
+                                    <span>を見る</span>
+                                </div>
+                                <div className='btn-review-icon'>
+                                    <FaEye size={30} />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
