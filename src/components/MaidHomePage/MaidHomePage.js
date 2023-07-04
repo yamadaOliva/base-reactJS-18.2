@@ -10,6 +10,10 @@ dayjs.locale('ja')
 
 const weekDays = ["月", "火", "水", "木", "金", "土", "日"]
 
+
+const dates = ['2023-07-01', '2023-07-02', '2023-07-03', '2023-07-04']
+const arrayOfDates = dates.map(date => dayjs(date));
+
 const todayObj = dayjs()
 
 const Calendar = () => {
@@ -24,6 +28,7 @@ const Calendar = () => {
 
   const dayObjOfLast = dayjs(`${thisYear}-${thisMonth + 1}-${daysInMonth}`)
   const weekDayOfLast = dayObjOfLast.day()
+
 
   const handlePrev = () => {
     setDayObj(dayObj.subtract(1, "month"))
@@ -109,18 +114,28 @@ const Calendar = () => {
               ))}
 
               {range(daysInMonth).map(i => (
-                <button
-                  className={`day-cell day-cell--in-month${
+                <div
+                  className={`day-cell day-cell--in-month ${
                     i + 1 === todayObj.date() &&
                     thisMonth === todayObj.month() &&
                     thisYear === todayObj.year()
                       ? " day-cell--today"
                       : ""
-                  }`}
+                  } `}
                   key={i}
-                >
-                  {i + 1}
-                </button>
+                > 
+                  <div className={`${ 
+                    arrayOfDates.some(
+                    (date) =>
+                      date.year() === thisYear &&
+                      date.month() === thisMonth &&
+                      date.date() === i + 1
+                    )
+                    ? "day-cell--haverequest"
+                    : ""
+                  }`}>{i + 1}</div>
+                  
+                </div>
               ))}
 
               {range(6 - weekDayOfLast + 1).map(i => (

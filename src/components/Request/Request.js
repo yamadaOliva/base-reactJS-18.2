@@ -1,14 +1,11 @@
 import React from "react"
 import "./Request.css"
-<<<<<<< HEAD
 import {GrFormClose} from 'react-icons/gr'
 
-=======
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import {requestMaid} from "../../service/maidService"
->>>>>>> 21c9092e385bb611b506ad134b3fb2740425419f
 export default function Request(props){
   const daysOfMonths = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
   const [month, setMonth] = useState(1);

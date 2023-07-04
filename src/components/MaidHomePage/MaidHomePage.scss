@@ -120,9 +120,18 @@
     border-radius: 99px;
     background-color: orange;
     color: #fff;
+
     
   }
+  &--haverequest {
+    text-align: center;
+    width: 50%;
+    border-radius: 99px;
+    background-color: rgb(144,67,26);
+    cursor: pointer;
+  }
 }
+
 
 .head{
   grid-row: inherit;
