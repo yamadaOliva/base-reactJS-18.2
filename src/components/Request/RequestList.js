@@ -15,6 +15,10 @@ function RequestList() {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [requestList, setRequestList] = useState([]);
+  const [pendingList, setPendingList] = useState([]);
+  const [acceptedList, setAcceptedList] = useState([]);
+  const [doneList, setDoneList] = useState([]);
+  const [currentRequest, setCurrentRequest] = useState({}); //[0
   const setRequestListService = async () => {
     try {
       const response = await getReQuestService(user.id);
@@ -26,9 +30,20 @@ function RequestList() {
       console.log("error", error);
     }
   };
+  const filerByStatus = () => {
+    setPendingList(requestList.filter((item) => item.status == "pending"));
+    setAcceptedList(requestList.filter((item) => item.status == "accepted"));
+    setDoneList(requestList.filter((item) => item.status == "done"));
+  };
   useEffect(() => {
-    console.log("requestList", requestList);
+    filerByStatus();
   }, [requestList]);
+
+  useEffect(() => {
+    console.log("acceptedList", acceptedList);
+    console.log("doneList", doneList);
+    console.log("pendingList", pendingList);
+  }, [acceptedList, doneList, pendingList]);
   useEffect(() => {
     if (+user.role != 2) {
       toast.error("You don't have permission to access this page");
@@ -36,6 +51,11 @@ function RequestList() {
     }
     setRequestListService();
   }, []);
+  const eyeClick = (item, cline) => {
+    console.log("item", item, cline);
+    setCurrentRequest(item);
+    ShowPopup(cline);
+  };
   const [index1, setIndex1] = useState(0);
   const [index2, setIndex2] = useState(0);
   const [index3, setIndex3] = useState(0);
@@ -62,16 +82,29 @@ function RequestList() {
   const nextItem3 = () => {
     if (index3 <= Items3.length - 2) setIndex3(index3 + 1);
   };
+  const convertDateToYMD = (date) => {
+    var date = new Date(date);
+    var str =
+      date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+    return str;
+  };
 
+  useEffect(() => {
+    console.log("currentRequest", currentRequest);
+  }, [currentRequest]);
   function Show(item, index, cline) {
     var items = [];
     for (var i = index; i < item.length; i++) {
+      let current = item[i];
       items.push(
         <div className="item">
-          <h1 className="name">{item[i].name}</h1>
-          <h1 className="date">{item[i].date}</h1>
-          <h1 className="cost">{item[i].cost}</h1>
-          <FaEye className="icon-eye" onClick={() => ShowPopup(cline)} />
+          <h1 className="name">{item[i].User?.username}</h1>
+          <h1 className="date">{convertDateToYMD(item[i].start_date)}</h1>
+          <h1 className="cost">{item[i].price}</h1>
+          <FaEye
+            className="icon-eye"
+            onClick={() => eyeClick(current, cline)}
+          />
         </div>
       );
     }
@@ -95,33 +128,80 @@ function RequestList() {
   return (
     <div className="rq-list">
       <div></div>
-      <div className="title-list">
-        <div className="title-inner">新しいリクエスト</div>
-      </div>
+      <h1 className={"req-title"}>新しいリクエスト</h1>
       <div className="carousel-rq">
-        <GrFormPrevious className="icon-pn" onClick={preItem1} />
-        <div className="inner-carousel">{Show(Items1, index1, 1)}</div>
-        <GrFormNext className="icon-pn" onClick={nextItem1} />
+        <img
+          src={window.location.origin + "/images/pre.png"}
+          alt=""
+          className="icon-pn"
+          onClick={preItem1}
+        />
+        <div className="inner-carousel">{Show(pendingList, index1, 1)}</div>
+        <img
+          src={window.location.origin + "/images/next.png"}
+          alt=""
+          className="icon-pn"
+          onClick={nextItem1}
+        />
       </div>
-      <div className="title-list">
-        <div className="title-inner">受け付けたリクエスト</div>
-      </div>
+      <h1 className={"req-title"}>受け付けたリクエスト</h1>
       <div className="carousel-rq">
-        <GrFormPrevious className="icon-pn" onClick={preItem2} />
-        <div className="inner-carousel">{Show(Items2, index2, 2)}</div>
-        <GrFormNext className="icon-pn" onClick={nextItem2} />
+        <img
+          src={window.location.origin + "/images/pre.png"}
+          alt=""
+          className="icon-pn"
+          onClick={preItem2}
+        />
+        <div className="inner-carousel">{Show(acceptedList, index2, 2)}</div>
+        <img
+          src={window.location.origin + "/images/next.png"}
+          alt=""
+          className="icon-pn"
+          onClick={nextItem2}
+        />
       </div>
-      <div className="title-list">
-        <div className="title-inner">完成したリクエスト</div>
-      </div>
+      <h1 className={"req-title"}>完成したリクエスト</h1>
       <div className="carousel-rq">
-        <GrFormPrevious className="icon-pn" onClick={preItem3} />
-        <div className="inner-carousel">{Show(Items3, index3, 3)}</div>
-        <GrFormNext className="icon-pn" onClick={nextItem3} />
+        <img
+          src={window.location.origin + "/images/pre.png"}
+          alt=""
+          className="icon-pn"
+          onClick={preItem3}
+        />
+        <div className="inner-carousel">{Show(doneList, index3, 3)}</div>
+        <img
+          src={window.location.origin + "/images/next.png"}
+          alt=""
+          className="icon-pn"
+          onClick={nextItem3}
+        />
       </div>
-      <Request1 trigger={buttonPopup1} setTrigger={setButtonPopup1}></Request1>
-      <Request2 trigger={buttonPopup2} setTrigger={setButtonPopup2}></Request2>
-      <Request3 trigger={buttonPopup3} setTrigger={setButtonPopup3}></Request3>
+      <div style={{ height: 30 }}></div>
+      <Request1
+        trigger={buttonPopup1}
+        setTrigger={setButtonPopup1}
+        request={currentRequest}
+        acceptedList={acceptedList}
+        setAcceptedList={setAcceptedList}
+        pendingList={pendingList}
+        setPendingList={setPendingList}
+      ></Request1>
+      <Request2
+        trigger={buttonPopup2}
+        setTrigger={setButtonPopup2}
+        request={currentRequest}
+        acceptedList={acceptedList}
+        setAcceptedList={setAcceptedList}
+        doneList={doneList}
+        setDoneList={setDoneList}
+      ></Request2>
+      <Request3
+        trigger={buttonPopup3}
+        setTrigger={setButtonPopup3}
+        request={currentRequest}
+        doneList={doneList}
+        setDoneList={setDoneList}
+      ></Request3>
     </div>
   );
 }

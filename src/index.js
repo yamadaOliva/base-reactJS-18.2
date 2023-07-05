@@ -23,7 +23,7 @@ import UserManage from "./components/Admin/UserManage/UserManage";
 import MaidManage from "./components/Admin/MainManage/MaidManage";
 import MaidInforManage from "./components/Admin/MaidInforManage/MaidInforManage";
 import UserInforManage from "./components/Admin/UserInforManage/UserInforManage";
-
+import UserRequestList from "./components/Request/RequestUser"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
@@ -53,7 +53,7 @@ root.render(
             <Route path="/updateinformaid" element={<MaidInforManage />} />
             <Route path="/maidmanage" element={<MaidManage />} />
             <Route path="/updateinforuser" element={<UserInforManage />} />
-
+            <Route path="/user/request-list" element={<UserRequestList />} />
             {/* ======= */}
 
             {/* >>>>>>> 45b4828279006f41b32afb4e32b1e5b5bfcdde0a */}
