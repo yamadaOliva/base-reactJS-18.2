@@ -2,7 +2,7 @@ import "./RequestList.scss";
 import { FaEye } from "react-icons/fa";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { Items1, Items2, Items3 } from "./Items";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import Request1 from "./Request1";
 import Request2 from "./Request2";
@@ -11,7 +11,17 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getReQuestService } from "../../service/requestService";
 import { set } from "lodash";
+import socketIOClient from "socket.io-client";
+const host = "http://localhost:8000";
 function RequestList() {
+  const [switch_TF, setSwitch_TF] = useState(true);
+  const socketRef = useRef();
+  useEffect(() => {
+    socketRef.current = socketIOClient.connect(host);
+    socketRef.current.on("sendDataServer", (data) => {
+      setSwitch_TF(!switch_TF);
+    });
+  }, []);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [requestList, setRequestList] = useState([]);
@@ -88,7 +98,9 @@ function RequestList() {
       date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
     return str;
   };
-
+  useEffect(() => {
+    setRequestListService();
+  }, [switch_TF,socketRef.current]);
   useEffect(() => {
     console.log("currentRequest", currentRequest);
   }, [currentRequest]);

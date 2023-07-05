@@ -1,11 +1,18 @@
 import React from "react";
 import "./Request.css";
 import { GrFormClose } from "react-icons/gr";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { requestMaid } from "../../service/maidService";
+import socketIOClient from "socket.io-client";
+const host = "http://localhost:8000";
 export default function Request(props) {
+  const [id, setId] = useState();
+  const socketRef = useRef();
+  useEffect(() => {
+    socketRef.current = socketIOClient.connect(host)
+  }, []);
   const daysOfMonths = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
     22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
@@ -50,7 +57,8 @@ export default function Request(props) {
       console.log(request);
       const response = await requestMaid(request);
       console.log("rés=>>", response);
-      if (response.EC == 200) {
+      if (+response.EC == 200) {
+        socketRef.current.emit('sendDataClient', 1)
         toast.success("リクエストを送信しました。");
       } else {
         toast.error("リクエストを送信できませんでした。");

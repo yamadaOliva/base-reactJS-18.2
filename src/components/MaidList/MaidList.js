@@ -9,7 +9,11 @@ import { useEffect, useState } from "react";
 import "./MaidList.scss";
 import { MaidDetail } from "../MaidList/MaidDetail";
 import ReactPaginate from "react-paginate";
+import socketIOClient from "socket.io-client";
 export default function MaidList() {
+  useEffect(() => {
+    const socket = socketIOClient.connect("http://localhost:8000");
+  }, []);
   const [request, setRequest] = useState(false);
   const handleCloseRequest = () => {
     setRequest(false);
