@@ -9,4 +9,7 @@ const getProfileService = (id) => {
 const updateProfileService = (data) => {
   return axios.post(`/api/v1/user/update`, data);
 };
-export { UserProfileService, getProfileService, updateProfileService };
+const getProfileByPage=(page, limit) => {
+  return axios.get(`/api/v1/user/profile/list?page=${page}&limit=${limit}`);
+};
+export { UserProfileService, getProfileService, updateProfileService, getProfileByPage };

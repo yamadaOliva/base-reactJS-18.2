@@ -5,7 +5,7 @@ import './InforMaid.scss'
 const InforMaid = (props) => {
 
     const { id, name, numberphone, address, exp, skill, authentication, price, active } = props;
-    console.log("active: " + active);
+    console.log("active: " + active, authentication);
 
     const handleChange = (checked) => {
         // true la mau xanh
@@ -23,7 +23,7 @@ const InforMaid = (props) => {
     return (
         <div className="infor-maid" key={id}>
             <div className="infor-maid__avt-maid">
-                <img src="https://images.squarespace-cdn.com/content/v1/594c9a79414fb5311da8888f/1500584272653-TM0X3I8VC5YGDT4VYHZ8/unknown+border.jpg?format=500w" alt="" />
+                <img src={props.avatar} alt="" />
                 <div className="infor-maid__price">
                     <span>価格：</span>
                     <span>{price}</span>
