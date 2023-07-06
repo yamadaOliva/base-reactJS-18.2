@@ -55,8 +55,6 @@ export default function ReportList(){
     }
 
     function ItemReport({currentItems}) {
-        console.log('hello')
-        console.log(currentItems)
         const items = [];
         currentItems && currentItems.map((item, index) => {
             items.push(

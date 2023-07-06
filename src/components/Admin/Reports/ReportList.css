@@ -15,6 +15,7 @@
 }
 .admin-report-list .container {
     width: 85%;
+    height: 100%;
 }
 .admin-report-nav .search {
     position: relative;
@@ -59,10 +60,11 @@
     margin-top: 20px;
     font-weight: bold;
 }
-.pagination {
+.admin-report-list .container .pagination {
     display: flex;
     justify-content: center;
-    margin: 0;
+    margin-top: 60px;
+    user-select: none;
 }
 .active>.page-link, .page-link.active{
     background: none;
