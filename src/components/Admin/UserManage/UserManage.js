@@ -148,7 +148,7 @@ const UserManage = () => {
                       name={user.last_name + " " + user.first_name}
                       numberphone={user.phone_number}
                       address={user.address}
-                      active={user.active}
+                      active={user.User?.active}
                       updateActiveStatus={updateActiveStatus}
                       totalBlock={totalBlock}
                       setTotalBlock={setTotalBlock}
@@ -165,7 +165,7 @@ const UserManage = () => {
                         name={user.name}
                         numberphone={user.numberphone}
                         address={user.address}
-                        active={user.active}
+                        active={user.User?.active}
                         updateActiveStatus={updateActiveStatus}
                         totalBlock={totalBlock}
                         setTotalBlock={setTotalBlock}

@@ -15,4 +15,7 @@ const refeshTokenService = () => {
   return axios.get("/api/v1/refesh-token");
 };
 
-export { LoginService, RegisterService, LogoutService, refeshTokenService };
+const blockedService = (id) => {
+  return axios.get(`/api/v1/blocked?id=${id}`);
+};
+export { LoginService, RegisterService, LogoutService, refeshTokenService, blockedService };

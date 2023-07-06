@@ -4,7 +4,7 @@ import './InforMaid.scss'
 
 const InforMaid = (props) => {
 
-    const { id, name, numberphone, address, exp, skill, authentication, price, active } = props;
+    const { id, name, numberphone, address, exp, skill, authentication, price, active,rating } = props;
     console.log("active: " + active, authentication);
 
     const handleChange = (checked) => {
@@ -91,7 +91,7 @@ const InforMaid = (props) => {
                     <FaEye size={30} className='icon-eye' />
                 </div>
                 <div className="infor-maid__evaluation">
-                    <div className="infor-maid__evaluation__value">4.5</div>
+                    <div className="infor-maid__evaluation__value">{rating}</div>
                     <div className="infor-maid__evaluation__title">総合評価</div>
                 </div>
             </div>

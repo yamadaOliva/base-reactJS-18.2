@@ -97,6 +97,9 @@ function ProfileMenu(props) {
       await LogoutService();
       navigate("/login");
     }
+    if (label === "リクエストリスト") {
+      if (user.role === 2) navigate("/requestlist");
+    }
     setIsMenuOpen(false);
     if (label === "ユーザー管理") {
       if (user.role === 0) navigate("/usermanage");

@@ -7,6 +7,7 @@ import InforMaid from "./InforMaid";
 import { getProfileByPage } from "../../../service/userProfileService";
 import { MaidListService } from "../../../service/maidService";
 import ReactPaginate from "react-paginate";
+import { set } from "lodash";
 const MaidManage = () => {
   const [listMaid, setlistMaid] = useState([
     {
@@ -68,6 +69,8 @@ const MaidManage = () => {
   const handlePageClick = (e) => {
     setPage(e.selected + 1);
   };
+  const [totalBlock, setTotalBlock] = useState(0);
+  const [totalMaid, setTotalMaid] = useState(0);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(5);
   const [totalPage, setTotalPage] = useState(0);
@@ -76,7 +79,9 @@ const MaidManage = () => {
     const res = await MaidListService(limit, page);
     console.log(res);
     setlistMaid(res.DT?.maidList);
-    setTotalPage(res.DT.totalPage);
+    setTotalPage(res.DT?.totalPage);
+    setTotalBlock(res.DT?.blocked);
+    setTotalMaid(res.DT?.totalRows);
   };
   useEffect(() => {
     getProfileByPageSV(page, limit);
@@ -107,10 +112,7 @@ const MaidManage = () => {
     setIsHideBlock(false);
   };
 
-  const [totalMaid, setTotalMaid] = useState(listMaid?.length);
-  const [totalBlock, setTotalBlock] = useState(
-    listMaid?.filter((maid) => maid.active === false).length
-  );
+  
 
   return (
     <div className="container-maidmanage" key={"maid"}>
@@ -177,10 +179,11 @@ const MaidManage = () => {
                       skill={maid.skills}
                       authentication={maid.ceftification}
                       price={maid.price}
-                      active={maid.active}
+                      active={maid.User?.active}
                       updateActiveStatus={updateActiveStatus}
                       totalBlock={totalBlock}
                       setTotalBlock={setTotalBlock}
+                      rating = {maid.rating}
                       avatar={maid.avatar_url}
                     />
                   );
@@ -198,12 +201,11 @@ const MaidManage = () => {
                         skill={maid.skill}
                         authentication={maid.ceftification}
                         price={maid.price}
-                        active={maid.active}
+                        active={maid.User?.active}
                         updateActiveStatus={updateActiveStatus}
                         totalBlock={totalBlock}
                         setTotalBlock={setTotalBlock}
                         avatar={maid.avatar_url}
-                        
                       />
                     );
                   })}
