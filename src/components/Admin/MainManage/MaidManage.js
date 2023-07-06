@@ -10,7 +10,11 @@ import ReactPaginate from "react-paginate";
 import { set } from "lodash";
 import { blockedService,unblockedService } from "../../../service/authservice";
 import { async } from "q";
+import {FindMaidByNameService} from "../../../service/maidService";
 const MaidManage = () => {
+  const [filterID, setFilterID] = useState("");
+  const [filterName, setFilterName] = useState("");
+  const [nameFind, setNameFind] = useState("");
   const [listMaid, setlistMaid] = useState([
     {
       id: 10,
@@ -89,7 +93,12 @@ const MaidManage = () => {
   useEffect(() => {
     getProfileByPageSV(page, limit);
   }, [page, limit, switch_TF]);
-
+  const findMaidByName = async () => {
+    const res = await FindMaidByNameService(nameFind);
+    console.log(res);
+    setlistMaid(res.DT?.maidList);
+  };
+  
   // set value of block
   const updateActiveStatus = async (id, checked) => {
     if(checked) console.log("dcm Vinh=>", id, checked);
@@ -140,8 +149,12 @@ const MaidManage = () => {
           <div className="search-maid-table-maid">
             <div className="search-maid-table__title">メイド管理</div>
             <div className="search-maid-table__search">
-              <FaSearch size={25} className="icon-search" />
-              <input type="text" placeholder="メイド名" />
+              <FaSearch size={25} className="icon-search"
+                
+               />
+              <input type="text" placeholder="メイド名"
+                onChange={(e) => {setFilterName(e.target.value)}} 
+              />
             </div>
             <div className="search-maid-table__infor">
               <div className="search-maid-table__infor__detail">
