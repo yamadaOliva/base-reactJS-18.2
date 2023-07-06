@@ -23,6 +23,7 @@ import MaidManage from "./components/Admin/MainManage/MaidManage";
 import MaidInforManage from "./components/Admin/MaidInforManage/MaidInforManage";
 import UserRequestList from "./components/Request/RequestUser"
 import ReviewList from "./components/Admin/Reviews/ReviewList"
+import ReportList from "./components/Admin/Reports/ReportList"
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -54,6 +55,7 @@ root.render(
           <Route path="/updateinformaid" element={<MaidInforManage />} />
           <Route path="/maidmanage" element={<MaidManage />} />
           <Route path="/admin/reviews" element={<ReviewList />} />
+          <Route path="/admin/reports" element={<ReportList />} />
 
 
           {/* ======= */}

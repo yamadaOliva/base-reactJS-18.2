@@ -166,18 +166,6 @@ export default function ReviewList (){
         return items;
     }
 
-    function Items({ currentItems }) {
-        return (
-            <div className="items">
-                {currentItems && currentItems.map((item) => (
-                    <div>
-
-                    </div>
-                ))}
-            </div>
-        );
-    }
-
     function PaginatedItems({ itemsPerPage }) {
         // We start with an empty list of items.
         const [currentItems, setCurrentItems] = useState(null);
