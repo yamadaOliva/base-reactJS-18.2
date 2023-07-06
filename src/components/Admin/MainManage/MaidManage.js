@@ -152,7 +152,9 @@ const MaidManage = () => {
               </div>
             </div>
             <div className="search-maid-table__btn">
-              <div className="search-maid-table__btn__sort">IDで並べ替える</div>
+              <div className="search-maid-table__btn__sort"
+              onClick={()=>getProfileByPageSV(page,limit)}
+              >IDで並べ替える</div>
               <div className="search-maid-table__btn__sort">
                 価格で並べ替える
               </div>
@@ -205,7 +207,7 @@ const MaidManage = () => {
                   );
                 })
               : listMaid
-                  .filter((maid) => maid.active === true)
+                  .filter((maid) => maid.User.active === true)
                   .map((maid, index) => {
                     return (
                       <InforMaid

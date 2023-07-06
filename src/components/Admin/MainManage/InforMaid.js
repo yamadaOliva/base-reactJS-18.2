@@ -84,7 +84,7 @@ const InforMaid = (props) => {
                 </div>
             </div>
             <div className="infor-maid__cancle__rate">
-                <div className="infor-maid__rate__value">80%</div>
+                <div className="infor-maid__rate__value">0%</div>
                 <div className="infor-maid__rate__title">キャンセル率</div>
             </div>
             <div className="infor-maid__view__detal__evaluation">
