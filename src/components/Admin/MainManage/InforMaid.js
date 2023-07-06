@@ -4,8 +4,8 @@ import './InforMaid.scss'
 
 const InforMaid = (props) => {
 
-    const { id, name, numberphone, address, exp, skill, authentication, price, active } = props;
-    console.log("active: " + active);
+    const { id, name, numberphone, address, exp, skill, authentication, price, active,rating } = props;
+    console.log("active: " + active, authentication);
 
     const handleChange = (checked) => {
         // true la mau xanh
@@ -23,7 +23,7 @@ const InforMaid = (props) => {
     return (
         <div className="infor-maid" key={id}>
             <div className="infor-maid__avt-maid">
-                <img src="https://images.squarespace-cdn.com/content/v1/594c9a79414fb5311da8888f/1500584272653-TM0X3I8VC5YGDT4VYHZ8/unknown+border.jpg?format=500w" alt="" />
+                <img src={props.avatar} alt="" />
                 <div className="infor-maid__price">
                     <span>価格：</span>
                     <span>{price}</span>
@@ -91,7 +91,7 @@ const InforMaid = (props) => {
                     <FaEye size={30} className='icon-eye' />
                 </div>
                 <div className="infor-maid__evaluation">
-                    <div className="infor-maid__evaluation__value">4.5</div>
+                    <div className="infor-maid__evaluation__value">{rating}</div>
                     <div className="infor-maid__evaluation__title">総合評価</div>
                 </div>
             </div>

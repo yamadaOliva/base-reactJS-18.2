@@ -1,3 +1,4 @@
+import { avatar } from '@material-tailwind/react';
 import './InforUser.scss'
 import { FaEye } from 'react-icons/fa'
 import Switch from "react-switch";
@@ -23,7 +24,7 @@ const InforUser = (props) => {
     return (
         <div className="infor-user" key={id}>
             <div className="infor-user__avt">
-                <img src="https://images.squarespace-cdn.com/content/v1/594c9a79414fb5311da8888f/1500584272653-TM0X3I8VC5YGDT4VYHZ8/unknown+border.jpg?format=500w" alt="" />
+                <img src={props.avatar} alt="" />
             </div>
             <div className="infor-user__detail">
                 <div className="infor-user__detail__Id__name">

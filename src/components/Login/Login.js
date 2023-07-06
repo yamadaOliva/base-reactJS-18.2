@@ -51,12 +51,13 @@ export default function Login(props) {
       try {
         const res = await LoginService(user);
         console.log(res);
-        console.log(+res.EC == -1)
-        if(+res.EC == -1){
+        console.log(+res.EC == -1);
+        if (+res.EC == -1) {
           toast.error(res.EM);
           refeshDataInput();
           return;
         }
+        console.log(res.DT);
         const payload = {
           email: res.DT.email,
           username: res.DT.username,
@@ -66,7 +67,13 @@ export default function Login(props) {
           address: res.DT.address,
         };
         dispatch(setUser(payload));
-        navigate("/user/home");
+        if(res.DT.active == 2){
+          toast.error("アカウントがブロックされました。");
+          refeshDataInput();
+        }
+        if (+res.DT.role == 1) navigate("/user/home");
+        else if (+res.DT.role ==2) navigate("/maid/home");
+        navigate("/maidmanage");
       } catch (error) {
         console.log(error);
       }
@@ -96,7 +103,9 @@ export default function Login(props) {
               <div className="flex flex-col w-full gap-10">
                 <div className="w-10/12 ml-auto">
                   <div className="flex flex-col gap-4">
-                    <span className="text-3xl font-bold font-delius">IIOSINへようこそ&#128075;、</span>
+                    <span className="text-3xl font-bold font-delius">
+                      IIOSINへようこそ&#128075;、
+                    </span>
 
                     <span className="text-3xl font-bold">
                       まず、ログインしてください

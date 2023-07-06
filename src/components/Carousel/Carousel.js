@@ -69,12 +69,12 @@ const MySwiper = (props) => {
               <img
                 src={item.avatar_url}
                 alt={item.last_name}
-                className="w-full h-[85%] img-maid"
+                className="w-full h-[75%] img-maid"
                 onClick={(e) => handleImageClick(e, item)}
               />
-              {item?.name ? (
+              {item?.last_name ? (
                 <div className="text-center">
-                  <span className="text-2xl font-bold">{item.name}</span>
+                  <span className="text-2xl font-bold">{item.last_name}</span>
                 </div>
               ) : null}
             </div>
@@ -84,7 +84,7 @@ const MySwiper = (props) => {
         <SlideNextButton />
         props?.carouselName ? (
         <div className="absolute bottom-0 left-0 w-full z-10">
-          <div className="flex flex-col items-center text-3xl font-bold mb-2">
+          <div className="flex flex-col items-center text-2xl  mb-2">
             {props.carouselName}
           </div>
         </div>

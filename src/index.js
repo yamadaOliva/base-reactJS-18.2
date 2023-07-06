@@ -12,72 +12,103 @@ import Register from "./components/Register/Register";
 import Homepage from "./components/User/Homepage/Homepage";
 import DetailMaid from "./components/DetailMaid/DetailMaid";
 import LandingPage from "./components/Landing/Landing";
-import UserProfile from "./components/User/Profile/Profile"
+import UserProfile from "./components/User/Profile/Profile";
 import RequestM from "./components/Request/RequestM";
 import MaidHomePage from "./components/MaidHomePage/MaidHomePage";
-import RequestList from "./components/Request/RequestList"
+import RequestList from "./components/Request/RequestList";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import { store, persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 import UserManage from "./components/Admin/UserManage/UserManage";
 import MaidManage from "./components/Admin/MainManage/MaidManage";
 import MaidInforManage from "./components/Admin/MaidInforManage/MaidInforManage";
+// <<<<<<< review-list
+// import UserRequestList from "./components/Request/RequestUser"
+// import ReviewList from "./components/Admin/Reviews/ReviewList"
+// import ReportList from "./components/Admin/Reports/ReportList"
+
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   <Provider store={store}>
+//     <React.StrictMode>
+//       <BrowserRouter>
+//         <Routes>
+//           <Route path="/" element={<App />}>
+//             <Route path="/user" element={<User />}></Route>
+//             <Route path="/admin" element={<Admin />} />
+//             <Route path="/user/home" element={<Homepage />} />
+//             <Route path="/" element={<LandingPage />} />
+//             <Route path="/user/profile" element={<UserProfile />} />
+//             <Route path="/user/request-list" element={<UserRequestList />} />
+
+//           </Route>
+
+//           <Route path="/login" element={<Login />} />
+//           <Route path="/register" element={<Register />} />
+//           <Route path="*" element={<h1>Not Found</h1>} />
+//           <Route path="/test" element={<DetailMaid />} />
+
+//           <Route path="/request" element={<RequestM />} />
+//           {/* <<<<<<< HEAD */}
+
+
+//           <Route path="/usermanage" element={<UserManage />} />
+//           <Route path="/updateinformaid" element={<MaidInforManage />} />
+//           <Route path="/maidmanage" element={<MaidManage />} />
+//           <Route path="/admin/reviews" element={<ReviewList />} />
+//           <Route path="/admin/reports" element={<ReportList />} />
+// =======
+import UserInforManage from "./components/Admin/UserInforManage/UserInforManage";
 import UserRequestList from "./components/Request/RequestUser"
-import ReviewList from "./components/Admin/Reviews/ReviewList"
-import ReportList from "./components/Admin/Reports/ReportList"
-
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route path="/user" element={<User />}></Route>
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/user/home" element={<Homepage />} />
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/user/profile" element={<UserProfile />} />
+    <PersistGate loading={null} persistor={persistor}>
+      <React.StrictMode>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route path="/user" element={<User />}></Route>
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/user/home" element={<Homepage />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/user/profile" element={<UserProfile />} />
+              <Route path="/maid/home" element={<MaidHomePage />} />
+              <Route path="/requestlist" element={<RequestList />} />
+            </Route>
+
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<h1>Not Found</h1>} />
+            <Route path="/test" element={<DetailMaid />} />
+            <Route path="/request" element={<RequestM />} />
+            {/* <<<<<<< HEAD */}
+
+            <Route path="/usermanage" element={<UserManage />} />
+            <Route path="/updateinformaid" element={<MaidInforManage />} />
+            <Route path="/maidmanage" element={<MaidManage />} />
+            <Route path="/updateinforuser" element={<UserInforManage />} />
             <Route path="/user/request-list" element={<UserRequestList />} />
+            {/* ======= */}
 
-          </Route>
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<h1>Not Found</h1>} />
-          <Route path="/test" element={<DetailMaid />} />
-
-          <Route path="/request" element={<RequestM />} />
-          {/* <<<<<<< HEAD */}
-
-
-          <Route path="/usermanage" element={<UserManage />} />
-          <Route path="/updateinformaid" element={<MaidInforManage />} />
-          <Route path="/maidmanage" element={<MaidManage />} />
-          <Route path="/admin/reviews" element={<ReviewList />} />
-          <Route path="/admin/reports" element={<ReportList />} />
-
-
-          {/* ======= */}
-          <Route path="/requestlist" element={<RequestList />} />
-          <Route path="/maid/home" element={<MaidHomePage />} />
-
-          {/* >>>>>>> 45b4828279006f41b32afb4e32b1e5b5bfcdde0a */}
-        </Routes>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </BrowserRouter>
-    </React.StrictMode>
+            {/* >>>>>>> 45b4828279006f41b32afb4e32b1e5b5bfcdde0a */}
+          </Routes>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </BrowserRouter>
+      </React.StrictMode>
+    </PersistGate>
   </Provider>
 );
 

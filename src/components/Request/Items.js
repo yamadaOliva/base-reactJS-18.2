@@ -94,3 +94,12 @@ export const Items3 = [
         cost:"20$"
     }
 ];
+export const convertDateToTMDHM = (date) => {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    const day = d.getDate();
+    const hour = d.getHours();
+    const minute = d.getMinutes();
+    return `${year}年${month}月${day}日 ${hour}時${minute}分`;
+    };
