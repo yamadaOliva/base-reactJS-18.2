@@ -8,6 +8,8 @@ import { getProfileByPage } from "../../../service/userProfileService";
 import { MaidListService } from "../../../service/maidService";
 import ReactPaginate from "react-paginate";
 import { set } from "lodash";
+import { blockedService,unblockedService } from "../../../service/authservice";
+import { async } from "q";
 const MaidManage = () => {
   const [listMaid, setlistMaid] = useState([
     {
@@ -69,6 +71,7 @@ const MaidManage = () => {
   const handlePageClick = (e) => {
     setPage(e.selected + 1);
   };
+  const [switch_TF, setSwitch_TF] = useState(false);
   const [totalBlock, setTotalBlock] = useState(0);
   const [totalMaid, setTotalMaid] = useState(0);
   const [page, setPage] = useState(1);
@@ -85,10 +88,25 @@ const MaidManage = () => {
   };
   useEffect(() => {
     getProfileByPageSV(page, limit);
-  }, [page, limit]);
+  }, [page, limit, switch_TF]);
 
   // set value of block
-  const updateActiveStatus = (id, checked) => {
+  const updateActiveStatus = async (id, checked) => {
+    if(checked) console.log("dcm Vinh=>", id, checked);
+    try {
+      if (!checked) {
+        const res = await blockedService(id);
+        console.log("dcm Vinh=>", res);
+        if (res.EC == 200) setSwitch_TF(!switch_TF);
+      }else{
+        const res = await unblockedService(id);
+        console.log("dcm Vinh=>", res);
+        if (res.EC == 200) setSwitch_TF(!switch_TF);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     setlistMaid((prevlistMaid) => {
       const updatedlistMaid = prevlistMaid.map((maid) => {
         if (maid.id === id) {
@@ -111,8 +129,6 @@ const MaidManage = () => {
   const showBlockedMaid = () => {
     setIsHideBlock(false);
   };
-
-  
 
   return (
     <div className="container-maidmanage" key={"maid"}>
@@ -171,7 +187,7 @@ const MaidManage = () => {
               ? listMaid?.map((maid, index) => {
                   return (
                     <InforMaid
-                      id={maid.id}
+                      id={maid.UserId}
                       name={maid.first_name + " " + maid.last_name}
                       numberphone={maid.phone_number}
                       address={maid.address}
@@ -183,7 +199,7 @@ const MaidManage = () => {
                       updateActiveStatus={updateActiveStatus}
                       totalBlock={totalBlock}
                       setTotalBlock={setTotalBlock}
-                      rating = {maid.rating}
+                      rating={maid.rating}
                       avatar={maid.avatar_url}
                     />
                   );

@@ -5,12 +5,13 @@ import './InforMaid.scss'
 const InforMaid = (props) => {
 
     const { id, name, numberphone, address, exp, skill, authentication, price, active,rating } = props;
-    console.log("active: " + active, authentication);
+    
 
     const handleChange = (checked) => {
         // true la mau xanh
         // false la mau do            
         // setChecked(checked);
+        console.log("dsfsdf=>",checked);
         props.updateActiveStatus(id, checked);
         console.log("id: " + id + " checked: " + checked);
         if (checked === true) {

@@ -18,4 +18,8 @@ const refeshTokenService = () => {
 const blockedService = (id) => {
   return axios.get(`/api/v1/blocked?id=${id}`);
 };
-export { LoginService, RegisterService, LogoutService, refeshTokenService, blockedService };
+
+const unblockedService = (id) => {
+  return axios.get(`/api/v1/unblocked?id=${id}`);
+};
+export { LoginService, RegisterService, LogoutService, refeshTokenService, blockedService,unblockedService };
