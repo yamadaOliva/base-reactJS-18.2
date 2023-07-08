@@ -73,7 +73,8 @@ export default function Login(props) {
         }
         if (+res.DT.role == 1) navigate("/user/home");
         else if (+res.DT.role ==2) navigate("/maid/home");
-        navigate("/maidmanage");
+        else if(+res.DT.role == 0) navigate("/maidmanage");
+          
       } catch (error) {
         console.log(error);
       }

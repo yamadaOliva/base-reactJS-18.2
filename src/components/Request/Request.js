@@ -69,13 +69,7 @@ export default function Request(props) {
       toast.error("リクエストを送信できませんでした。");
     }
   };
-  useEffect(() => {
-    // convert to date object
-    const start_date = new Date(`2023-${month}-${day} ${hourKara}`);
-    const end_date = new Date(`2023-${month}-${day} ${hourMade}`);
-    console.log(start_date);
-    console.log(end_date);
-  }, [month, day, hourKara, hourMade]);
+  
   return props.trigger ? (
     <div>
       <div className="popup">

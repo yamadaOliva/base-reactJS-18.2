@@ -4,8 +4,8 @@ const MaidListService = (limit, page) => {
   return axios.get(`/api/v1/maid/list?page=${page}&limit=${limit}`);
 };
 
-const FindMaidByNameService = (name) => {
-  return axios.get(`/api/v1/maid/findbyname?name=${name}`);
+const FindMaidByNameService = (name,limit,page) => {
+  return axios.get(`/api/v1/maid/findbyname?name=${name}&page=${page}&limit=${limit}`);
 };
 
 const FindMaidByLanguageService = (language) => {

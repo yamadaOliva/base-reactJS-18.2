@@ -10,10 +10,9 @@ import "./MaidList.scss";
 import { MaidDetail } from "../MaidList/MaidDetail";
 import ReactPaginate from "react-paginate";
 import socketIOClient from "socket.io-client";
+import { toast } from "react-toastify";
 export default function MaidList() {
-  useEffect(() => {
-    const socket = socketIOClient.connect("http://localhost:8000");
-  }, []);
+  const [isSearch, setIsSearch] = useState(false);
   const [request, setRequest] = useState(false);
   const handleCloseRequest = () => {
     setRequest(false);
@@ -22,7 +21,7 @@ export default function MaidList() {
     setCurrentMaid(maid);
     setRequest(true);
   };
-  
+
   const [maidList, setMaidList] = useState([]);
   const [nameSearch, setNameSearch] = useState("");
   const [isShowModal, setIsShowModal] = useState(false);
@@ -71,6 +70,11 @@ export default function MaidList() {
       language: "",
     },
   };
+  const totalPageZeroCase = () => {
+    if (totalPage === 0) {
+      toast.error("まだメイドさんがいません。");
+    }
+  };
   const [filterField, setFilterField] = useState(defaultFilterField);
   const [isFilter, setIsFilter] = useState(defaulIsFilter); //[{}
   const getMaidList = async () => {
@@ -82,7 +86,11 @@ export default function MaidList() {
     setPage(e.selected + 1);
   };
   useEffect(() => {
-    getMaidList();
+    if (isSearch) {
+      findMaidByName(nameSearch, limit, page);
+    } else {
+      getMaidList();
+    }
   }, [page]);
   useEffect(() => {
     console.log(currentMaid);
@@ -112,8 +120,11 @@ export default function MaidList() {
   }, [isFilter, experienceValue, priceValue, ratingValue, language_name]);
 
   const findMaidByName = async (name) => {
-    const res = await FindMaidByNameService(name);
-    setMaidList(res.DT);
+    const res = await FindMaidByNameService(name, limit, page);
+    setIsSearch(true);
+    setTotalPage(res.DT.totalPage);
+    totalPageZeroCase();
+    setMaidList(res.DT.maidList);
   };
   const handleModal = () => {
     setIsShowModal(true);
@@ -126,34 +137,33 @@ export default function MaidList() {
     handleModal();
     setCurrentMaid(maid);
   };
-  const handleFilterService = async () => {
-    console.log(filterField);
-    if (
-      !filterField.experience.on &&
-      !filterField.price.on &&
-      !filterField.rating.on &&
-      !filterField.language.on
-    ) {
-      const res = await MaidListService(limit, page);
-      setMaidList(res.DT.maidList);
-      return;
-    }
-    const res = await filterMaidList(filterField);
-    setMaidList(res.DT);
-  };
+
   const handleFilter = (e) => {
     const { value, checked } = e.target;
     const newIsFilter = { ...isFilter, [value]: checked };
     setIsFilter(newIsFilter);
   };
-
+  useEffect(() => {
+    if (isFilter.ratingDecrease)
+      setIsFilter({ ...isFilter, ratingIncrease: false });
+  }, [isFilter.ratingDecrease]);
+  useEffect(() => {
+    if (isFilter.ratingIncrease)
+      setIsFilter({ ...isFilter, ratingDecrease: false });
+  }, [isFilter.ratingIncrease]);
   return (
     <>
       <div id="maid-container" className="h-full">
         <div className="flex w-full justify-center z-50">
           <div className="fixed text-black text-[20px] z-50 top-[7.5px]  w-[400px] rounded-3xl bg-white h-[57.5px]">
             <div className="flex flex-row items-center h-full w-full px-4">
-              <label htmlFor="search-input" className="font-bold">
+              <label
+                htmlFor="search-input"
+                className="font-bold"
+                onClick={() => {
+                  findMaidByName(nameSearch);
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -190,40 +200,6 @@ export default function MaidList() {
             </div>
             <div className="h-[31%] border-b-[3px] border-black w-full">
               <div className="flex flex-col mt-5 items-center h-full w-full font-bold text-[30px] gap-4">
-                <div className="flex flex-row w-8/12 items-center">
-                  <div className="w-2/12">
-                    <div className="bg-[#D9D9D9] w-[24px] h-[24px]">
-                      <label htmlFor="nearest" className="text-black">
-                        {isFilter.nearest ? (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M4.5 12.75l6 6 9-13.5"
-                            />
-                          </svg>
-                        ) : null}
-                        <input
-                          id="nearest"
-                          type="checkbox"
-                          className="invisible"
-                          value="nearest"
-                          onChange={handleFilter}
-                        />
-                      </label>
-                    </div>
-                  </div>
-                  <div className="grow">
-                    <label htmlFor="nearest">最も近所</label>
-                  </div>
-                </div>
                 <div className="flex flex-row w-8/12 items-center">
                   <div className="w-2/12">
                     <div className="bg-[#D9D9D9] w-[24px] h-[24px]">
@@ -506,7 +482,7 @@ export default function MaidList() {
                       trigger={request}
                       setTrigger={handleCloseRequest}
                       maidId={currentMaid.UserId}
-                      price = {currentMaid.price_per_hour}
+                      price={currentMaid.price_per_hour}
                     ></Request>
                   </div>
                 );
