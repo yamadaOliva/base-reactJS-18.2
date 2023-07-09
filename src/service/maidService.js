@@ -16,11 +16,13 @@ const FindMaidByIdService = (id) => {
   return axios.get(`/api/v1/maid/findbyid?id=${id}`);
 };
 // param
-const filterMaidList = (filterField) => {
-  console.log("axios ==>", filterField);
+const filterMaidList = (filterField,page,limit) => {
+  console.log("axios ==>", filterField,page,limit);
   return axios.get(`/api/v1/maid/filter`, {
     params: {
       filterField : filterField,
+      page : page,
+      limit : limit
     },
   });
 };

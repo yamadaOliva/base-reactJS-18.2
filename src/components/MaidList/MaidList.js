@@ -14,6 +14,15 @@ import { toast } from "react-toastify";
 export default function MaidList() {
   const [isSearch, setIsSearch] = useState(false);
   const [request, setRequest] = useState(false);
+  const [currentMaid, setCurrentMaid] = useState({}); //[{}
+  const [maidList, setMaidList] = useState([]);
+  const [nameSearch, setNameSearch] = useState("");
+  const [isShowModal, setIsShowModal] = useState(false);
+  const [filting, setFilting] = useState(false);
+  const [page, setPage] = useState(1);
+  const limit = 6;
+  const [totalPage, setTotalPage] = useState(1);
+  const [language_name, setLanguage_name] = useState("none");
   const handleCloseRequest = () => {
     setRequest(false);
   };
@@ -22,61 +31,23 @@ export default function MaidList() {
     setRequest(true);
   };
 
-  const [maidList, setMaidList] = useState([]);
-  const [nameSearch, setNameSearch] = useState("");
-  const [isShowModal, setIsShowModal] = useState(false);
-  const [currentMaid, setCurrentMaid] = useState({}); //[{}
-  const [page, setPage] = useState(1);
-  const limit = 6;
-  const [totalPage, setTotalPage] = useState(1);
-  const [language_name, setLanguage_name] = useState("");
-  const [experienceValue, setExperienceValue] = useState({
-    min: 0,
-    max: 0,
-  });
-  const [priceValue, setPriceValue] = useState({
-    min: 0,
-    max: 0,
-  });
-  const [ratingValue, setRatingValue] = useState({
-    min: 0,
-    max: 0,
-  });
-
-  const defaulIsFilter = {
-    experience: false,
-    price: false,
-    rating: false,
-    language: false,
-  };
-  const defaultFilterField = {
-    experience: {
-      on: false,
-      min: 0,
-      max: 0,
-    },
-    price: {
-      on: false,
-      min: 0,
-      max: 0,
-    },
-    rating: {
-      on: false,
-      min: 0,
-      max: 0,
-    },
-    language: {
-      on: false,
-      language: "",
-    },
-  };
   const totalPageZeroCase = () => {
     if (totalPage === 0) {
       toast.error("まだメイドさんがいません。");
     }
   };
-  const [filterField, setFilterField] = useState(defaultFilterField);
-  const [isFilter, setIsFilter] = useState(defaulIsFilter); //[{}
+  const defaultFilter = {
+    electrical: false,
+    food: false,
+    care: false,
+    ratingIncrease: false,
+    ratingDecrease: false,
+    language: {
+      status: false,
+      language_name: "none",
+    },
+  };
+  const [isFilter, setIsFilter] = useState(defaultFilter); //[{}
   const getMaidList = async () => {
     const res = await MaidListService(limit, page);
     setMaidList(res.DT.maidList);
@@ -88,6 +59,8 @@ export default function MaidList() {
   useEffect(() => {
     if (isSearch) {
       findMaidByName(nameSearch, limit, page);
+    } else if (filting) {
+      filterMaid();
     } else {
       getMaidList();
     }
@@ -95,32 +68,9 @@ export default function MaidList() {
   useEffect(() => {
     console.log(currentMaid);
   }, [currentMaid]);
-  useEffect(() => {
-    setFilterField({
-      experience: {
-        on: isFilter.experience,
-        min: experienceValue.min,
-        max: experienceValue.max,
-      },
-      price: {
-        on: isFilter.price,
-        min: priceValue.min,
-        max: priceValue.max,
-      },
-      rating: {
-        on: isFilter.rating,
-        min: ratingValue.min,
-        max: ratingValue.max,
-      },
-      language: {
-        on: isFilter.language,
-        language: language_name,
-      },
-    });
-  }, [isFilter, experienceValue, priceValue, ratingValue, language_name]);
-
   const findMaidByName = async (name) => {
     const res = await FindMaidByNameService(name, limit, page);
+    setFilting(false);
     setIsSearch(true);
     setTotalPage(res.DT.totalPage);
     totalPageZeroCase();
@@ -151,6 +101,46 @@ export default function MaidList() {
     if (isFilter.ratingIncrease)
       setIsFilter({ ...isFilter, ratingDecrease: false });
   }, [isFilter.ratingIncrease]);
+
+  const filterMaid = async () => {
+    try {
+      const res = await filterMaidList(isFilter, page, limit);
+      console.log(res);
+      setMaidList(res.DT.maidList);
+      setTotalPage(res.DT.totalPage);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    if (
+      isFilter.language.status ||
+      isFilter.ratingDecrease ||
+      isFilter.ratingIncrease ||
+      isFilter.care ||
+      isFilter.food ||
+      isFilter.electrical
+    ) {
+      setPage(2);
+      setPage(1);
+      console.log(isFilter);
+      setFilting(true);
+      if(isSearch) {
+        setIsSearch(false);
+        setNameSearch("");
+      }
+      filterMaid();
+    }else{
+      setFilting(false);
+      getMaidList();
+    }
+  }, [isFilter]);
+  useEffect(() => {
+    if (language_name != "none")
+      setIsFilter({ ...isFilter, language: { status: true, language_name } });
+    else
+      setIsFilter({ ...isFilter, language: { status: false, language_name } });
+  }, [language_name]);
   return (
     <>
       <div id="maid-container" className="h-full">
@@ -185,6 +175,7 @@ export default function MaidList() {
                   type="text"
                   placeholder="検索"
                   className="w-full h-full px-2 outline-none rounded-xl placeholder-black text-black text-[30px] font-bold"
+                  value={nameSearch}
                   onChange={(e) => {
                     setNameSearch(e.target.value);
                   }}
@@ -441,10 +432,11 @@ export default function MaidList() {
                     onChange={(e) => setLanguage_name(e.target.value)}
                     className="py-[10px] pl-[10px] pr-[90px] text-[30px] bg-gray-200 mt-4 font-bold"
                   >
+                    <option value="none">無し</option>
                     <option value="English">英語</option>
                     <option value="Vietnamese">ベトナム語</option>
                     <option value="Chinese">中国語</option>
-                    <option defaultValue="Japanese">日本語</option>
+                    <option value="Japanese">日本語</option>
                     <option value="Korean">韓国語</option>
                     <option value="French">フランス語</option>
                     <option value="German">ドイツ語</option>
@@ -489,12 +481,12 @@ export default function MaidList() {
               })}
             </div>
             <ReactPaginate
-              nextLabel="next >"
+              nextLabel="次 >"
               onPageChange={handlePageClick}
               pageRangeDisplayed={2}
               marginPagesDisplayed={2}
               pageCount={totalPage}
-              previousLabel="< previous"
+              previousLabel="< 前"
               pageClassName="page-item"
               pageLinkClassName="page-link"
               previousClassName="page-item"

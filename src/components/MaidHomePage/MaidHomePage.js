@@ -6,6 +6,10 @@ import { useSelector } from "react-redux";
 import { getAverageRatingService } from "../../service/requestService";
 import "./MaidHomePage.scss";
 import ShowReview from "../ReviewComponent/ShowReview/ShowReview";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import RequestDoneList from "../Request/RequestDoneList";
+import Request3 from "../Request/Request3";
 require("dayjs/locale/ja");
 
 dayjs.locale("ja");
@@ -15,13 +19,17 @@ const weekDays = ["月", "火", "水", "木", "金", "土", "日"];
 const todayObj = dayjs();
 
 const Calendar = () => {
+  const navigate = useNavigate();
   const [isShowReview, setIsShowReview] = useState(false);
-  const [dayJSObj, setDayJSObj] = useState([dayjs()]);
   const [isReview, setIsReview] = useState(false);
   const [avgRating, setAvgRating] = useState(0);
   const [request, setRequest] = useState([]);
   const [requestInMonth, setRequestInMonth] = useState([]);
   const [requestDayInMonth, setRequestDayInMonth] = useState([]);
+  const [trigger1, setTrigger1] = useState(false);
+  const [trigger2, setTrigger2] = useState(false);
+  const [trigger3, setTrigger3] = useState(false);
+  const [currentRequest, setCurrentRequest] = useState({}); //[0
   const user = useSelector((state) => state.user);
   const getAverageRating = async () => {
     try {
@@ -35,29 +43,40 @@ const Calendar = () => {
       console.log("error", error);
     }
   };
-
+  const handleRequestDay = (day) => {
+    if(requestDayInMonth.includes(day)){
+      setCurrentRequest(request.find(rq =>{
+        if(dayjs(rq.start_date).date() == day&& dayjs(rq.start_date).month() + 1 == dayObj.month() + 1){
+          return rq;
+        }
+      }));
+      setTrigger3(true);
+    }
+  }
+  useEffect(() => {
+    console.log("currentRequest", currentRequest);
+  }, [currentRequest]);
   useEffect(() => {
     getAverageRating();
   }, []);
 
-  const rqInMonth = () => {
-    const currentMonth = dayjs().month() + 1;
+  const rqInMonth = (month) => {
+    const currentMonth = month;
     console.log("currentMonth", currentMonth);
-    setRequestInMonth(
-      request.filter((rq) => {
-        console.log("rq", dayjs(rq.start_date).month());
-        return dayjs(rq.start_date).month() + 1 == currentMonth;
-      })
-    );
+    let ptr = request.filter((rq) => {
+      console.log("rq", dayjs(rq.start_date).month() + 1);
+      return dayjs(rq.start_date).month() + 1 == currentMonth;
+    });
+    setRequestInMonth(ptr);
     setRequestDayInMonth(
-      requestInMonth.map((rq) => {
+      ptr.map((rq) => {
         return dayjs(rq.start_date).date();
       })
     );
     //setDayJSObj(request.map((rq) => dayjs(rq.start_date)));
   };
   useEffect(() => {
-    rqInMonth();
+    rqInMonth(dayObj.month());
   }, [request]);
   const handleShowReview = () => {
     //event.preventDefault();
@@ -86,7 +105,12 @@ const Calendar = () => {
   const handleNext = () => {
     setDayObj(dayObj.add(1, "month"));
   };
-
+  useEffect(() => {
+    console.log(dayObj.format("YYYY-MM-DD"));
+    let getMonth = dayObj.get("month") + 1;
+    console.log("getMonth", getMonth);
+    rqInMonth(getMonth);
+  }, [dayObj]);
   return (
     <div className="maidhome">
       <div className="left-bib">
@@ -111,7 +135,14 @@ const Calendar = () => {
           </div>
           <FiCircle className="edit-size-icon" />
         </div>
-        <div className="below-icon-title">今月の完了したリクエスト</div>
+        <div
+          className="below-icon-title"
+          onClick={() => {
+            setTrigger1(true);
+          }}
+        >
+          今月の完了したリクエスト
+        </div>
         <div className="complate-rq-icon">
           <div className="icon-inner">
             <div className="icon-inner-box">
@@ -120,7 +151,12 @@ const Calendar = () => {
           </div>
           <FiCircle className="edit-size-icon" />
         </div>
-        <div className="below-icon-title">
+        <div
+          className="below-icon-title"
+          onClick={() => {
+            setTrigger2(true);
+          }}
+        >
           完了したリクエストの総数
           <br />
           （アプリを使い始めてから）
@@ -170,6 +206,7 @@ const Calendar = () => {
                     : ""
                 }`}
                 key={i}
+                onClick={() => {handleRequestDay(i + 1)}}
               >
                 {i + 1}
               </button>
@@ -190,6 +227,23 @@ const Calendar = () => {
         maidName={user.username}
         setIsReview={setIsReview}
         isReview={isReview}
+      />
+      <RequestDoneList
+        trigger={trigger1}
+        setTrigger={setTrigger1}
+        list={requestInMonth}
+      />
+      <RequestDoneList
+        trigger={trigger2}
+        setTrigger={setTrigger2}
+        list={request}
+      />
+      <Request3
+        trigger={trigger3}
+        setTrigger={setTrigger3}
+        doneList={request}
+        setDoneList={setRequest}
+        request={currentRequest}
       />
     </div>
   );
