@@ -8,11 +8,16 @@ import ShowReview from "../ReviewComponent/ShowReview/ShowReview";
 import { CheckReviewService } from "../../service/reviewService";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import  ReportModal  from "./ReportModal";
 const MaidDetail = (props) => {
   const user = useSelector((state) => state.user);
   const [id, setId] = useState(0);
   const [isCreateReview, setIsCreateReview] = useState(false);
   const [isReview, setIsReview] = useState(false);
+  const [isShowModal, setIsShowModal] = useState(false);
+  const handleCloseModal = () => {
+    setIsShowModal(false);
+  };
   const handleCreateReview = async (event) => {
     event.preventDefault();
     try {
@@ -56,15 +61,27 @@ const MaidDetail = (props) => {
         <Modal
           show={props.show}
           onHide={props.handleClose}
-          className="modal-custom"
+          className={
+            `modal-custom ${isShowModal ? "opacity-0" : "opacity-100"}` 
+          }
         >
-          <Modal.Header closeButton>
+          {/* <Modal.Header closeButton>
             <Modal.Title>MaidProfile</Modal.Title>
-          </Modal.Header>
+          </Modal.Header> */}
           <Modal.Body>
             <div className="container-detailMaid">
               <div className="infor-container">
-                <div className="btn-report">報告</div>
+                <ReportModal 
+                  isShowModal={isShowModal}
+                  handleCloseModal={handleCloseModal}
+                  // data={dataRaw}
+                />
+                <div className="btn-report" onClick={
+                  () => {
+                    setIsShowModal(true);
+                  }
+                }
+                 >報告</div>
                 <div className="table-detail">
                   <form>
                     <h2 className="title-content ">メイドプロフィール</h2>
