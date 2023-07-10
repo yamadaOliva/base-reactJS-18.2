@@ -9,7 +9,7 @@ export default function Register(props) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [role, setRole] = useState(0);
+  const [role, setRole] = useState(1);
   const [name, setName] = useState("");
   const [isRobot, setIsRobot] = useState(false);
   const [doPolicyAgree, setDoPolicyAgree] = useState(false);
