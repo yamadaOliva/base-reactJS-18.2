@@ -69,7 +69,7 @@ const InforUser = (props) => {
                 <div className="infor-user__rate__title">キャンセル率</div>
             </div>
             <div className="infor-user__view_detail">
-                <FaEye size={50} className='icon-eye' />
+                <FaEye size={50} className='icon-eye-admin' />
             </div>
         </div>
 
