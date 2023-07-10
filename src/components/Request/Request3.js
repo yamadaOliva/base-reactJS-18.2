@@ -39,30 +39,30 @@ export default function Request3(props) {
           <div className="left-part">
             <div className="name-box">
               <div>Client name</div>
-              <div>{props.request.User.username}</div>
+              <div>{props.request?.User.username}</div>
             </div>
             <div className="address-box">
-              <div>Client Address:{props.request.address}</div>
+              <div>Client Address:{props.request?.address}</div>
             </div>
           </div>
           <div className="right-part">
-            <div className="rq-number">Request No.{props.request.id}</div>
+            <div className="rq-number">Request No.{props.request?.id}</div>
           </div>
         </div>
         <div className="boxx">
           <div className="from-box">
             <div>From</div>
-            <div>{convertDateToTMDHM(props.request.start_date)}</div>
+            <div>{convertDateToTMDHM(props.request?.start_date)}</div>
           </div>
           <div className="to-box">
             <div>To</div>
-            <div>{convertDateToTMDHM(props.request.end_date)}</div>
+            <div>{convertDateToTMDHM(props.request?.end_date)}</div>
           </div>
         </div>
         <div className="boxx">
-          <div className="price-box">Price:{props.request.price}</div>
+          <div className="price-box">Price:{props.request?.price}</div>
           <div className="note-box">
-            <div>Note:{props.request.note ? props.request.note : "none"}</div>
+            <div>Note:{props.request?.note ? props.request?.note : "none"}</div>
           </div>
         </div>
         <div className="bntt">

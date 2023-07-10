@@ -61,7 +61,7 @@ const Calendar = () => {
   }, []);
 
   const rqInMonth = (month) => {
-    const currentMonth = month;
+    const currentMonth = month+1;
     console.log("currentMonth", currentMonth);
     let ptr = request.filter((rq) => {
       console.log("rq", dayjs(rq.start_date).month() + 1);
@@ -76,7 +76,7 @@ const Calendar = () => {
     //setDayJSObj(request.map((rq) => dayjs(rq.start_date)));
   };
   useEffect(() => {
-    rqInMonth(dayObj.month());
+    rqInMonth(dayObj.month()+1);
   }, [request]);
   const handleShowReview = () => {
     //event.preventDefault();
@@ -107,7 +107,7 @@ const Calendar = () => {
   };
   useEffect(() => {
     console.log(dayObj.format("YYYY-MM-DD"));
-    let getMonth = dayObj.get("month") + 1;
+    let getMonth = dayObj.get("month");
     console.log("getMonth", getMonth);
     rqInMonth(getMonth);
   }, [dayObj]);

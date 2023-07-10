@@ -31,11 +31,23 @@ const requestMaid = (request) =>{
   console.log("axios ==>", request);
   return axios.post(`/api/v1/maid/request/create`, request);
 }
+
+const createMaid = (data) => {
+  console.log("axios ==>", data);
+  return axios.post(`/api/v1/maid/create`, data);
+};
+
+const updateMaid = (data) => {
+  console.log("axios ==>", data);
+  return axios.post(`/api/v1/maid/update`, data);
+};
 export {
   MaidListService,
   FindMaidByNameService,
   FindMaidByLanguageService,
   FindMaidByIdService,
   filterMaidList,
-  requestMaid
+  requestMaid,
+  createMaid,
+  updateMaid
 };

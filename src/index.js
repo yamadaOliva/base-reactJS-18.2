@@ -40,12 +40,13 @@ root.render(
               <Route path="/user/profile" element={<UserProfile />} />
               <Route path="/maid/home" element={<MaidHomePage />} />
               <Route path="/requestlist" element={<RequestList />} />
+              <Route path="/test" element={<DetailMaid />} />
             </Route>
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<h1>Not Found</h1>} />
-            <Route path="/test" element={<DetailMaid />} />
+           
 
             <Route path="/request" element={<RequestM />} />
             {/* <<<<<<< HEAD */}
