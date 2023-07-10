@@ -89,7 +89,7 @@ const InforMaid = (props) => {
             </div>
             <div className="infor-maid__view__detal__evaluation">
                 <div className="infor-maid__view_detail">
-                    <FaEye size={30} className='icon-eye' />
+                    <FaEye size={30} className='icon-eye-admin' />
                 </div>
                 <div className="infor-maid__evaluation">
                     <div className="infor-maid__evaluation__value">{rating}</div>
