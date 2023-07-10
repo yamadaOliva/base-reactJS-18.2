@@ -25,6 +25,8 @@ import MaidInforManage from "./components/Admin/MaidInforManage/MaidInforManage"
 import UserInforManage from "./components/Admin/UserInforManage/UserInforManage";
 import UserRequestList from "./components/Request/RequestUser"
 import RequestDoneList from "./components/Request/RequestDoneList";
+import ReviewList from "./components/Admin/ReviewList/ReviewList";
+import ReportList from "./components/Admin/Reports/ReportList"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
@@ -58,7 +60,8 @@ root.render(
             <Route path="/user/request-list" element={<UserRequestList />} />
             <Route path="/request-done-list" element={<RequestDoneList />} />
             {/* ======= */}
-
+            <Route path="/admin/reviews" element={<ReviewList />} />
+            <Route path="/admin/reports" element={<ReportList />} />
             {/* >>>>>>> 45b4828279006f41b32afb4e32b1e5b5bfcdde0a */}
           </Routes>
           <ToastContainer

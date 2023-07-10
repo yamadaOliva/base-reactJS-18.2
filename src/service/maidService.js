@@ -41,6 +41,15 @@ const updateMaid = (data) => {
   console.log("axios ==>", data);
   return axios.post(`/api/v1/maid/update`, data);
 };
+
+const getMaidByPrice = (page,limit) => {
+  return axios.get(`/api/v1/maid/price?page=${page}&limit=${limit}`);
+};
+
+const getMaidByRating = (page,limit) => {
+  return axios.get(`/api/v1/maid/rating?page=${page}&limit=${limit}`);
+};
+  
 export {
   MaidListService,
   FindMaidByNameService,
@@ -49,5 +58,7 @@ export {
   filterMaidList,
   requestMaid,
   createMaid,
-  updateMaid
+  updateMaid,
+  getMaidByPrice,
+  getMaidByRating
 };

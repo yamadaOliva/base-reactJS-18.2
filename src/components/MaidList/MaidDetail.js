@@ -13,7 +13,6 @@ const MaidDetail = (props) => {
   const [id, setId] = useState(0);
   const [isCreateReview, setIsCreateReview] = useState(false);
   const [isReview, setIsReview] = useState(false);
-  const [language_name, setLanguage_name] = useState("");
   const handleCreateReview = async (event) => {
     event.preventDefault();
     try {
@@ -50,13 +49,6 @@ const MaidDetail = (props) => {
     setId(props.maid.id);
     setDataRaw(props.maid);
     console.log("=>>", props.maid);
-    let ptr = "";
-    dataRaw.Languages.forEach((element) => {
-      ptr = ptr + element.language_name + ", ";
-    });
-    //delete last comma
-    ptr = ptr.substring(0, ptr.length - 2);
-    setLanguage_name(ptr);
   }, [props.maid]);
   return (
     <>
@@ -171,15 +163,16 @@ const MaidDetail = (props) => {
                       </div>
                       <div className="form-group ">
                         <label>言語</label>
-                        
+                        {(dataRaw.Languages || []).map((item) => {
+                          return (
                             <input
                               type="text"
                               className="form-control"
                               disabled
-                              value={language_name}
+                              value={item.language_name}
                             />
-                          
-                        
+                          );
+                        })}
                       </div>
                       <div className="btn-submit ">
                         <button

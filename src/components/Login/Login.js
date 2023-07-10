@@ -67,9 +67,10 @@ export default function Login(props) {
           address: res.DT.address,
         };
         dispatch(setUser(payload));
-        if(res.DT.active == 2){
+        if(res.DT.active == 0){
           toast.error("アカウントがブロックされました。");
           refeshDataInput();
+          return;
         }
         if (+res.DT.role == 1) navigate("/user/home");
         else if (+res.DT.role ==2) navigate("/maid/home");
