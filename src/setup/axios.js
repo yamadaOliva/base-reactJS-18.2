@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 const instance = axios.create({
-    baseURL: 'http://localhost:8000'
+    baseURL: 'https://iioshin.kien2572001.tech/'
 });
 instance.defaults.withCredentials = true;
 // instance.interceptors.request.use(function (config) {
