@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { requestMaid } from "../../service/maidService";
 import socketIOClient from "socket.io-client";
-const host = "http://localhost:8000";
+const host = "https://iioshin.kien2572001.tech";
 export default function Request(props) {
   const [id, setId] = useState();
   const socketRef = useRef();

@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import { getReQuestService } from "../../service/requestService";
 import { set } from "lodash";
 import socketIOClient from "socket.io-client";
-const host = "http://localhost:8000";
+const host = "https://iioshin.kien2572001.tech";
 function RequestList() {
   const [switch_TF, setSwitch_TF] = useState(true);
   const socketRef = useRef();
