@@ -1,4 +1,4 @@
-.popup{
+.popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -14,16 +14,16 @@
 .popup-inner {
     position: relative;
     padding: 32px;
-    top:20px;
+    top: 20px;
     width: 65%;
-    
+
     background-color: #fff;
     border-radius: 0.7rem;
     border-width: thin;
     border-color: black;
 }
 
-.title-rq{
+.title-rq {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,9 +31,10 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
-.title-cancel{
+
+.title-cancel {
     display: flex;
-    
+
     align-items: center;
     height: 5%;
     font-size: 1.5rem;
@@ -57,6 +58,7 @@
     border-radius: 1.375rem !important;
     height: fit-content;
 }
+
 .form-control-date {
     border-color: black;
     border-width: medium;
@@ -64,8 +66,9 @@
     width: 1.9cm;
     height: fit-content;
 }
-.cancel-form-control{
-    
+
+.cancel-form-control {
+
     opacity: 0.5;
     padding-top: 10px;
     padding-left: 10px;
@@ -84,11 +87,12 @@
     top: 20px;
     right: 16px;
     font-size: 25px;
-    background-color: rgb(224,224,224);
-  }
-  .cancel-btn{
-    background-color: rgb(255,0,0);
-    border-radius: 0.8rem ;
+    background-color: rgb(224, 224, 224);
+}
+
+.cancel-btn {
+    background-color: rgb(255, 0, 0);
+    border-radius: 0.8rem;
     width: 3.3cm;
     height: 1.2cm;
     font-weight: bold;
@@ -97,11 +101,12 @@
     bottom: -0.4cm;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
-  }
-  .cancel-btn2{
-    background-color: rgb(255,0,0);
-    border-radius: 0.8rem ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-btn2 {
+    background-color: rgb(255, 0, 0);
+    border-radius: 0.8rem;
     width: fit-content;
     height: 1.2cm;
     font-weight: bold;
@@ -110,11 +115,12 @@
     bottom: -0.4cm;
     left: 57%;
     transform: translate(-50%, -50%);
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
-  }
-  .request-btn{
-    background-color: rgb(0,255,209);
-    border-radius: 0.8rem ;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.request-btn {
+    background-color: rgb(0, 255, 209);
+    border-radius: 0.8rem;
     width: fit-content;
     height: 1.2cm;
     font-weight: bold;
@@ -123,5 +129,12 @@
     bottom: -0.4cm;
     left: 40%;
     transform: translate(-50%, -50%);
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3); 
-  }
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.pb-add {
+    width: 100% !important;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}

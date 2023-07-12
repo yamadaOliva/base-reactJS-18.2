@@ -1,7 +1,7 @@
 import React from "react";
 import "./Request.css";
 import { GrFormClose } from "react-icons/gr";
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { requestMaid } from "../../service/maidService";
@@ -73,7 +73,7 @@ export default function Request(props) {
       toast.error("リクエストを送信できませんでした。");
     }
   };
-  
+
   return props.trigger ? (
     <div>
       <div className="popup">
@@ -86,7 +86,7 @@ export default function Request(props) {
             <div className="flex-1 text-gray-700 p-15">
               <div className="title-rq">新しいリクエスト</div>
               <div className="form-row">
-                {}
+                { }
                 <div className="pb-4">
                   <label className="block text-sm pb-1" htmlFor="name">
                     クライアント名：
@@ -99,7 +99,7 @@ export default function Request(props) {
                     disabled
                   />
                 </div>
-                {}
+                { }
                 <div className="pb-4">
                   <label className="block text-sm pb-1" htmlFor="address">
                     ユーザー住所：
@@ -112,15 +112,15 @@ export default function Request(props) {
                     value={address}
                   />
                 </div>
-                {}
-                <div className="pb-4">
+                { }
+                <div className="pb-4 pb-add">
                   <label className="block text-sm pb-1" htmlFor="date">
                     日付：
                   </label>
                   <select className="form-control-date">
                     <option className="form-control-date">2023</option>
                   </select>
-                  年
+                  <span> 年</span>
                   <select
                     className="form-control-date"
                     onChange={(e) => setMonth(e.target.value)}
@@ -138,32 +138,32 @@ export default function Request(props) {
                     <option>11</option>
                     <option>12</option>
                   </select>
-                  月
+                  <span>月 </span>
                   <select
                     className="form-control-date"
                     onChange={(e) => setDay(e.target.value)}
                   >
                     {month == 2
                       ? daysOfMonths
-                          .slice(0, 28)
-                          .map((day) => <option>{day}</option>)
+                        .slice(0, 28)
+                        .map((day) => <option>{day}</option>)
                       : null}
                     {month == 4 || month == 6 || month == 9 || month == 11
                       ? daysOfMonths
-                          .slice(0, 30)
-                          .map((day) => <option>{day}</option>)
+                        .slice(0, 30)
+                        .map((day) => <option>{day}</option>)
                       : null}
                     {month == 1 ||
-                    month == 3 ||
-                    month == 5 ||
-                    month == 7 ||
-                    month == 8 ||
-                    month == 10 ||
-                    month == 12
+                      month == 3 ||
+                      month == 5 ||
+                      month == 7 ||
+                      month == 8 ||
+                      month == 10 ||
+                      month == 12
                       ? daysOfMonths.map((day) => <option>{day}</option>)
                       : null}
                   </select>
-                  日
+                  <span> 日 </span>
                 </div>
                 <input
                   className="form-control-date"
@@ -172,7 +172,7 @@ export default function Request(props) {
                   pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
                   onChange={(e) => setHourKara(e.target.value)}
                 />{" "}
-                から
+                <span> から </span>
                 <input
                   className="form-control-date"
                   type="text"
@@ -184,9 +184,9 @@ export default function Request(props) {
                 <div className="infor-addtion">
                   <div className="btn-salary">
                     <br></br>
-                    <hihi>{props.price}</hihi>
+                    <hihi>{props.price}$</hihi>
                   </div>
-                  {}
+                  { }
                   <div className="pb-4">
                     <br></br>
                     <div>
