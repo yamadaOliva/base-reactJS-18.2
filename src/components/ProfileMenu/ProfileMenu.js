@@ -126,7 +126,7 @@ function ProfileMenu(props) {
             <Bar className="w-7 h-7" />
           </Button>
         </MenuHandler>
-        <MenuList className="p-1 w-[200px] z-50 bg-[#00FBCD] rounded">
+        <MenuList className="p-1 w-[240px] z-50 bg-[#00FBCD] rounded">
           {menu.map(({ label, icon }, key) => {
             const isLastItem = key === menu.length - 1;
             return (
