@@ -301,7 +301,7 @@ export default function DetailMaid() {
               <div className="evaluation-title">評価</div>
             </div>
 
-            <div className="btn-cancle-rate">
+            {/* <div className="btn-cancle-rate">
               <div className="cancle-rate-title">
                 リクエスト <br />
                 キャンセル率
@@ -309,7 +309,7 @@ export default function DetailMaid() {
               <div className="cancle-rate-render">
                 <input type="text" className="form-control" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
