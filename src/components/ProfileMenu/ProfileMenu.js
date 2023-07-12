@@ -99,6 +99,7 @@ function ProfileMenu(props) {
     }
     if (label === "リクエストリスト") {
       if (user.role === 2) navigate("/requestlist");
+      if (user.role === 1) navigate("/requestuser");
     }
     setIsMenuOpen(false);
     if (label === "ユーザー管理") {

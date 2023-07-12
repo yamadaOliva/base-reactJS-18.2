@@ -30,7 +30,6 @@ function RequestDoneList(props) {
   const setRequestListService = async () => {
     try {
       const response = await getReQuestService(user.id);
-      console.log("response", response);
       if (+response.EC == 200) {
         setRequestList(response.DT);
       }

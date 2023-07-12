@@ -27,6 +27,7 @@ import UserRequestList from "./components/Request/RequestUser"
 import RequestDoneList from "./components/Request/RequestDoneList";
 import ReviewList from "./components/Admin/ReviewList/ReviewList";
 import ReportList from "./components/Admin/Reports/ReportList"
+import RequestUser from "./components/Request/RequestUser";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
@@ -43,6 +44,7 @@ root.render(
               <Route path="/maid/home" element={<MaidHomePage />} />
               <Route path="/requestlist" element={<RequestList />} />
               <Route path="/test" element={<DetailMaid />} />
+              <Route path="/requestuser" element={<RequestUser/>} />
             </Route>
 
             <Route path="/login" element={<Login />} />
@@ -50,7 +52,7 @@ root.render(
             <Route path="*" element={<h1>Not Found</h1>} />
            
 
-            <Route path="/request" element={<RequestM />} />
+            
             {/* <<<<<<< HEAD */}
 
             <Route path="/usermanage" element={<UserManage />} />
