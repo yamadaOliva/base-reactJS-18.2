@@ -8,7 +8,7 @@ import ShowReview from "../ReviewComponent/ShowReview/ShowReview";
 import { CheckReviewService } from "../../service/reviewService";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import  ReportModal  from "./ReportModal";
+import ReportModal from "./ReportModal";
 const MaidDetail = (props) => {
   const user = useSelector((state) => state.user);
   const [id, setId] = useState(0);
@@ -61,9 +61,9 @@ const MaidDetail = (props) => {
         <Modal
           show={props.show}
           onHide={props.handleClose}
-          className={
-            `modal-custom ${isShowModal ? "opacity-0" : "opacity-100"}` 
-          }
+          className={`modal-custom ${
+            isShowModal ? "opacity-0" : "opacity-100"
+          }`}
         >
           {/* <Modal.Header closeButton>
             <Modal.Title>MaidProfile</Modal.Title>
@@ -71,17 +71,14 @@ const MaidDetail = (props) => {
           <Modal.Body>
             <div className="container-detailMaid">
               <div className="infor-container">
-                <ReportModal 
-                  isShowModal={isShowModal}
-                  handleCloseModal={handleCloseModal}
-                  // data={dataRaw}
-                />
-                <div className="btn-report" onClick={
-                  () => {
+                <div
+                  className="btn-report"
+                  onClick={() => {
                     setIsShowModal(true);
-                  }
-                }
-                 >報告</div>
+                  }}
+                >
+                  報告
+                </div>
                 <div className="table-detail">
                   <form>
                     <h2 className="title-content ">メイドプロフィール</h2>
@@ -260,6 +257,11 @@ const MaidDetail = (props) => {
         maidName={dataRaw.first_name + " " + dataRaw.last_name}
         setIsReview={setIsReview}
         isReview={isReview}
+      />
+      <ReportModal
+        isShowModal={isShowModal}
+        handleCloseModal={handleCloseModal}
+        data={props.maid.id}
       />
     </>
   );

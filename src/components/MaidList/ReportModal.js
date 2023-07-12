@@ -1,7 +1,36 @@
 import Modal from "react-bootstrap/Modal";
-
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { CreateReportService } from "../../service/reportService";
 const ReportModal = (props) => {
+  const user = useSelector((state) => state.user);
   const { isShowModal, handleCloseModal, data } = props;
+  const [reason, setReason] = useState("");
+  const [title, setTitle] = useState("");
+  const handleCreateReport = async () => {
+    if(user.username === "")
+    {
+      toast.error("ログインしてください。");
+      return;
+    }
+    try {
+      const response = await CreateReportService({
+        user_id: user.id,
+        reported_id: data,
+        reason: title + ":::" + reason,
+      });
+      if (+response.EC == 200) {
+        toast.success("報告が成功しました。");
+        handleCloseModal();
+      } else {
+        toast.error(response.EM);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <Modal show={isShowModal} onHide={handleCloseModal}>
       <div className="relative">
@@ -23,14 +52,25 @@ const ReportModal = (props) => {
         <div className="flex flex-col gap-1 my-3 px-2">
           <div className="flex flex-col gap-2">
             <label className="text-lg font-bold">報告のタイトル</label>
-            <input className="border-2 border-gray-300 rounded-lg p-2" />
+            <input
+              className="border-2 border-gray-300 rounded-lg p-2"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-lg font-bold">報告の内容</label>
-            <textarea className="border-2 border-gray-300 rounded-lg p-2" />
+            <textarea
+              className="border-2 border-gray-300 rounded-lg p-2"
+              onChange={(e) => setReason(e.target.value)}
+              value={reason}
+            />
           </div>
           <div className="flex flex-col items-center">
-            <button className="bg-red-500 text-white rounded-lg p-2">
+            <button
+              className="bg-red-500 text-white rounded-lg p-2"
+              onClick={handleCreateReport}
+            >
               送信する
             </button>
           </div>

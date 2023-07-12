@@ -54,6 +54,10 @@ export default function Request(props) {
         status: "pending",
         address: address,
       };
+      if(user.role == 2){
+        toast.error("ユーザーはリクエストを送信できません。");
+        return;
+      }
       console.log(request);
       const response = await requestMaid(request);
       console.log("rés=>>", response);
