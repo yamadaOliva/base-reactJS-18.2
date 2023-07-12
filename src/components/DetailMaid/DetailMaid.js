@@ -75,7 +75,7 @@ export default function DetailMaid() {
   const handleSubmit = async () => {
     const ptr = language_name.split(",");
     const data = {
-      profile_id : idProfile,
+      profile_id: idProfile,
       id: user.id,
       first_name: firstName,
       last_name: lastName,
@@ -120,7 +120,7 @@ export default function DetailMaid() {
       <div className="container-detailMaid">
         <div className="infor-container">
           <div className="table-detail">
-            <div>
+            <div className="form-abc">
               <h2 className="title-content ">メイドプロフィール</h2>
               <div className="form-row">
                 <div className="form-group ">
@@ -144,7 +144,7 @@ export default function DetailMaid() {
                   />
                 </div>
 
-                <div className="form-group ">
+                <div className="form-group">
                   <label for="inputAddress">電話番号</label>
                   <input
                     type="text"
@@ -249,7 +249,7 @@ export default function DetailMaid() {
           </div>
           <div className="infor-addtion">
             <div className="btn-salary"></div>
-            <div className="btn-avt">
+            <div className="btn-avt1">
               <Upload
                 setAvatarUrl={setAvatarUrl}
                 backgroundImage={avatarUrl}

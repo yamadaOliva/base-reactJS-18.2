@@ -24,21 +24,21 @@ function Landing() {
       <div className="flex flex-col h-full items-center">
         <div className="relative">
           <div className="absolute top-0 left-0 w-[600px] ">
-            <span className="font-bold text-[40px]">
+            <span className="font-bold text-[30px]">
               新しいメンバーですか？
               <br />
               サインアップしてください！
             </span>
-            <div className="flex flex-row gap-16 mt-2 -ml-10">
+            <div className="flex flex-row gap-15 mt-2 -ml-10">
               <NavLink
                 to="/user"
-                className="text-black text-[25px] font-bold py-2 px-4 rounded"
+                className="text-black text-[20px] font-bold py-2 px-4 rounded"
               >
                 メイドを見つける
               </NavLink>
               <NavLink
                 to="/"
-                className="text-black text-[25px] font-bold py-2 px-4 rounded"
+                className="text-black text-[20px] font-bold py-2 px-4 rounded"
               >
                 私はメイドです。
               </NavLink>
