@@ -20,7 +20,7 @@ export default function RequesetUser() {
         setPendingList(response.DT.filter((item) => item.status == "pending"));
         setAcceptedList(
           response.DT.filter(
-            (item) => item.status == "accepted" || item.status == "done"
+            (item) => item.status == "Accepted" || item.status == "Done"
           )
         );
       }
