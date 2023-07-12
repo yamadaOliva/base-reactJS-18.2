@@ -9,4 +9,7 @@ const updateRequestService = (data) => {
 const getAverageRatingService = (id) => {
   return axios.get(`/api/v1/maid/request/average?id=${id}`);
 };
-export { getReQuestService, updateRequestService, getAverageRatingService };
+const getReQuestUser = (id) => {
+  return axios.get(`/api/v1/user/request/list?id=${id}`);
+};
+export { getReQuestService, updateRequestService, getAverageRatingService, getReQuestUser };

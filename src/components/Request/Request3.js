@@ -4,7 +4,9 @@ import { GrFormClose } from "react-icons/gr";
 import { convertDateToTMDHM } from "./Items";
 import { updateRequestService } from "../../service/requestService";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 export default function Request3(props) {
+  const user = useSelector((state) => state.user);
   const handleDelete = async () => {
     console.log("delete");
     const data = {
@@ -39,7 +41,7 @@ export default function Request3(props) {
           <div className="left-part">
             <div className="name-box">
               <div>Client name</div>
-              <div>{props.request?.User.username}</div>
+              {user.role != 1 ? <div>{props.request?.User.username}</div>:<div>{props.request?.Maid_profile.last_name}</div>} 
             </div>
             <div className="address-box">
               <div>Client Address:{props.request?.address}</div>
@@ -66,9 +68,13 @@ export default function Request3(props) {
           </div>
         </div>
         <div className="bntt">
-          <button className="bnt-3" onClick={handleDelete}>
-            <div className="bnt-2-content">削除</div>
-          </button>
+          {user.role != 1 ? (
+            <button className="bnt-3" onClick={handleDelete}>
+              <div className="bnt-2-content">削除</div>
+            </button>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

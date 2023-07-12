@@ -56,6 +56,7 @@ const Calendar = () => {
   useEffect(() => {
     console.log("currentRequest", currentRequest);
   }, [currentRequest]);
+  
   useEffect(() => {
     getAverageRating();
   }, []);
@@ -76,7 +77,7 @@ const Calendar = () => {
     //setDayJSObj(request.map((rq) => dayjs(rq.start_date)));
   };
   useEffect(() => {
-    rqInMonth(dayObj.month()+1);
+    rqInMonth(dayObj.get("month"));
   }, [request]);
   const handleShowReview = () => {
     //event.preventDefault();
