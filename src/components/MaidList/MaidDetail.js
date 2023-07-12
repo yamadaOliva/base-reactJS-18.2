@@ -165,7 +165,7 @@ const MaidDetail = (props) => {
                             type="checkbox"
                             className="form-check h-4 w-4"
                             id="food"
-                            checked={dataRaw.skills.includes("food")}
+                            checked={dataRaw.skills?.includes("food")}
                           />
                           <label htmlFor="food" className="ml-2">
                             料理
@@ -174,7 +174,7 @@ const MaidDetail = (props) => {
                             type="checkbox"
                             className="form-check h-4 w-4"
                             id="care"
-                            checked={dataRaw.skills.includes("care")}
+                            checked={dataRaw.skills?.includes("care")}
                           />
                           <label htmlFor="care" className="ml-2 grow">
                             赤ちゃんの世話
