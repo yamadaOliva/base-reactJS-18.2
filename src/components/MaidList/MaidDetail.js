@@ -53,7 +53,7 @@ const MaidDetail = (props) => {
   useEffect(() => {
     setId(props.maid.id);
     setDataRaw(props.maid);
-    console.log("=>>", props.maid);
+    console.log("=>>11", props.maid);
   }, [props.maid]);
   return (
     <>
@@ -235,16 +235,6 @@ const MaidDetail = (props) => {
                       <div className="point">{dataRaw.rating}</div>
                     </div>
                     <div className="evaluation-title">評価</div>
-                  </div>
-
-                  <div className="btn-cancle-rate">
-                    <div className="cancle-rate-title">
-                      リクエスト <br />
-                      キャンセル率
-                    </div>
-                    <div className="cancle-rate-render">
-                      <input type="text" className="form-control" />
-                    </div>
                   </div>
                 </div>
               </div>
