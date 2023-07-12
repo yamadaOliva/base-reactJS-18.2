@@ -159,12 +159,27 @@ const MaidDetail = (props) => {
                       </div>
                       <div className="form-group ">
                         <label>スキル</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          disabled
-                          value={dataRaw.skills}
-                        />
+
+                        <div className="w-full flex flex-row items-center">
+                          <input
+                            type="checkbox"
+                            className="form-check h-4 w-4"
+                            id="food"
+                            checked={dataRaw.skills.includes("food")}
+                          />
+                          <label htmlFor="food" className="ml-2">
+                            料理
+                          </label>
+                          <input
+                            type="checkbox"
+                            className="form-check h-4 w-4"
+                            id="care"
+                            checked={dataRaw.skills.includes("care")}
+                          />
+                          <label htmlFor="care" className="ml-2 grow">
+                            赤ちゃんの世話
+                          </label>
+                        </div>
                       </div>
                       <div className="form-group ">
                         <label>証明書</label>

@@ -10,6 +10,7 @@ import {
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { set } from "lodash";
 export default function DetailMaid() {
   const [avatarUrl, setAvatarUrl] = useState(
     window.location.origin + "/images/upload-image.png"
@@ -22,7 +23,7 @@ export default function DetailMaid() {
   const [country, setCountry] = useState("");
   const [note, setNote] = useState("");
   const [experience, setExperience] = useState(0);
-  const [skills, setSkills] = useState("");
+  const [skills, setSkills] = useState([]);
   const [certification, setCertification] = useState("");
   const [language_name, setLanguage_name] = useState("");
   const [price_per_hour, setPrice_per_hour] = useState(0);
@@ -44,7 +45,9 @@ export default function DetailMaid() {
       setNote(res.DT.description);
       setAvatarUrl(res.DT.avatar_url);
       setExperience(res.DT.experience);
-      setSkills(res.DT.skills);
+      const skill_list = res.DT.skills.split(",");
+      setSkills(skill_list);
+      console.log(res.DT.skills);
       setCertification(res.DT.ceftification);
       setIdProfile(res.DT.id);
       setRate(res.DT.rating);
@@ -74,6 +77,7 @@ export default function DetailMaid() {
 
   const handleSubmit = async () => {
     const ptr = language_name.split(",");
+    const skill_list_str = skills.join(",");
     const data = {
       profile_id: idProfile,
       id: user.id,
@@ -86,7 +90,7 @@ export default function DetailMaid() {
       description: note,
       avatar_url: avatarUrl,
       experience: experience,
-      skills: skills,
+      skills: skill_list_str,
       certification: certification,
       language_name: ptr,
       price_per_hour: price_per_hour,
@@ -118,7 +122,7 @@ export default function DetailMaid() {
   return (
     <>
       <div className="container-detailMaid">
-        <div className="infor-container">
+        <div className="infor-container text-[19px]">
           <div className="table-detail">
             <div className="form-abc">
               <h2 className="title-content ">メイドプロフィール</h2>
@@ -201,12 +205,46 @@ export default function DetailMaid() {
                 </div>
                 <div className="form-group ">
                   <label>スキル</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={skills}
-                    onChange={(e) => setSkills(e.target.value)}
-                  />
+                  <div className="w-full flex flex-row items-center">
+                    <input
+                      type="checkbox"
+                      className="form-check h-4 w-4"
+                      id="food"
+                      checked={skills.includes("food")}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSkills([...skills, "food"]);
+                        } else {
+                          let skill_list = skills.filter(
+                            (item) => item != "food"
+                          );
+                          setSkills(skill_list);
+                        }
+                      }}
+                    />
+                    <label htmlFor="food" className="ml-2">
+                      料理
+                    </label>
+                    <input
+                      type="checkbox"
+                      className="form-check h-4 w-4"
+                      id="care"
+                      checked={skills.includes("care")}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSkills([...skills, "care"]);
+                        } else {
+                          let skill_list = skills.filter(
+                            (item) => item != "care"
+                          );
+                          setSkills(skill_list);
+                        }
+                      }}
+                    />
+                    <label htmlFor="care" className="ml-2 grow">
+                      赤ちゃんの世話
+                    </label>
+                  </div>
                 </div>
                 <div className="form-group ">
                   <label>証明書</label>
