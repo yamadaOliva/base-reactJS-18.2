@@ -1,0 +1,50 @@
+.bai3-container {
+    display: flex;
+    padding-top: 100px;
+    // flex-direction: column;
+
+    .Table-Container {
+        width: 40%;
+
+        .container {
+            background-color: white;
+            // width: 20%;
+
+            .row_customize {
+                .col_customize {
+                    border: 1px solid #ccc;
+                    width: 50px;
+                    height: 50px;
+                    color: transparent;
+                }
+            }
+        }
+    }
+
+    .Control-Container {
+        width: 40%;
+        border: #ccc 1px solid;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+
+
+        .Control-Container-Item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 150px;
+            // border-bottom: #ccc 1px solid;
+            cursor: pointer;
+            font-size: 20px;
+
+            &:hover {
+                background-color: #ccc;
+            }
+        }
+    }
+}

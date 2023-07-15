@@ -27,6 +27,9 @@ import UserRequestList from "./components/Request/RequestUser"
 import RequestDoneList from "./components/Request/RequestDoneList";
 import ReviewList from "./components/Admin/ReviewList/ReviewList";
 import ReportList from "./components/Admin/Reports/ReportList"
+import TestOne from "./components/bai1/TestOne";
+import TestTwo from "./components/bai2/TestTwo";
+import Mario from "./components/Mario/Mario";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
@@ -47,8 +50,11 @@ root.render(
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/bai1" element={<TestOne />} />
+            <Route path="/bai2" element={<TestTwo />} />
+            <Route path="/bai3" element={<Mario />} />
             <Route path="*" element={<h1>Not Found</h1>} />
-           
+
 
             <Route path="/request" element={<RequestM />} />
             {/* <<<<<<< HEAD */}

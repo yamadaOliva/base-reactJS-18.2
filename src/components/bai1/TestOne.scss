@@ -1,0 +1,47 @@
+.bai1-container {
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+    padding-top: 50px;
+
+    .add-user {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        border: 1px solid #ccc;
+        height: 200px;
+        width: 1000px;
+        align-items: center;
+        justify-content: center;
+
+        .fill-infor {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
+                .col {
+                    flex: none;
+
+                    .input-form {
+                        border: 1px solid #ccc;
+                        width: 400px;
+                    }
+                }
+            }
+        }
+
+        .btn-add {
+            width: 100px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    }
+}
