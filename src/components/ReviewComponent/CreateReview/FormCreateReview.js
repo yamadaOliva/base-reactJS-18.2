@@ -40,10 +40,10 @@ const FormCreateReview = (props) => {
         review: ratingRate[rating],
       });
       toast.success("Create review success");
-      
+
       setRating(0);
       setComment("");
-    props.setIsReview(!props.isReview);      
+      props.setIsReview(!props.isReview);
       props.handleClose();
       console.log(res);
     }
@@ -74,7 +74,7 @@ const FormCreateReview = (props) => {
                 <div className="FormCreateReview-infor-name">
                   <div className="FormCreateReview-infor-name-title">
                     {" "}
-                    メイド名:{" "}
+                    Tên maid:{" "}
                   </div>
                   <div className="FormCreateReview-infor-name-content">
                     {" "}
@@ -94,7 +94,7 @@ const FormCreateReview = (props) => {
                 </div>
               </div>
               <div className="FormCreateReview-content">
-                <div className="Content-title">レビュー内容:</div>
+                <div className="Content-title">Nội dung:</div>
                 <textarea
                   className="Content-textarea"
                   name="content"
@@ -108,14 +108,14 @@ const FormCreateReview = (props) => {
                   className="btn btn-primary"
                   onClick={handleRating}
                 >
-                  レビューを送る
+                  Gửi đi
                 </button>
                 <button
                   type="reset"
                   className="btn btn-danger"
                   onClick={props.handleClose}
                 >
-                  キャンセル
+                  Đóng
                 </button>
               </div>
             </div>

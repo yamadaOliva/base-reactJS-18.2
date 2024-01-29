@@ -96,7 +96,7 @@ export default function RequesetUser() {
 
   return (
     <div className={"req-list-container"}>
-      <h1 className={"req-title"}>送信したリクエスト</h1>
+      <h1 className={"req-title"}>Yêu cầu đã gửi</h1>
       <div className="carousel-rq">
         <img
           src={window.location.origin + "/images/pre.png"}
@@ -112,7 +112,7 @@ export default function RequesetUser() {
           onClick={nextItem1}
         />
       </div>
-      <h1 className={"req-title"}>完成したリクエスト</h1>
+      <h1 className={"req-title"}>Yêu cầu đã hoàn thành</h1>
       <div className="carousel-rq">
         <img
           src={window.location.origin + "/images/pre.png"}

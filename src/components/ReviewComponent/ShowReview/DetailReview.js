@@ -12,7 +12,7 @@ const DetailReview = (props) => {
   };
   const handleLikeDislike = async (agreement) => {
     if (!user.username) {
-      toast.error("ログインしてください");
+      toast.error("Hãy đăng nhập trước");
       return;
     } else {
       try {
@@ -49,7 +49,7 @@ const DetailReview = (props) => {
           <div className="detail-review-vote">
             <div className="detail-review-vote-like-dis">
               <button onClick={() => handleLikeDislike(true)}>
-                <div className="detail-review-vote-like-title">同意：</div>
+                <div className="detail-review-vote-like-title">Like：</div>
               </button>
               <div className="detail-review-vote-like-number">
                 {
@@ -62,7 +62,7 @@ const DetailReview = (props) => {
             <div className="detail-review-vote-like-dis">
               <button onClick={() => handleLikeDislike(false)}>
                 <div className="detail-review-vote-dislike-title">
-                  不同意：
+                  Dislike：
                 </div>
               </button>
               <div className="detail-review-vote-dislike-number">

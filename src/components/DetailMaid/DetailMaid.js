@@ -99,9 +99,9 @@ export default function DetailMaid() {
       try {
         const res = await updateMaid(data);
         if (+res.EC == 200) {
-          toast.success("更新成功");
+          toast.success("Cập nhật thành công");
         } else {
-          toast.error("更新失敗");
+          toast.error("Cập nhật thất bại");
         }
       } catch (error) {
         console.log(error);
@@ -110,9 +110,9 @@ export default function DetailMaid() {
       try {
         const res = await createMaid(data);
         if (+res.EC == 200) {
-          toast.success("更新成功");
+          toast.success("Cập nhật thành công");
         } else {
-          toast.error("更新失敗");
+          toast.error("Cập nhật thất bại");
         }
       } catch (error) {
         console.log(error);
@@ -125,10 +125,10 @@ export default function DetailMaid() {
         <div className="infor-container text-[19px]">
           <div className="table-detail">
             <div className="form-abc">
-              <h2 className="title-content ">メイドプロフィール</h2>
+              <h2 className="title-content ">Thông tin cá nhân</h2>
               <div className="form-row">
                 <div className="form-group ">
-                  <label for="inputEmail4">名</label>
+                  <label for="inputEmail4">HỌ</label>
                   <input
                     type="text"
                     className="form-control"
@@ -138,7 +138,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label for="inputPassword4">苗字</label>
+                  <label for="inputPassword4">Tên</label>
                   <input
                     type="text"
                     className="form-control"
@@ -149,7 +149,7 @@ export default function DetailMaid() {
                 </div>
 
                 <div className="form-group">
-                  <label for="inputAddress">電話番号</label>
+                  <label for="inputAddress">Số điện thoại</label>
                   <input
                     type="text"
                     className="form-control"
@@ -159,7 +159,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label>住所</label>
+                  <label>Nơi ở</label>
                   <input
                     type="text"
                     className="form-control"
@@ -168,7 +168,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label>都市</label>
+                  <label>Thành phố</label>
                   <input
                     type="text"
                     className="form-control"
@@ -177,7 +177,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label>国</label>
+                  <label>QUốc gia</label>
                   <input
                     type="text"
                     className="form-control"
@@ -186,7 +186,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label>ノート</label>
+                  <label>Ghi chú</label>
                   <input
                     type="text"
                     className="form-control"
@@ -195,7 +195,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label>経験</label>
+                  <label>Kinh nghiệm</label>
                   <input
                     type="text"
                     className="form-control"
@@ -204,7 +204,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label>スキル</label>
+                  <label>Kĩ năng</label>
                   <div className="w-full flex flex-row items-center">
                     <input
                       type="checkbox"
@@ -223,7 +223,7 @@ export default function DetailMaid() {
                       }}
                     />
                     <label htmlFor="food" className="ml-2">
-                      料理
+                      Nấu ăn
                     </label>
                     <input
                       type="checkbox"
@@ -242,12 +242,12 @@ export default function DetailMaid() {
                       }}
                     />
                     <label htmlFor="care" className="ml-2 grow">
-                      赤ちゃんの世話
+                      Chăm trẻ
                     </label>
                   </div>
                 </div>
                 <div className="form-group ">
-                  <label>証明書</label>
+                  <label>Chứng chỉ</label>
                   <input
                     type="text"
                     className="form-control"
@@ -256,7 +256,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label>言語</label>
+                  <label>Ngôn ngữ</label>
                   <input
                     type="text"
                     className="form-control"
@@ -265,7 +265,7 @@ export default function DetailMaid() {
                   />
                 </div>
                 <div className="form-group ">
-                  <label>値段</label>
+                  <label>Giá</label>
                   <input
                     type="text"
                     className="form-control"
@@ -279,7 +279,7 @@ export default function DetailMaid() {
                     className="btn btn-primary"
                     onClick={handleSubmit}
                   >
-                    プロフィールを更新する
+                    Cập nhật
                   </button>
                 </div>
               </div>
@@ -298,7 +298,7 @@ export default function DetailMaid() {
                 <FiCircle className="edit-size-icon" />
                 <div className="point">{rate}</div>
               </div>
-              <div className="evaluation-title">評価</div>
+              <div className="evaluation-title"></div>
             </div>
 
             {/* <div className="btn-cancle-rate">

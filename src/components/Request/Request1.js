@@ -15,7 +15,7 @@ export default function Request1(props) {
     const res = await updateRequestService(data);
     console.log(res);
     if (+res.EC == 200) {
-      toast.success("受け入れました");
+      toast.success("Đã chấp nhận yêu cầu");
       //pop current request from pending list
       props.setPendingList(
         props.pendingList.filter((item) => item.id != props.request.id)
@@ -24,7 +24,7 @@ export default function Request1(props) {
       props.setAcceptedList([...props.acceptedList, props.request]);
       props.setTrigger(false);
     } else {
-      alert("受け入れできませんでした");
+      alert("Không thể chấp nhận yêu cầu");
     }
   };
   const handleDelete = async () => {
@@ -38,14 +38,14 @@ export default function Request1(props) {
     const res = await updateRequestService(data);
     console.log(res);
     if (+res.EC == 200) {
-      toast.success("却下しました");
+      toast.success("Đã từ chối yêu cầu");
       //pop current request from pending list
       props.setPendingList(
         props.pendingList.filter((item) => item.id != props.request.id)
       );
       props.setTrigger(false);
     } else {
-      alert("却下できませんでした");
+      alert("Không thể từ chối yêu cầu");
     }
   };
 
@@ -56,7 +56,7 @@ export default function Request1(props) {
           class="close-popup-bnt"
           onClick={() => props.setTrigger(false)}
         />
-        <div className="title-popup">新しいリクエスト</div>
+        <div className="title-popup">Yêu cầu mới</div>
         <div className="after-title">
           <div className="left-part">
             <div className="name-box">
@@ -95,7 +95,7 @@ export default function Request1(props) {
                 handleAccept();
               }}
             >
-              受け入れる
+              Chấp nhận
             </div>
           </button>
           <button className="bnt-2">
@@ -105,7 +105,7 @@ export default function Request1(props) {
                 handleDelete();
               }}
             >
-              却下
+              Từ chối
             </div>
           </button>
         </div>

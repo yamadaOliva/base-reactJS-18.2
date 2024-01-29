@@ -14,7 +14,7 @@ require("dayjs/locale/ja");
 
 dayjs.locale("ja");
 
-const weekDays = ["月", "火", "水", "木", "金", "土", "日"];
+const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const todayObj = dayjs();
 
@@ -44,25 +44,30 @@ const Calendar = () => {
     }
   };
   const handleRequestDay = (day) => {
-    if(requestDayInMonth.includes(day)){
-      setCurrentRequest(request.find(rq =>{
-        if(dayjs(rq.start_date).date() == day&& dayjs(rq.start_date).month() + 1 == dayObj.month() + 1){
-          return rq;
-        }
-      }));
+    if (requestDayInMonth.includes(day)) {
+      setCurrentRequest(
+        request.find((rq) => {
+          if (
+            dayjs(rq.start_date).date() == day &&
+            dayjs(rq.start_date).month() + 1 == dayObj.month() + 1
+          ) {
+            return rq;
+          }
+        })
+      );
       setTrigger3(true);
     }
-  }
+  };
   useEffect(() => {
     console.log("currentRequest", currentRequest);
   }, [currentRequest]);
-  
+
   useEffect(() => {
     getAverageRating();
   }, []);
 
   const rqInMonth = (month) => {
-    const currentMonth = month+1;
+    const currentMonth = month + 1;
     console.log("currentMonth", currentMonth);
     let ptr = request.filter((rq) => {
       console.log("rq", dayjs(rq.start_date).month() + 1);
@@ -126,7 +131,7 @@ const Calendar = () => {
         </div>
 
         <div className="below-icon-title" onClick={() => handleShowReview()}>
-          総合評価
+          Đánh giá trung bình
         </div>
         <div className="request-icon">
           <div className="icon-inner">
@@ -142,7 +147,7 @@ const Calendar = () => {
             setTrigger1(true);
           }}
         >
-          今月の完了したリクエスト
+          Số lượng yêu cầu trong tháng
         </div>
         <div className="complate-rq-icon">
           <div className="icon-inner">
@@ -158,9 +163,9 @@ const Calendar = () => {
             setTrigger2(true);
           }}
         >
-          完了したリクエストの総数
+          Số lượng yêu cầu đã hoàn thành
           <br />
-          （アプリを使い始めてから）
+          (từ khi đăng ký)
         </div>
       </div>
       <div className="calendar-box">
@@ -174,7 +179,7 @@ const Calendar = () => {
               &lt;
             </button>
             <div className="datetime">
-              {dayObj.format("YYYY")}&nbsp; &nbsp;{dayObj.format("MMM")}
+              {dayObj.format("YYYY")} - {dayObj.format("M")}
             </div>
             <button
               type="button"
@@ -207,7 +212,9 @@ const Calendar = () => {
                     : ""
                 }`}
                 key={i}
-                onClick={() => {handleRequestDay(i + 1)}}
+                onClick={() => {
+                  handleRequestDay(i + 1);
+                }}
               >
                 {i + 1}
               </button>

@@ -67,15 +67,15 @@ export default function Login(props) {
           address: res.DT.address,
         };
         dispatch(setUser(payload));
-        if(res.DT.active == 0){
-          toast.error("アカウントがブロックされました。");
+
+        if (+res.DT.active == 0) {
+          toast.error("Tài khoản của bạn đã bị khóa");
           refeshDataInput();
           return;
         }
         if (+res.DT.role == 1) navigate("/user/home");
-        else if (+res.DT.role ==2) navigate("/maid/home");
-        else if(+res.DT.role == 0) navigate("/maidmanage");
-          
+        else if (+res.DT.role == 2) navigate("/maid/home");
+        else if (+res.DT.role == 0) navigate("/maidmanage");
       } catch (error) {
         console.log(error);
       }
@@ -106,11 +106,11 @@ export default function Login(props) {
                 <div className="w-10/12 ml-auto">
                   <div className="flex flex-col gap-4">
                     <span className="text-3xl font-bold font-delius">
-                      IIOSINへようこそ&#128075;、
+                      IIOSIN&#128075;、
                     </span>
 
                     <span className="text-3xl font-bold">
-                      まず、ログインしてください
+                      Đăng nhập để trải nghiệm
                     </span>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export default function Login(props) {
                           ? "form-control"
                           : "form-control is-invalid"
                       }
-                      placeholder="ユーザー名または電子メール"
+                      placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       style={{
@@ -166,7 +166,7 @@ export default function Login(props) {
                   <div className="w-10/12">
                     <input
                       type="password"
-                      placeholder="パスワード"
+                      placeholder="Mật khẩu"
                       className={
                         dataInput.password
                           ? "form-control"
@@ -190,7 +190,7 @@ export default function Login(props) {
                         className="border-2 border-[#91B9E0] rounded-2xl bg-[#A4F1E4]  w-9/12 h-12 font-bold drop-shadow-[0_3px_2px_rgba(0,0,0,0.35)]"
                         onClick={() => handleSubmit()}
                       >
-                        ログイン
+                        Đăng nhập
                       </button>
                     </div>
                   </div>
@@ -200,9 +200,9 @@ export default function Login(props) {
                   <div className="w-10/12 ml-auto -mt-6">
                     <div className="flex justify-center w-full">
                       <span className="text-center text-red-600 font-light">
-                        または
+                        Nếu bạn chưa có tài khoản, hãy{" "}
                         <Link to="/register" className="text-red-600 font-bold">
-                          <span>サインアップ</span>
+                          <span>Đăng ký</span>
                         </Link>
                         &#xFF01;
                       </span>

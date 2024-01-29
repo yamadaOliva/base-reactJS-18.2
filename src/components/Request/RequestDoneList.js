@@ -109,13 +109,13 @@ function RequestDoneList(props) {
   return props.trigger ? (
     <div className="popup">
       <div className="popup-inner">
-      <GrFormClose
+        <GrFormClose
           class="close-popup-bnt"
           onClick={() => props.setTrigger(false)}
         />
         <div className="rq-list">
           <div></div>
-          <h1 className={"req-title"}>完成したリクエスト</h1>
+          <h1 className={"req-title"}>Yêu cầu đã hoàn thành</h1>
           <div className="carousel-rq">
             <img
               src={window.location.origin + "/images/pre.png"}
@@ -143,6 +143,8 @@ function RequestDoneList(props) {
         </div>
       </div>
     </div>
-  ): "";
+  ) : (
+    ""
+  );
 }
 export default RequestDoneList;

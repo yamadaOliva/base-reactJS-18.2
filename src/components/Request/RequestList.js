@@ -100,7 +100,7 @@ function RequestList() {
   };
   useEffect(() => {
     setRequestListService();
-  }, [switch_TF,socketRef.current]);
+  }, [switch_TF, socketRef.current]);
   useEffect(() => {
     console.log("currentRequest", currentRequest);
   }, [currentRequest]);
@@ -140,7 +140,7 @@ function RequestList() {
   return (
     <div className="rq-list">
       <div></div>
-      <h1 className={"req-title"}>新しいリクエスト</h1>
+      <h1 className={"req-title"}>Yêu cầu mới</h1>
       <div className="carousel-rq">
         <img
           src={window.location.origin + "/images/pre.png"}
@@ -156,7 +156,7 @@ function RequestList() {
           onClick={nextItem1}
         />
       </div>
-      <h1 className={"req-title"}>受け付けたリクエスト</h1>
+      <h1 className={"req-title"}>Yêu cầu đã nhận</h1>
       <div className="carousel-rq">
         <img
           src={window.location.origin + "/images/pre.png"}
@@ -172,7 +172,7 @@ function RequestList() {
           onClick={nextItem2}
         />
       </div>
-      <h1 className={"req-title"}>完成したリクエスト</h1>
+      <h1 className={"req-title"}>Yêu cầu đã hoàn thành</h1>
       <div className="carousel-rq">
         <img
           src={window.location.origin + "/images/pre.png"}

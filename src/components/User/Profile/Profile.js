@@ -49,7 +49,7 @@ function Profile() {
     // get token from cookie
     getUserProfile();
     if (!user.username) {
-      toast.error("ログインしてください");
+      toast.error("Hãy đăng nhập trước");
       navigate("/login");
       return;
     }
@@ -68,27 +68,26 @@ function Profile() {
       avatar_url: avatarUrl,
     };
     console.log(data);
-    if(isExist){
+    if (isExist) {
       const res = await updateProfileService(data);
-      if(+res.EC == 200){
-        toast.success("更新成功");
-      }else{
-        toast.error("更新失敗");
+      if (+res.EC == 200) {
+        toast.success("Thay đổi thành công");
+      } else {
+        toast.error("Thay đổi thất bại");
       }
       console.log(res);
       return;
     }
-    
+
     const res = await UserProfileService(data);
-    if(+res.EC == 200){
-      toast.success("更新成功");
-    }else{
-      toast.error("更新失敗");
+    if (+res.EC == 200) {
+      toast.success("Thay đổi thành công");
+    } else {
+      toast.error("Thay đổi thất bại");
     }
     console.log(res);
   };
 
-  
   return (
     <div>
       <a className={"back-link"} href="#a">
@@ -98,44 +97,44 @@ function Profile() {
           alt=""
           onClick={goBack}
         />
-        <span className={"back-caption"}>戻る</span>
+        <span className={"back-caption"}>Quay lại</span>
       </a>
       <div className={"container"}>
-        <h2>ユーザー情報のへ更新</h2>
+        <h2>Cập nhật thông tin cá nhân</h2>
         <div className={"wrapper"}>
           <div className={"inputs"}>
             <Input
-              label={"名"}
+              label={"Họ"}
               onChange={(e) => setFirstName(e.target.value)}
               value={firstName}
             />
             <Input
-              label={"苗字"}
+              label={"Tên"}
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
             />
             <Input
-              label={"電話番号"}
+              label={"Số điện thoại"}
               onChange={(e) => setPhoneNumber(e.target.value)}
               value={phoneNumber}
             />
             <Input
-              label={"住所"}
+              label={"Địa chỉ"}
               onChange={(e) => setAddress(e.target.value)}
               value={address}
             />
             <Input
-              label={"都市"}
+              label={"Thành phố"}
               onChange={(e) => setCity(e.target.value)}
               value={city}
             />
             <Input
-              label={"国"}
+              label={"Quốc gia"}
               onChange={(e) => setCountry(e.target.value)}
               value={country}
             />
             <Input
-              label={"ノート"}
+              label={"Ghi chú "}
               onChange={(e) => setNote(e.target.value)}
               value={note}
             />
@@ -148,7 +147,7 @@ function Profile() {
           </div>
         </div>
         <button className={"submit"} onClick={handleSubmit}>
-          変更内容を保存
+          Cập nhật
         </button>
         <div style={{ height: 20 }}></div>
       </div>

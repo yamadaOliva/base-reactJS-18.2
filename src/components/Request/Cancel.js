@@ -16,7 +16,7 @@ export default function Cancel(props) {
     const res = await updateRequestService(data);
     console.log(res);
     if (+res.EC == 200) {
-      toast.success("キャンセルしました");
+      toast.success("Hủy yêu cầu thành công");
       //pop current request from accept list
       props.setAcceptedList(
         props.acceptedList.filter((item) => item.id != props.request.id)
@@ -24,7 +24,7 @@ export default function Cancel(props) {
       props.setButtonCancel(false);
       props.setTrigger(false);
     } else {
-      toast.error("キャンセルできませんでした");
+      toast.error("Không thể hủy yêu cầu");
     }
   };
 
@@ -38,7 +38,7 @@ export default function Cancel(props) {
         <div className="formm">
           <div className="flex-1 text-gray-700 p-15">
             <h1 style={{ fontSize: 25 }} className="title-cancel">
-              キャンセル理由
+              Lý do hủy
             </h1>
             <div className="mt-6">
               {}
@@ -60,7 +60,7 @@ export default function Cancel(props) {
                     handleCancel();
                   }}
                 >
-                  キャンセル
+                  Hủy yêu cầu
                 </button>
               </div>
             </div>

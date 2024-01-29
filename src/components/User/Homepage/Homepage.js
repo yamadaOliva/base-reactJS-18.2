@@ -42,12 +42,12 @@ const HomePage = () => {
           <Carousel
             classes="w-10/12 h-[45%] mt-8"
             maidList={maidList1}
-            carouselName="今月最も採用された"
+            carouselName="Bảng xếp hạng"
           />
           <Carousel
             classes="w-10/12 h-[45%] mt-4"
             maidList={maidList2}
-            carouselName="最高評価"
+            carouselName="Gợi ý cho bạn"
           />
         </div>
       </div>

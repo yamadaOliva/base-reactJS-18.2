@@ -4,6 +4,7 @@
     width: 65%;
     display: block;
     margin: 0 auto;
+    overflow: visible;
 }
 .back-link{
     margin-left: 50px;

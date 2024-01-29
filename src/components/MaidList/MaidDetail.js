@@ -25,7 +25,7 @@ const MaidDetail = (props) => {
       const response = await CheckReviewService(props.maid.UserId, user.id);
       console.log("response", response);
       if (+response.EC == 400) {
-        toast.error("レビューはすでに存在しています。");
+        toast.error("Phải thuê mới được đánh giá");
         return;
       }
     } catch (error) {
@@ -72,19 +72,19 @@ const MaidDetail = (props) => {
             <div className="container-detailMaid">
               <div className="infor-container">
                 <div
-                  className="btn-report"
+                  className="btn-report cursor-pointer"
                   onClick={() => {
                     setIsShowModal(true);
                   }}
                 >
-                  報告
+                  Báo cáo
                 </div>
                 <div className="table-detail">
                   <form>
-                    <h2 className="title-content ">メイドプロフィール</h2>
+                    <h2 className="title-content ">Hồ sơ</h2>
                     <div className="form-row">
                       <div className="form-group ">
-                        <label for="inputEmail4">名</label>
+                        <label for="inputEmail4">Họ</label>
                         <input
                           type="text"
                           className="form-control"
@@ -94,7 +94,7 @@ const MaidDetail = (props) => {
                         ></input>
                       </div>
                       <div className="form-group ">
-                        <label for="inputPassword4">苗字</label>
+                        <label for="inputPassword4">Tên</label>
                         <input
                           className="form-control"
                           disabled
@@ -103,7 +103,7 @@ const MaidDetail = (props) => {
                       </div>
 
                       <div className="form-group ">
-                        <label for="inputAddress">電話番号</label>
+                        <label for="inputAddress">Số điện thoại</label>
                         <input
                           type="text"
                           className="form-control"
@@ -113,7 +113,7 @@ const MaidDetail = (props) => {
                         />
                       </div>
                       <div className="form-group ">
-                        <label>住所</label>
+                        <label>Địa chỉ</label>
                         <input
                           type="text"
                           className="form-control"
@@ -122,7 +122,7 @@ const MaidDetail = (props) => {
                         />
                       </div>
                       <div className="form-group ">
-                        <label>都市</label>
+                        <label>Thành phố</label>
                         <input
                           type="text"
                           className="form-control"
@@ -131,7 +131,7 @@ const MaidDetail = (props) => {
                         />
                       </div>
                       <div className="form-group ">
-                        <label>国</label>
+                        <label>Quốc gia</label>
                         <input
                           type="text"
                           className="form-control"
@@ -140,7 +140,7 @@ const MaidDetail = (props) => {
                         />
                       </div>
                       <div className="form-group ">
-                        <label>ノート</label>
+                        <label>Chú ý</label>
                         <input
                           type="text"
                           className="form-control"
@@ -149,7 +149,7 @@ const MaidDetail = (props) => {
                         />
                       </div>
                       <div className="form-group ">
-                        <label>経験</label>
+                        <label>Kinh nghiệm</label>
                         <input
                           type="text"
                           className="form-control"
@@ -158,7 +158,7 @@ const MaidDetail = (props) => {
                         />
                       </div>
                       <div className="form-group ">
-                        <label>スキル</label>
+                        <label>Kỹ năng </label>
 
                         <div className="w-full flex flex-row items-center">
                           <input
@@ -168,7 +168,7 @@ const MaidDetail = (props) => {
                             checked={dataRaw.skills?.includes("food")}
                           />
                           <label htmlFor="food" className="ml-2">
-                            料理
+                            Nấu ăn
                           </label>
                           <input
                             type="checkbox"
@@ -177,12 +177,12 @@ const MaidDetail = (props) => {
                             checked={dataRaw.skills?.includes("care")}
                           />
                           <label htmlFor="care" className="ml-2 grow">
-                            赤ちゃんの世話
+                            Chăm sóc trẻ
                           </label>
                         </div>
                       </div>
                       <div className="form-group ">
-                        <label>証明書</label>
+                        <label>Chứng chỉ</label>
                         <input
                           type="text"
                           className="form-control"
@@ -191,7 +191,7 @@ const MaidDetail = (props) => {
                         />
                       </div>
                       <div className="form-group ">
-                        <label>言語</label>
+                        <label>Ngôn ngữ</label>
                         {(dataRaw.Languages || []).map((item) => {
                           return (
                             <input
@@ -209,14 +209,14 @@ const MaidDetail = (props) => {
                           className="btn btn-primary"
                           onClick={(event) => handleCreateReview(event)}
                         >
-                          レビューを書く
+                          Đánh giá{" "}
                         </button>
                         <button
                           // type="submit"
                           className="btn btn-primary"
                           onClick={(event) => handleShowReview(event)}
                         >
-                          レビューの一覧表示{" "}
+                          Danh sách đánh giá{" "}
                         </button>
                       </div>
                     </div>
@@ -234,7 +234,7 @@ const MaidDetail = (props) => {
                       <FiCircle className="edit-size-icon" />
                       <div className="point">{dataRaw.rating}</div>
                     </div>
-                    <div className="evaluation-title">評価</div>
+                    <div className="evaluation-title">Đánh giá</div>
                   </div>
                 </div>
               </div>

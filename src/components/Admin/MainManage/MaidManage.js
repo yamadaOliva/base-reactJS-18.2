@@ -233,14 +233,18 @@ const MaidManage = () => {
       <div className="content-page">
         <div className="content-page__left">
           <div className="search-maid-table-maid">
-            <div className="search-maid-table__title">メイド管理</div>
+            <div className="search-maid-table__title">
+              Quản lí người giúp việc
+            </div>
             <div className="search-maid-table__search">
-              <FaSearch size={25} className="icon-search" 
-              onClick={() => hendleSearch()}
+              <FaSearch
+                size={25}
+                className="icon-search"
+                onClick={() => hendleSearch()}
               />
               <input
                 type="text"
-                placeholder="メイド名"
+                placeholder="Tên"
                 onChange={(e) => {
                   setNameFind(e.target.value);
                 }}
@@ -248,10 +252,10 @@ const MaidManage = () => {
             </div>
             <div className="search-maid-table__infor">
               <div className="search-maid-table__infor__detail">
-                総メイド数: {totalMaid}
+                Số lượng: {totalMaid}
               </div>
               <div className="search-maid-table__infor__detail">
-                禁止されたメイド: {totalBlock}
+                Số bị khóa: {totalBlock}
               </div>
             </div>
             <div className="search-maid-table__btn">
@@ -259,18 +263,19 @@ const MaidManage = () => {
                 className="search-maid-table__btn__sort"
                 onClick={() => hendleFilterID()}
               >
-                IDで並べ替える
+                Sắp xếp theo ID
               </div>
-              <div className="search-maid-table__btn__sort"
+              <div
+                className="search-maid-table__btn__sort"
                 onClick={() => hendleFilterPrice()}
               >
-
-                価格で並べ替える
+                Sắp xếp theo giá
               </div>
-              <div className="search-maid-table__btn__sort"
-                onClick={() => hendleFilterRating()} 
+              <div
+                className="search-maid-table__btn__sort"
+                onClick={() => hendleFilterRating()}
               >
-                評価で並べ替える
+                Sắp xếp theo đánh giá
               </div>
               {/* <div className="search-maid-table__btn__sort">
                                     時間順で並べ替える
@@ -281,14 +286,14 @@ const MaidManage = () => {
                   className="search-maid-table__btn__block"
                   onClick={() => hideBlockedMaid()}
                 >
-                  禁止を隠す
+                  Ẩn block
                 </div>
               ) : (
                 <div
                   className="search-maid-table__btn__block"
                   onClick={() => showBlockedMaid()}
                 >
-                  全部を表示する
+                  Toàn bộ
                 </div>
               )}
             </div>

@@ -18,7 +18,7 @@ export default function Request2(props) {
     const res = await updateRequestService(data);
     console.log(res);
     if (+res.EC == 200) {
-      toast.success("完了しました");
+      toast.success("Đã hoàn thành yêu cầu");
       //pop current request from pending list
       props.setAcceptedList(
         props.acceptedList.filter((item) => item.id != props.request.id)
@@ -27,7 +27,7 @@ export default function Request2(props) {
       props.setDoneList([...props.doneList, props.request]);
       props.setTrigger(false);
     } else {
-      alert("完了できませんでした");
+      alert("Không thể hoàn thành yêu cầu");
     }
   };
   return props.trigger ? (
@@ -37,7 +37,7 @@ export default function Request2(props) {
           class="close-popup-bnt"
           onClick={() => props.setTrigger(false)}
         />
-        <div className="title-popup">受け付けたリクエスト</div>
+        <div className="title-popup">Yêu cầu đã gửi</div>
         <div className="after-title">
           <div className="left-part">
             <div className="name-box">
@@ -70,10 +70,10 @@ export default function Request2(props) {
         </div>
         <div className="bntt">
           <button className="bnt-1" onClick={() => handleDone()}>
-            <div className="bnt-1-content">完成する</div>
+            <div className="bnt-1-content">Hoàn thành</div>
           </button>
           <button className="bnt-2" onClick={() => setButtonCancel(true)}>
-            <div className="bnt-2-content">キャンセル</div>
+            <div className="bnt-2-content">Hủy bỏ</div>
           </button>
         </div>
       </div>

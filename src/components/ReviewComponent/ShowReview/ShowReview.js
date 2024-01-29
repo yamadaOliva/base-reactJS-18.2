@@ -36,9 +36,11 @@ const ShowReview = (props) => {
         </Modal.Header>
         <Modal.Body className="ModalShowreview">
           <div className="showreview-container">
-            <div className="showreview-title">レビューの一覧表示</div>
+            <div className="showreview-title">Đánh giá của người dùng</div>
             <div className="showreview-infor">
-              <div className="showreview-infor-title">メイド名：</div>
+              <div className="showreview-infor-title">
+                Tên người giúp việc：
+              </div>
               <div className="showreview-infor-name">{props.maidName}</div>
             </div>
             <div className="showreview-content">

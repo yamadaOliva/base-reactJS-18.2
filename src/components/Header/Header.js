@@ -37,14 +37,12 @@ export default function Header() {
         </>
       ) : (
         <div className="pr-4 ml-auto flex flex-row gap-4 items-center">
-          <span className="text-2xl font-bold">
-            ログイン:
-          </span>
+          <span className="text-2xl font-bold">Đăng nhập:</span>
           <NavLink to="/login" className="nav-link underline font-bold">
-            ユーザー
+            Chủ nhà
           </NavLink>
           <NavLink to="/login" className="nav-link underline font-bold">
-            メイド
+            Người giúp việc
           </NavLink>
         </div>
       )}

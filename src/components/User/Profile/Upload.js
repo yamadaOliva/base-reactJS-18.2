@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import "./Upload.scss";
 export default function Upload(props) {
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
@@ -15,7 +15,7 @@ export default function Upload(props) {
       },
       function (error, result) {
         console.log(result.info.secure_url);
-        console.log(result?.info?.secure_url?.startsWith("http"))
+        console.log(result?.info?.secure_url?.startsWith("http"));
         if (result.info?.secure_url?.startsWith("http")) {
           setCurrentImage(result.info.secure_url);
         }
@@ -31,6 +31,7 @@ export default function Upload(props) {
       onClick={() => {
         widgetRef.current.open();
       }}
+      className="upload-button"
     >
       <img src={props.backgroundImage}></img>
     </button>

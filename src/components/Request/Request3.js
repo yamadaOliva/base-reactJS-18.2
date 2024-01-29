@@ -18,14 +18,14 @@ export default function Request3(props) {
     const res = await updateRequestService(data);
     console.log(res);
     if (+res.EC == 200) {
-      toast.success("削除しました");
+      toast.success("Xóa thành công");
       //pop current request from done list
       props.setDoneList(
         props.doneList.filter((item) => item.id != props.request.id)
       );
       props.setTrigger(false);
     } else {
-      alert("削除できませんでした");
+      alert("Không thể xóa");
     }
   };
 
@@ -36,12 +36,16 @@ export default function Request3(props) {
           class="close-popup-bnt"
           onClick={() => props.setTrigger(false)}
         />
-        <div className="title-popup">完成したリクエスト</div>
+        <div className="title-popup">Yêu cầu đã hoàn thành</div>
         <div className="after-title">
           <div className="left-part">
             <div className="name-box">
               <div>Client name</div>
-              {user.role != 1 ? <div>{props.request?.User.username}</div>:<div>{props.request?.Maid_profile.last_name}</div>} 
+              {user.role != 1 ? (
+                <div>{props.request?.User.username}</div>
+              ) : (
+                <div>{props.request?.Maid_profile.last_name}</div>
+              )}
             </div>
             <div className="address-box">
               <div>Client Address:{props.request?.address}</div>
@@ -70,7 +74,7 @@ export default function Request3(props) {
         <div className="bntt">
           {user.role != 1 ? (
             <button className="bnt-3" onClick={handleDelete}>
-              <div className="bnt-2-content">削除</div>
+              <div className="bnt-2-content">Xóa bỏ</div>
             </button>
           ) : (
             <></>

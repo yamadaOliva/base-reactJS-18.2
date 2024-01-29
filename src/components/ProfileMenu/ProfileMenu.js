@@ -45,36 +45,36 @@ const checkIcon = () => {
     </svg>
   );
 };
-const profileMenuItems = [
+let profileMenuItems = [
   {
-    label: "プロフィール",
+    label: "Thông tin cá nhân",
     icon: UserCircleIcon,
   },
   {
-    label: "リクエストリスト",
+    label: "Danh sách yêu cầu",
     icon: EnvelopeIcon,
   },
   {
-    label: "ログアウト",
+    label: "Đăng xuất",
     icon: PowerIcon,
   },
 ];
 
 const adminMenuItems = [
   {
-    label: "ユーザー管理",
+    label: "Quản lý người dùng",
     icon: UserCircleIcon,
   },
   {
-    label: "メイド管理",
+    label: "Quản lý Maid",
     icon: StarIcon,
   },
   {
-    label: "不正行為報告",
+    label: "Danh sách yêu cầu",
     icon: checkIcon,
   },
   {
-    label: "ログアウト",
+    label: "Đăng xuất",
     icon: arrowRightBracketIcon,
   },
 ];
@@ -87,28 +87,69 @@ function ProfileMenu(props) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = async (e, label) => {
     console.log(label);
-    if (label === "プロフィール") {
+    if (label === "Thông tin cá nhân") {
       if (user.role === 1) navigate("/user/profile");
       else navigate("/test");
     }
-    if (label === "ログアウト") {
+    if (label === "Đăng xuất") {
       // delete redux
       dispatch(setUserDefault());
       await LogoutService();
       navigate("/login");
     }
-    if (label === "リクエストリスト") {
+    if (label === "Danh sách yêu cầu") {
       if (user.role === 2) navigate("/requestlist");
       if (user.role === 1) navigate("/requestuser");
     }
+    if (label === "Danh sách yêu cầu chi tiết") {
+      if (user.role === 2) navigate("/maid/home");
+    }
     setIsMenuOpen(false);
-    if (label === "ユーザー管理") {
+    if (label === "Quản lý người dùng") {
       if (user.role === 0) navigate("/usermanage");
     }
-    if (label === "メイド管理") {
+    if (label === "Quản lý Maid") {
       if (user.role === 0) navigate("/maidmanage");
     }
   };
+  React.useEffect(() => {
+    //add after danh sách yêu cầu
+    if (role === 2)
+      profileMenuItems = [
+        {
+          label: "Thông tin cá nhân",
+          icon: UserCircleIcon,
+        },
+        {
+          label: "Danh sách yêu cầu",
+          icon: EnvelopeIcon,
+        },
+        {
+          label: "Danh sách yêu cầu chi tiết",
+          icon: EnvelopeIcon,
+        },
+
+        {
+          label: "Đăng xuất",
+          icon: PowerIcon,
+        },
+      ];
+    else if (role === 1)
+      profileMenuItems = [
+        {
+          label: "Thông tin cá nhân",
+          icon: UserCircleIcon,
+        },
+        {
+          label: "Danh sách yêu cầu",
+          icon: EnvelopeIcon,
+        },
+        {
+          label: "Đăng xuất",
+          icon: PowerIcon,
+        },
+      ];
+  }, []);
 
   return (
     <div className="ml-auto flex flex-row z-30">

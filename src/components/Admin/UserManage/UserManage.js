@@ -53,14 +53,14 @@ const UserManage = () => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(5);
   const [totalPage, setTotalPage] = useState(0);
-  const [totalUsers, setTotalUsers] = useState(0)
+  const [totalUsers, setTotalUsers] = useState(0);
   const getProfileByPageSV = async (page, limit) => {
     const res = await getProfileByPage(page, limit);
     console.log(res);
     setListUser(res.DT?.userProfiles);
     setTotalPage(res.DT.totalPage);
     setTotalUsers(res.DT.totalRows);
-    setTotalBlock(res.DT.blocked)
+    setTotalBlock(res.DT.blocked);
   };
   useEffect(() => {
     getProfileByPageSV(page, limit);
@@ -91,7 +91,6 @@ const UserManage = () => {
   const showBlockedUser = () => {
     setIsHideBlock(false);
   };
-  
 
   return (
     <div className="container-usermanage" key={"user"}>
@@ -101,21 +100,23 @@ const UserManage = () => {
       <div className="content-page">
         <div className="content-page__left">
           <div className="search-user-table">
-            <div className="search-user-table__title">ユーザー管理</div>
+            <div className="search-user-table__title">Quản lí người dùng</div>
             <div className="search-user-table__search">
               <FaSearch size={25} className="icon-search" />
-              <input type="text" placeholder="ユーザー名" />
+              <input type="text" placeholder="Tên" />
             </div>
             <div className="search-user-table__infor">
               <div className="search-user-table__infor__detail">
-                総ユーザー数: {totalUsers}
+                Tổng số người: {totalUsers}
               </div>
               <div className="search-user-table__infor__detail">
-                禁止されたユーザー: {totalBlock}
+                Tổng số bị chặn: {totalBlock}
               </div>
             </div>
             <div className="search-user-table__btn">
-              <div className="search-user-table__btn__sort">IDで並べ替える</div>
+              <div className="search-user-table__btn__sort">
+                Sắp xếp theo ID
+              </div>
               {/* <div className="search-user-table__btn__sort">
                                     時間順で並べ替える
                                 </div> */}
@@ -125,14 +126,14 @@ const UserManage = () => {
                   className="search-user-table__btn__block"
                   onClick={() => hideBlockedUser()}
                 >
-                  禁止を隠す
+                  Ẩn bị chặn
                 </div>
               ) : (
                 <div
                   className="search-user-table__btn__block"
                   onClick={() => showBlockedUser()}
                 >
-                  全部を表示する
+                  Tổng số
                 </div>
               )}
             </div>

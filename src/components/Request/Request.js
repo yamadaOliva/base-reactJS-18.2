@@ -11,7 +11,7 @@ export default function Request(props) {
   const [id, setId] = useState();
   const socketRef = useRef();
   useEffect(() => {
-    socketRef.current = socketIOClient.connect(host)
+    socketRef.current = socketIOClient.connect(host);
   }, []);
   const daysOfMonths = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -54,23 +54,23 @@ export default function Request(props) {
         status: "pending",
         address: address,
       };
-      if(user.role == 2){
-        toast.error("ユーザーはリクエストを送信できません。");
+      if (user.role == 2) {
+        toast.error("Chỉ có người dùng mới có thể đặt lịch");
         return;
       }
       console.log(request);
       const response = await requestMaid(request);
       console.log("rés=>>", response);
       if (+response.EC == 200) {
-        socketRef.current.emit('sendDataClient', 1)
-        toast.success("リクエストを送信しました。");
+        socketRef.current.emit("sendDataClient", 1);
+        toast.success("Đặt lịch thành công");
       } else {
-        toast.error("リクエストを送信できませんでした。");
+        toast.error("Đặt lịch thất bại");
       }
       props.setTrigger(false);
     } catch (error) {
       console.log(error);
-      toast.error("リクエストを送信できませんでした。");
+      toast.error("Đặt lịch thất bại");
     }
   };
 
@@ -84,12 +84,12 @@ export default function Request(props) {
           />
           <div className="formm bg-white flex rounded-lg w-1/2">
             <div className="flex-1 text-gray-700 p-15">
-              <div className="title-rq">新しいリクエスト</div>
+              <div className="title-rq">Đặt lịch mới</div>
               <div className="form-row">
-                { }
+                {}
                 <div className="pb-4">
                   <label className="block text-sm pb-1" htmlFor="name">
-                    クライアント名：
+                    Người thuê：
                   </label>
                   <input
                     className="form-control"
@@ -99,10 +99,10 @@ export default function Request(props) {
                     disabled
                   />
                 </div>
-                { }
+                {}
                 <div className="pb-4">
                   <label className="block text-sm pb-1" htmlFor="address">
-                    ユーザー住所：
+                    Địa chỉ：
                   </label>
                   <input
                     className="form-control"
@@ -112,15 +112,15 @@ export default function Request(props) {
                     value={address}
                   />
                 </div>
-                { }
+                {}
                 <div className="pb-4 pb-add">
                   <label className="block text-sm pb-1" htmlFor="date">
-                    日付：
+                    Ngày, giờ:
                   </label>
                   <select className="form-control-date">
                     <option className="form-control-date">2023</option>
                   </select>
-                  <span> 年</span>
+                  <span> Năm</span>
                   <select
                     className="form-control-date"
                     onChange={(e) => setMonth(e.target.value)}
@@ -138,32 +138,32 @@ export default function Request(props) {
                     <option>11</option>
                     <option>12</option>
                   </select>
-                  <span>月 </span>
+                  <span>Tháng </span>
                   <select
                     className="form-control-date"
                     onChange={(e) => setDay(e.target.value)}
                   >
                     {month == 2
                       ? daysOfMonths
-                        .slice(0, 28)
-                        .map((day) => <option>{day}</option>)
+                          .slice(0, 28)
+                          .map((day) => <option>{day}</option>)
                       : null}
                     {month == 4 || month == 6 || month == 9 || month == 11
                       ? daysOfMonths
-                        .slice(0, 30)
-                        .map((day) => <option>{day}</option>)
+                          .slice(0, 30)
+                          .map((day) => <option>{day}</option>)
                       : null}
                     {month == 1 ||
-                      month == 3 ||
-                      month == 5 ||
-                      month == 7 ||
-                      month == 8 ||
-                      month == 10 ||
-                      month == 12
+                    month == 3 ||
+                    month == 5 ||
+                    month == 7 ||
+                    month == 8 ||
+                    month == 10 ||
+                    month == 12
                       ? daysOfMonths.map((day) => <option>{day}</option>)
                       : null}
                   </select>
-                  <span> 日 </span>
+                  <span> Ngày </span>
                 </div>
                 <input
                   className="form-control-date"
@@ -172,7 +172,7 @@ export default function Request(props) {
                   pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
                   onChange={(e) => setHourKara(e.target.value)}
                 />{" "}
-                <span> から </span>
+                <span> Bắt đầu </span>
                 <input
                   className="form-control-date"
                   type="text"
@@ -180,18 +180,18 @@ export default function Request(props) {
                   pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
                   onChange={(e) => setHourMade(e.target.value)}
                 />{" "}
-                まで
+                Kết thúc
                 <div className="infor-addtion">
                   <div className="btn-salary">
                     <br></br>
                     <hihi>{props.price}$</hihi>
                   </div>
-                  { }
+                  {}
                   <div className="pb-4">
                     <br></br>
                     <div>
                       <label className="block text-sm pb-1" htmlFor="address">
-                        ノート：
+                        Ghi chú：
                       </label>
                       <input
                         className="form-control"
@@ -205,18 +205,18 @@ export default function Request(props) {
                 <div className="btn-submit ">
                   <button
                     type="submit"
-                    className="request-btn"
+                    className="request-btn p-2"
                     onClick={requestHandler}
                   >
-                    リクエストを送信
+                    Gửi yêu cầu
                   </button>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <button
                     type="reset"
-                    className="cancel-btn2"
+                    className="cancel-btn2 p-2  "
                     onClick={() => props.setTrigger(false)}
                   >
-                    キャンセル
+                    Hủy bỏ
                   </button>
                 </div>
               </div>

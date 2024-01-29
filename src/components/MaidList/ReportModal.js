@@ -9,9 +9,8 @@ const ReportModal = (props) => {
   const [reason, setReason] = useState("");
   const [title, setTitle] = useState("");
   const handleCreateReport = async () => {
-    if(user.username === "")
-    {
-      toast.error("ログインしてください。");
+    if (user.username === "") {
+      toast.error("Đăng nhập để báo cáo");
       return;
     }
     try {
@@ -21,7 +20,7 @@ const ReportModal = (props) => {
         reason: title + ":::" + reason,
       });
       if (+response.EC == 200) {
-        toast.success("報告が成功しました。");
+        toast.success("Báo cáo thành công");
         handleCloseModal();
       } else {
         toast.error(response.EM);
@@ -51,7 +50,7 @@ const ReportModal = (props) => {
         </button>
         <div className="flex flex-col gap-1 my-3 px-2">
           <div className="flex flex-col gap-2">
-            <label className="text-lg font-bold">報告のタイトル</label>
+            <label className="text-lg font-bold">Tiêu đề</label>
             <input
               className="border-2 border-gray-300 rounded-lg p-2"
               onChange={(e) => setTitle(e.target.value)}
@@ -59,7 +58,7 @@ const ReportModal = (props) => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-lg font-bold">報告の内容</label>
+            <label className="text-lg font-bold">Nội dung báo cáo</label>
             <textarea
               className="border-2 border-gray-300 rounded-lg p-2"
               onChange={(e) => setReason(e.target.value)}
@@ -71,7 +70,7 @@ const ReportModal = (props) => {
               className="bg-red-500 text-white rounded-lg p-2"
               onClick={handleCreateReport}
             >
-              送信する
+              Gửi đi
             </button>
           </div>
         </div>

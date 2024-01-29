@@ -1,7 +1,7 @@
 import "./Register.scss";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RegisterService } from "../../service/authservice";
 export default function Register(props) {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ export default function Register(props) {
       setDataInput({ ...dataInput, confirmPassword: false });
       return false;
     }
-    
+
     if (!role) {
       toast.error("Role is required");
       setDataInput({ ...dataInput, role: false });
@@ -115,10 +115,10 @@ export default function Register(props) {
       <div className="flex flex-col justify-center items-center mb-10">
         <div className="mt-20">
           <span className="text-3xl font-bold leading-relaxed font-delius">
-            IIOSINへようこそ&#128075;、
+            Iiosin&#128075;、
             <br />
             <span className="text-3xl font-bold leading-relaxed">
-              サインアップしましょう
+              HÃY ĐĂNG KÝ TÀI KHOẢN
             </span>
           </span>
         </div>
@@ -149,7 +149,7 @@ export default function Register(props) {
             <input
               type="text"
               id="name"
-              placeholder="氏名"
+              placeholder="Họ và tên"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               className={`form-control ${
@@ -180,7 +180,7 @@ export default function Register(props) {
             <input
               type="text"
               id="username"
-              placeholder="ユーザー名"
+              placeholder="Tên hiển thị"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className={`form-control ${
@@ -211,7 +211,7 @@ export default function Register(props) {
             <input
               type="password"
               id="password"
-              placeholder="パスワード"
+              placeholder="Mật khẩu"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className={`form-control ${
@@ -243,7 +243,7 @@ export default function Register(props) {
               type="email"
               id="email"
               aria-describedby="emailHelp"
-              placeholder="電子メールアドレス"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={`form-control ${
@@ -274,10 +274,10 @@ export default function Register(props) {
               required
             >
               <option value="" disabled hidden selected>
-                ロール
+                Vai trò
               </option>
-              <option value="1">ユーザー</option>
-              <option value="2">メイド</option>
+              <option value="1">Người dùng</option>
+              <option value="2">Người giúp việc</option>
             </select>
           </div>
           <div className="flex flex-row mr-40 ml-[36px]">
@@ -303,7 +303,7 @@ export default function Register(props) {
             <input
               type="password"
               id="confirmPassword"
-              placeholder="パスワード確認"
+              placeholder="Nhập lại mật khẩu"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className={`form-control ${
@@ -327,7 +327,7 @@ export default function Register(props) {
           />
           <label htmlFor="policy-check" className="ml-[10px]">
             <span className="text-[30px]">
-              ウェブサイトの利用規約に同意する。
+              Nhập đúng thông tin và đồng ý với
             </span>
           </label>
         </div>
@@ -343,28 +343,22 @@ export default function Register(props) {
             checked={isRobot}
           />
           <label htmlFor="robot-check" className="ml-[10px]">
-            <span className="text-[30px]">
-              わたしはロボットではありません。
-            </span>
+            <span className="text-[30px]">Tôi không phải là người máy</span>
           </label>
         </div>
+
         <div className="text-center h-[48px]">
           <button
             className="bg-[#404040] text-white w-[200px] h-[48px] rounded-[15px]"
             onClick={() => handleRegister()}
           >
-            登録
+            Đăng ký
           </button>
-        </div>
-        <div
-          className="text-right mt-20"
-          onClick={() => {
-            handleLogin();
-          }}
-        >
-          <span className="text-[20px] underline text-red-600 cursor-pointer">
-            アカウントをお持ちですか？
-          </span>
+          <Link to="/login">
+            <button className="bg-[#404040] text-white w-[200px] h-[48px] rounded-[15px] ml-[20px]">
+              Đăng nhập
+            </button>
+          </Link>
         </div>
       </div>
     </div>
